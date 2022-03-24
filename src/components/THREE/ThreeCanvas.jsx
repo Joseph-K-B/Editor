@@ -7,6 +7,7 @@ import css from '../../app.css';
 function ThreeCanvas() {
   const setSelection = useStore((state) => state.setSelection);
   const selection = useStore((state) => state.selection);
+  const color = useStore((state) => state.color)
 
   return (
     <>
@@ -17,7 +18,13 @@ function ThreeCanvas() {
         </Plane>
         <Select sphere multiple onChange={setSelection} >
           <Sphere onClick={() => console.log(selection)}>
-            <meshBasicMaterial color='blue' wireframe/>
+            <meshBasicMaterial color={color} wireframe/>
+          </Sphere>
+          <Sphere onClick={() => console.log(selection)} position={[3, 0, 0]}>
+            <meshBasicMaterial color='purple' wireframe/>
+          </Sphere>
+          <Sphere onClick={() => console.log(selection)} position={[-3, 0, 0]}>
+            <meshBasicMaterial color='orange' wireframe/>
           </Sphere>
         </Select>
       </Canvas>

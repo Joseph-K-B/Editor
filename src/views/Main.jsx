@@ -4,7 +4,8 @@ import { useStore } from "../hooks/useStand";
 
 
 function Main() {
-  
+  const selection = useStore((state) => state.selection);
+
 
   return (
     <>
@@ -16,7 +17,9 @@ function Main() {
           color: 'white', 
           zIndex: 9}}
       >
-        <h1>selected:</h1>
+        {selection === [{}] ? 
+        <h1>r:{selection[0].material.color.r}</h1> :
+        <h1>Pick a mesh</h1>}
       </div>
       <Drawer />
       <ThreeCanvas />

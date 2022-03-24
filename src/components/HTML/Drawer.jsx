@@ -6,6 +6,8 @@ import css from '../../app.css';
 
 function Drawer({ handlePosTwo, handlePosThree, handlePosFour }) {
   const selection = useStore((state) => state.selection);
+  const setColor = useStore((state) => state.setColor)
+  const setSelection = useStore((state) => state.setSelection)
   const [lActive, setLActive] = useState(false);
   const [rActive, setRActive] = useState(false);
   
@@ -30,7 +32,14 @@ function Drawer({ handlePosTwo, handlePosThree, handlePosFour }) {
   }
   
   const handleSelect = () => {
+    // console.log(selection[0].userData.values)
+    console.log(selection[0])
+  }
+
+  const handleChange = () => {
     console.log(selection[0].material.color)
+    setSelection(selection[0].material.color = {r: 0, g: 1, b: 0})
+    // setColor('red')
   }
 
   return(
@@ -48,7 +57,7 @@ function Drawer({ handlePosTwo, handlePosThree, handlePosFour }) {
         <button className={css.control} onClick={handleSelect}>
           1
         </button>
-        <button className={css.control} onClick={handlePosTwo}>
+        <button className={css.control} onClick={handleChange}>
           2
         </button>
         <button className={css.control} onClick={handlePosThree}>
