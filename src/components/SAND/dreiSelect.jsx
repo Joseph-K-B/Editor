@@ -21,10 +21,11 @@ function DreiSelect() {
           />
         </Sphere>
         <Sphere onClick={() => console.log(selection)} position={[3, 0, 0]}>
-          <meshBasicMaterial color={color.shoulderRColor} wireframe/>
+          {/* <meshBasicMaterial color={color.shoulderRColor} wireframe/> */}
+          <meshPhongMaterial color={color.shoulderRColor} />
         </Sphere>
         <Sphere onClick={() => console.log(selection)} position={[-3, 0, 0]}>
-          <meshBasicMaterial color={color.shoulderLColor} wireframe/>
+          <meshStandardMaterial color={color.shoulderLColor} />
         </Sphere>
       </Select>
     </>
