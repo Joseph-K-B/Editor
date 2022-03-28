@@ -4,11 +4,13 @@ const useStore = create((set) => ({
     selection: [],
     setSelection: (selection) => set({selection}),
     color: {
-      headColor: 'green',
+      headColor:  'purple',
       shoulderLColor: 'purple',
-      shoulderRColor: 'red'
+      shoulderRColor: 'purple',
     },
-    setColor: (color) => set({color})
+    setColor: (color) => set({color}),
+    centerLight: true,
+    setCenterLight: (centerLight) => set({centerLight}),
 }));
 
 export {useStore}

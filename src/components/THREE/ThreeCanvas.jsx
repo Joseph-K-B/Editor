@@ -14,14 +14,16 @@ function ThreeCanvas() {
       <Canvas className={css.Canvas}>
         <Stats />
         <OrbitControls />
-        {/* <directionalLight 
-          intensity={0.5}
+        <hemisphereLight
+          color='blue' 
+          intensity={0.15}
         />
-        <SpotLight position={[0, 5, 0]}/>
-        <SpotLight position={[-3, 5, 0]} look/>
-        <SpotLight position={[3, 5, 0]}/>
+        <directionalLight
+          intensity={0.2}
+        />
+        <fog near={1} far={10} color='tan'/>
         <Terrain />
-        <DreiSelect /> */}
+        <DreiSelect />
       </Canvas>
     </>
   );

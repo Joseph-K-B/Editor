@@ -11,6 +11,7 @@ function Terrain() {
         args={[100, 100, 10]} 
         rotation={[-Math.PI / 2, 0, 0]} 
         position={[0, -1, 0]} 
+        receiveShadow
       >
         <meshPhysicalMaterial 
           color='tan' 
