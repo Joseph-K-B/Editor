@@ -1,10 +1,9 @@
 import { Canvas } from '@react-three/fiber';
-import { OrbitControls, Sky, SpotLight, Stats } from '@react-three/drei';
-;
+import { Stats } from '@react-three/drei';
 
+import Editor from './Editor';
+import Gallery from './Gallery';
 import css from '../../app.css';
-import DreiSelect from '../SAND/dreiSelect';
-import Terrain from './Staging/Terrain';
 
 function ThreeCanvas() {
 
@@ -13,17 +12,8 @@ function ThreeCanvas() {
     <>
       <Canvas className={css.Canvas}>
         <Stats />
-        <OrbitControls />
-        <hemisphereLight
-          color='blue' 
-          intensity={0.15}
-        />
-        <directionalLight
-          intensity={0.2}
-        />
-        <fog near={1} far={10} color='tan'/>
-        <Terrain />
-        <DreiSelect />
+        <Editor />
+        {/* <Gallery /> */}
       </Canvas>
     </>
   );

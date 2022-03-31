@@ -22,7 +22,7 @@ function Main() {
         <h1>Pick a mesh</h1>}
       </div>
       <Drawer />
-      <ThreeCanvas />
+      <ThreeCanvas />      
     </>
   );
 };
