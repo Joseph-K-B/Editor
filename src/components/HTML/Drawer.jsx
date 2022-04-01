@@ -49,12 +49,14 @@ function Drawer({ handlePosTwo, handlePosThree, handlePosFour }) {
   }
 
   const handleInsideColor = (e) => {
-    particleState.insideColor = e.target.value;
-    setParticles({...particleState})
+    particleState.insideColor = new THREE.Color(e.target.value);
+    setParticles({...particleState});
+    console.log(particleState);
   }
   const handleOutsideColor = (e) => {
-    particleState.outsideColor = e.target.value;
-    setParticles({...particleState})
+    particleState.outsideColor = new THREE.Color(e.target.value);
+    setParticles({...particleState});
+    console.log(particleState);
   }
 
   return(
