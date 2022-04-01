@@ -2,12 +2,18 @@ import { useState } from "react";
 import { animated as a, useSpring } from "react-spring";
 import { useStore } from "../../hooks/useStand";
 
+import * as THREE from 'three';
+
 import css from '../../app.css';
 
 function Drawer({ handlePosTwo, handlePosThree, handlePosFour }) {
   const selection = useStore((state) => state.selection);
-  const setColor = useStore((state) => state.setColor)
-  const setSelection = useStore((state) => state.setSelection)
+  const particleState = useStore((state) => state.particles);
+  const setColor = useStore((state) => state.setColor);
+  const setParticles = useStore((state) => state.setParticles);
+  const setSelection = useStore((state) => state.setSelection);
+
+
   const [lActive, setLActive] = useState(false);
   const [rActive, setRActive] = useState(false);
   
@@ -35,11 +41,20 @@ function Drawer({ handlePosTwo, handlePosThree, handlePosFour }) {
     // console.log(selection[0].userData.values)
     console.log(selection[0])
   }
-
+  
   const handleChange = () => {
     console.log(selection[0].material.color)
     setSelection(selection[0].material.color = {r: 0, g: 1, b: 0})
     // setColor('red')
+  }
+
+  const handleInsideColor = (e) => {
+    particleState.insideColor = e.target.value;
+    setParticles({...particleState})
+  }
+  const handleOutsideColor = (e) => {
+    particleState.outsideColor = e.target.value;
+    setParticles({...particleState})
   }
 
   return(
@@ -81,19 +96,15 @@ function Drawer({ handlePosTwo, handlePosThree, handlePosFour }) {
         </button>
       </div>
       <div  className={css.panel}>
-        <button className={css.control} onClick={() => console.log('testing 1')}>
-          1
-        </button>
-        <button className={css.control} onClick={() => console.log('testing 2')}>
+        <input type='color' onChange={handleInsideColor}/>
+        <input type='color' onChange={handleOutsideColor}/>
+        <button className={css.control} onClick={() => console.log(particleState)}>
           1
         </button>
         <button className={css.control} onClick={() => console.log('testing 3')}>
           1
         </button>
         <button className={css.control} onClick={() => console.log('testing 4')}>
-          1
-        </button>
-        <button className={css.control} onClick={() => console.log('testing 5')}>
           1
         </button>
       </div>

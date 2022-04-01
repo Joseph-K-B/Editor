@@ -1,6 +1,8 @@
 import create from 'zustand'
 import * as shaders from '../components/THREE/Shaders/Archive/index';
 
+import * as THREE from 'three';
+
 const useStore = create((set) => ({
   /* GUI Controls */
   //Camera
@@ -17,7 +19,19 @@ const useStore = create((set) => ({
     prev: false, 
   },
   setCamera: (camera) => set({camera}),
-
+  //Particles
+  particles: {
+    count: 100000,
+    size: 0.01,
+    radius: 5,
+    branches: 3,
+    spin: 1,
+    randomness: 0.2,
+    randomPower: 3,
+    insideColor: new THREE.Color('#de4f4f'),
+    outsideColor: new THREE.Color('#1b3984'),
+  },
+  setParticles: (particles) => set({particles}),
   // Shaders Archive
     shaders: [
       {
