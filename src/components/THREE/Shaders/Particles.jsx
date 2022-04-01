@@ -11,6 +11,8 @@ function Particles() {
   const particlesRef = useRef();
   const particlesMat = useRef();
   const particlesGeo = useRef();
+  const insideColorRef = useRef(particleState.insideColor);
+  const outsideColorRef = useRef(particleState.outsideColor);
 
   //Local Variables
   const positionsArray = new Float32Array(particleState.count * 3);
@@ -19,7 +21,6 @@ function Particles() {
   const colorOutside = new THREE.Color(particleState.outsideColor);
 
   const texture = useLoader(THREE.TextureLoader, '/particles/1.png');
-
 
   //Positions & Colors
   for(let i = 0; i < particleState.count * 3; i++) {
@@ -48,30 +49,22 @@ function Particles() {
       positionsArray[i3 +  2] = Math.sin(branchAngle + spinAngle) * rad + randomZ;
 
 
-      const mixedColor = colorInside.clone();
-      mixedColor.lerp(colorOutside, rad / particleState.radius);
-
+      const mixedColor = insideColorRef.current.clone();
+      mixedColor.lerp(colorOutside, rad);
+      
       colorsArray[i3   ] = mixedColor.r;
       colorsArray[i3 + 1] = mixedColor.g;
       colorsArray[i3 + 2] = mixedColor.b;
-  }
-
+    }
+    
+    
+    useEffect(() => {
+      console.log(colorInside)
+      insideColorRef.current.set(colorInside);
+      outsideColorRef.current.set(colorOutside);
+  }, [])
 
   //Tick
-  useEffect(() => {
-    console.log(particleState);
-
-    /*
-    This should probably be handled in parent component
-    if(particlesRef.current !== null) {
-      particlesGeo.current.dispose()
-      particlesMat.current.dispose()
-      scene.remove(particlesRef.current)
-    }
-    */
-  }, []);
-
-
   useFrame((state, delta) => {
     const t = state.clock.getElapsedTime();
     const step = 0.5;
@@ -86,16 +79,11 @@ function Particles() {
           ref={particlesMat} 
           size={particleState.size} 
           sizeAttenuation
-          // alphaMap={texture}
-          // alphaTest={0.001}
           depthWrite= {false}
           blending={THREE.AdditiveBlending}
           vertexColors
-          // transparent
         />
         {/* <sphereBufferGeometry args={[1, 32, 32]}/> */}
-        {/* <boxBufferGeometry args={[1, 1, 1, 10, 10, 10, 10]}/> */}
-        {/* <planeGeometry args={[1, 1, 1, 10]}/> */}
         <bufferGeometry
           ref={particlesGeo}
         >

@@ -2,6 +2,8 @@ import { useState } from "react";
 import { animated as a, useSpring } from "react-spring";
 import { useStore } from "../../hooks/useStand";
 
+import * as THREE from 'three';
+
 import css from '../../app.css';
 
 function Drawer({ handlePosTwo, handlePosThree, handlePosFour }) {
@@ -39,7 +41,7 @@ function Drawer({ handlePosTwo, handlePosThree, handlePosFour }) {
     // console.log(selection[0].userData.values)
     console.log(selection[0])
   }
-
+  
   const handleChange = () => {
     console.log(selection[0].material.color)
     setSelection(selection[0].material.color = {r: 0, g: 1, b: 0})
@@ -47,7 +49,12 @@ function Drawer({ handlePosTwo, handlePosThree, handlePosFour }) {
   }
 
   const handleInsideColor = (e) => {
-    setParticles()
+    particleState.insideColor = e.target.value;
+    setParticles({...particleState})
+  }
+  const handleOutsideColor = (e) => {
+    particleState.outsideColor = e.target.value;
+    setParticles({...particleState})
   }
 
   return(
@@ -89,7 +96,8 @@ function Drawer({ handlePosTwo, handlePosThree, handlePosFour }) {
         </button>
       </div>
       <div  className={css.panel}>
-        <input type='color' onChange={(e) => handleInsideColor(particleState.insideColor = e.target.value)}/>
+        <input type='color' onChange={handleInsideColor}/>
+        <input type='color' onChange={handleOutsideColor}/>
         <button className={css.control} onClick={() => console.log(particleState)}>
           1
         </button>
@@ -97,9 +105,6 @@ function Drawer({ handlePosTwo, handlePosThree, handlePosFour }) {
           1
         </button>
         <button className={css.control} onClick={() => console.log('testing 4')}>
-          1
-        </button>
-        <button className={css.control} onClick={() => console.log('testing 5')}>
           1
         </button>
       </div>
