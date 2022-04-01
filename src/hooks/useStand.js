@@ -19,13 +19,15 @@ const useStore = create((set) => ({
   setCamera: (camera) => set({camera}),
   //Particles
   particles: {
-    count: 5000,
-    size: 0.02,
+    count: 100000,
+    size: 0.01,
     radius: 5,
     branches: 3,
     spin: 1,
     randomness: 0.2,
     randomPower: 3,
+    insideColor: '#ff6030',
+    outsideColor: '#1b3984',
   },
   setParticles: (particles) => set({particles}),
   // Shaders Archive
