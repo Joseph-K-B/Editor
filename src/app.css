@@ -1,0 +1,66 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.Canvas {
+  min-height: 100vh;
+  min-width: 100vw;
+  background-color: black;
+}
+
+.drawer {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-evenly;
+  position: fixed;
+  left: 0;
+  min-height: 85vh;
+  z-index: 9;
+}
+
+.rDrawer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  position: fixed;
+  right: 0;
+  min-height: 85vh;
+  z-index: 9;
+}
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.toggle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 2rem;
+}
+
+.tab {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff00;
+  min-width: 1rem;
+  min-height: 6rem;
+  border: none;
+  border-radius: 40%;
+  color: white;
+}
+
+.control {
+  min-width: 3.5rem;
+  min-height: 3.5rem;
+  background-color: rgba(107, 0, 128, 0.171);
+  border: none;
+  color: white;
+  font-family: 'Exo';
+  font-weight: 600;
+}
