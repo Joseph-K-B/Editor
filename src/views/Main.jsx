@@ -21,7 +21,7 @@ function Main() {
         <h1>r:{selection[0].material.color.r}</h1> :
         <h1>Pick a mesh</h1>}
       </div>
-      <Drawer />
+      {/* <Drawer /> */}
       <ThreeCanvas />      
     </>
   );

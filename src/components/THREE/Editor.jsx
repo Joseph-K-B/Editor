@@ -11,8 +11,8 @@ function Editor() {
   return(
     <>
     <Suspense fallback={<Html><h1>Loading...</h1></Html>}>
-      <Lights />
-      <OrbitControls />
+      {/* <Lights /> */}
+      <OrbitControls makeDefault/>
       {/* <Terrain />
       <DreiSelect /> */}
       <Particles />

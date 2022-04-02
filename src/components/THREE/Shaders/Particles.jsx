@@ -1,8 +1,13 @@
 import { useEffect, useRef } from "react";
 import * as THREE from "three";
+
+
 import { useFrame, useLoader } from "@react-three/fiber";
-import { useStore } from "../../../hooks/useStand";
 import { Point, Points, Sphere } from "@react-three/drei";
+
+
+import { useStore } from "../../../hooks/useStand";
+import './ParticleMaterial'
 
 function Particles() {
   // State 
@@ -10,7 +15,7 @@ function Particles() {
 
   // Refs
   const particlesRef = useRef();
-  const particlesMat = useRef();
+  const particleMaterial = useRef();
   const particlesGeo = useRef();
   // const insideColorRef = useRef(particleState.insideColor);
   // const outsideColorRef = useRef(particleState.outsideColor);
@@ -18,20 +23,45 @@ function Particles() {
   //Local Variables
   const positionsArray = new Float32Array(particleState.count * 3);
   const colorsArray = new Float32Array(particleState.count * 3);
-  // const colorInside = new THREE.Color(particleState.insideColor);
-  // const colorOutside = new THREE.Color(particleState.outsideColor);
+  const scaleArray = new Float32Array(particleState.count * 3);
+  const colorInside = new THREE.Color(particleState.insideColor);
+  const colorOutside = new THREE.Color(particleState.outsideColor);
 
-  const texture = useLoader(THREE.TextureLoader, '/particles/1.png');
+  for(let i = 0; i < particleState.count * 3; i++) {
+  const i3 = i*3
+  const rad = Math.random() * particleState.radius;
+  const spinAngle = rad * particleState.spin;
+  const branchAngle = (( i % particleState.branches) / particleState.branches) * Math.PI * 2;
 
-  
-    
-    
-  //   useEffect(() => {
-  //     console.log(colorInside)
-  //     insideColorRef.current.set(colorInside);
-  //     outsideColorRef.current.set(colorOutside);
-  // }, [])
+  const randomX = 
+    Math.pow(Math.random(), particleState.randomPower) * 
+    (Math.random() > 0.5 ? 1 : -1) *
+     particleState.randomness * particleState.radius;
+  const randomY = 
+    Math.pow(Math.random(), particleState.randomPower) 
+    * (Math.random() > 0.5 ? 1 : -1) 
+    * particleState.randomness * particleState.radius;
+  const randomZ = 
+    Math.pow(Math.random(), particleState.randomPower) 
+    * (Math.random() > 0.5 ? 1 : -1) 
+    * particleState.randomness * particleState.radius;
 
+    positionsArray[i3 ] = Math.cos(branchAngle + spinAngle) * rad + randomX,
+    positionsArray[i3 + 1] = randomY,
+    positionsArray[i3 + 2] = Math.sin(branchAngle + spinAngle) * rad + randomZ
+
+    const mixedColor = new THREE.Color('#FF00FF');
+    const mixedColorTwo = new THREE.Color('#00FFFF');
+    mixedColor.lerp(mixedColorTwo, rad / particleState.radius);
+
+    colorsArray[i3   ] = mixedColor.r;
+    colorsArray[i3 + 1] = mixedColor.g;
+    colorsArray[i3 + 2] = mixedColor.b;
+  }
+
+  useEffect(() => {
+    console.log(particleState);
+  }, [])
   //Tick
   useFrame((state, delta) => {
     const t = state.clock.getElapsedTime();
@@ -39,45 +69,40 @@ function Particles() {
   })
 
   return(
-    <Points ref={particlesRef} limit={10000}>
-    {Array.from({ length: particleState.count}).map((_, i) => {
-    const rad = Math.random() * particleState.radius;
-    const spinAngle = rad * particleState.spin;
-    const branchAngle = (( i % particleState.branches) / particleState.branches) * Math.PI * 2;
-
-    const randomX = 
-      Math.pow(Math.random(), particleState.randomPower) 
-      * (Math.random() > 0.5 ? 1 : -1) 
-      * particleState.randomness * rad;
-    const randomY = 
-      Math.pow(Math.random(), particleState.randomPower) 
-      * (Math.random() > 0.5 ? 1 : -1) 
-      * particleState.randomness * rad;
-    const randomZ = 
-      Math.pow(Math.random(), particleState.randomPower) 
-      * (Math.random() > 0.5 ? 1 : -1) 
-      * particleState.randomness * rad;
-
-      const position = [
-        Math.cos(branchAngle) * rad + randomX,
-        randomY,
-        Math.sin(branchAngle) * rad + randomZ
-      ];
-
-      const color = new THREE.Color(particleState.insideColor).lerp(
-        new THREE.Color(particleState.outsideColor),
-        rad / particleState.radius
-      );
-
-      const scale = Math.random();
-    return  <Point key={i} position={position} color={color} size={scale} />
-  })}
-  <pointsMaterial
-    depthWrite={false}
-    blending={THREE.AdditiveBlending}
-    vertexColors
-  />
-  </Points>
+    <>
+    <points ref={particlesRef} limit={10000}>
+      <particleMaterial 
+        ref={particleMaterial}
+        sizeAttenuation
+        depthWrite= {false}
+        size={particleState.size} 
+        blending = {THREE.AdditiveBlending}
+        vertexColors
+      />
+      <bufferGeometry
+        ref={particlesGeo}
+      >
+        <bufferAttribute 
+          attachObject={['attributes', 'position']} 
+          count={particleState.count}
+          array={positionsArray}
+          itemSize={3} 
+        />
+        <bufferAttribute 
+          attachObject={['attributes', 'color']} 
+          count={particleState.count}
+          array={colorsArray}
+          itemSize={3} 
+        />
+        <bufferAttribute 
+          attachObject={['attributes', 'aScale']} 
+          count={particleState.count}
+          array={scaleArray}
+          itemSize={1} 
+        />
+      </bufferGeometry>
+    </points>
+  </>
   );
 };
 

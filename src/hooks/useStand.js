@@ -22,9 +22,9 @@ const useStore = create((set) => ({
   //Particles
   particles: {
     count: 5000,
-    size: 0.01,
+    size: 0.2,
     radius: 5,
-    branches: 9,
+    branches: 3,
     spin: 1,
     randomness: 0.2,
     randomPower: 3,
