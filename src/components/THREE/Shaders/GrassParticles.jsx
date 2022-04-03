@@ -5,7 +5,7 @@ import { ComputedAttribute } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 
 import CustomShaderMaterial from 'three-custom-shader-material'
-import { patchShaders } from "gl-noise";
+// import { patchShaders } from "gl-noise";
 
 
 
@@ -36,7 +36,9 @@ function GrassParticles() {
           size={0.015}
           transparent
           uniforms={{ u_time: {value: 0}}}
-          vertexShader={patchShaders(/* glsl */ `
+          vertexShader={
+            // patchShaders(/* glsl */
+            `
             uniform float u_time;
             varying vec2 vUv;
 
@@ -46,7 +48,9 @@ function GrassParticles() {
               // n.x = 0.;
               csm_Position = n * 1.5;
             }
-          `)}
+          `
+          // )
+        }
         fragmentShader={
           /* glsl */ `
           varying vec2 vUv;
