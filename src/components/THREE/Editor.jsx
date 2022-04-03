@@ -1,9 +1,10 @@
-import { Box, Html, OrbitControls } from "@react-three/drei";
+import { Box, Html, OrbitControls, Plane, Sphere } from "@react-three/drei";
 import Lights from "./Staging/Lights";
 import Terrain from "./Staging/Terrain";
 import DreiSelect from '../SAND/dreiSelect';
 import Particles from "./Shaders/Particles";
 import { Suspense } from "react";
+import Grass from "../SAND/Grass";
 
 
 function Editor() {
@@ -15,7 +16,12 @@ function Editor() {
       <OrbitControls makeDefault/>
       {/* <Terrain />
       <DreiSelect /> */}
-      <Particles />
+      <Grass>
+        <Sphere>
+          <meshBasicMaterial color='tan' />
+        </Sphere>
+      </Grass>
+      {/* <Particles /> */}
     </Suspense>
     </>
   );

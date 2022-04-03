@@ -31,7 +31,7 @@
     "@react-three/drei": "^8.19.1",
     "@react-three/fiber": "^7.0.27",
     "@react-three/flex": "^0.7.0",
-    "lamina": "^1.1.10",
+    "lamina": "1.1.8",
     "perlin": "^1.0.0",
     "perlin.js": "^1.0.0",
     "raw-loader": "^4.0.2",

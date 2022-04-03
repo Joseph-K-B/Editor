@@ -4,7 +4,7 @@ import * as THREE from 'three';
 import { extend, useFrame } from "@react-three/fiber";
 import Perlin from 'perlin.js';
 import WindLayer from '../THREE/Shaders/WindLayer';
-import { LayerMaterial } from "lamina";
+import { Depth, LayerMaterial } from "lamina";
 
 Perlin.seed(Math.random())
 extend({ WindLayer })
@@ -27,7 +27,7 @@ function Grass({ children, strands = 60000, ...props }) {
   return(
     <>
     {React.cloneElement(children, { ref: geometryRef })}
-    <instancedMesh ref={meshRef} args={[undefined, undefined, strands]} {...props} />
+    <instancedMesh ref={meshRef} args={[undefined, undefined, strands]} {...props}>
     <coneGeometry args={[0.05, 1.0, 2.0, 20, false, 0, Math.PI ]} />
     <LayerMaterial side={THREE.DoubleSide} lighting='physical' envMapIntensity={1}>
       <Depth colorA='#221600' colorB='#ade266' near={0.14} far={1.52} mapping={'world'} />
@@ -42,6 +42,7 @@ function Grass({ children, strands = 60000, ...props }) {
         sway={0.5}
       />
     </LayerMaterial>
+    </instancedMesh>
     </>
   );
 };
