@@ -5,12 +5,13 @@ import { extend, useFrame } from "@react-three/fiber";
 import Perlin from 'perlin.js';
 import WindLayer from '../THREE/Shaders/WindLayer';
 import { Depth, LayerMaterial } from "lamina";
+import { Sampler } from "@react-three/drei";
 
 Perlin.seed(Math.random())
 extend({ WindLayer })
 
 
-function Grass({ children, strands = 60000, ...props }) {
+function Grass({ children, strands = 6000, ...props }) {
   const meshRef = useRef(null);
   const windLayer = useRef(null);
   const geometryRef = useRef();
@@ -29,7 +30,7 @@ function Grass({ children, strands = 60000, ...props }) {
     {React.cloneElement(children, { ref: geometryRef })}
     <instancedMesh ref={meshRef} args={[undefined, undefined, strands]} {...props}>
     <coneGeometry args={[0.05, 1.0, 2.0, 20, false, 0, Math.PI ]} />
-    <LayerMaterial side={THREE.DoubleSide} lighting='physical' envMapIntensity={1}>
+    <LayerMaterial side={THREE.DoubleSide} lighting='physical'>
       <Depth colorA='#221600' colorB='#ade266' near={0.14} far={1.52} mapping={'world'} />
       <windLayer
         ref={windLayer}
@@ -43,6 +44,24 @@ function Grass({ children, strands = 60000, ...props }) {
       />
     </LayerMaterial>
     </instancedMesh>
+    <group>
+        <Sampler
+          transform={({ position, normal, dummy: object }) => {
+            const p = position.clone().multiplyScalar(5)
+            const n = Perlin.simplex3(...p.toArray())
+            object.scale.setScalar(THREE.MathUtils.mapLinear(n, -1, 1, 0.3, 1) * 0.1)
+            object.position.copy(position)
+            object.lookAt(normal.add(position))
+            object.rotation.y += Math.random() - 0.5 * (Math.PI * 0.5)
+            object.rotation.z += Math.random() - 0.5 * (Math.PI * 0.5)
+            object.rotation.x += Math.random() - 0.5 * (Math.PI * 0.5)
+            object.updateMatrix()
+            return object
+          }}
+          mesh={geometryRef}
+          instances={meshRef}
+        />
+      </group>
     </>
   );
 };

@@ -13,15 +13,18 @@ function Editor() {
   return(
     <>
     <Suspense fallback={<Html><h1>Loading...</h1></Html>}>
-      {/* <Lights /> */}
+      <Lights />
       <OrbitControls makeDefault/>
-      {/* <Terrain />
-      <DreiSelect /> */}
+      {/* <Terrain /> */}
+      {/* <DreiSelect /> */}
       <Grass>
-        <Sphere position={[0, 0.001, 0]}>
-          <meshBasicMaterial color='tan' />
+        <Sphere position={[0, 0.001, 0]} scale={0.25}>
+          <meshBasicMaterial color='purple' wireframe/>
         </Sphere>
       </Grass>
+        <Sphere args={[0.5, 8, 8]} position={[0, 0.001, 0]}>
+          <meshBasicMaterial color='white' wireframe/>
+        </Sphere>
       <GrassParticles />
       {/* <Particles /> */}
     </Suspense>
