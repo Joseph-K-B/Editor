@@ -18,7 +18,7 @@ function Editor() {
       {/* <Terrain />
       <DreiSelect /> */}
       <Grass>
-        <Sphere>
+        <Sphere position={[0, 0.001, 0]}>
           <meshBasicMaterial color='tan' />
         </Sphere>
       </Grass>

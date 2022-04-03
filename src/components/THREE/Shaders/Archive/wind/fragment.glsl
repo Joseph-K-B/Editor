@@ -1,8 +1,8 @@
-uniform float uNoiseScale;
-uniform float uNoiseStrength;
+uniform float u_noiseScale;
+uniform float u_noiseStrength;
 
-uniform vec3 uColorA;
-uniform vec3 uColorB;
+uniform vec3 u_colorA;
+uniform vec3 u_colorB;
 
 varying vec3 vPos;
 

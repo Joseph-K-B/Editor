@@ -1,8 +1,8 @@
 
-uniform float uTime;
-uniform float uSway;
-uniform float uLength;
-uniform bool uIsCurl;
+uniform float u_time;
+uniform float u_sway;
+uniform float u_length;
+uniform bool u_isCurl;
 
 varying vec3 vPos;
 
@@ -13,18 +13,18 @@ vec3 main() {
   vPos = baseGP.xyz;
 
   vec2 noise = uIsCurl ?
-    (lamina_noise_curl(baseGP.xyz * 0.1 + uTime * 0.5 * uSway)).xy
+    (lamina_noise_curl(baseGP.xyz * 0.1 + u_time * 0.5 * u_sway)).xy
     : vec2(
-      lamina_noise_perlin(baseGP.xyz * 0.1 + uTime * 0.5 * uSway),
-      lamina_noise_simplex(baseGP.xyz * 0.1 + uTime * 0.5 * uSway)
+      lamina_noise_perlin(baseGP.xyz * 0.1 + u_time * 0.5 * u_sway),
+      lamina_noise_simplex(baseGP.xyz * 0.1 + u_time * 0.5 * u_sway)
     );
 
   noise = smoothstep(-1.0, 1.0, noise);
-  float swingX = sin(uTime * 2.0 + noise.x * 2.0 * PI) * pow(pos.z, 2.0);
-  float swingY = cos(uTime * 2.0 + noise.x * 2.0 * PI) * pow(pos.z, 2.0);
+  float swingX = sin(u_time * 2.0 + noise.x * 2.0 * PI) * pow(pos.z, 2.0);
+  float swingY = cos(u_time * 2.0 + noise.x * 2.0 * PI) * pow(pos.z, 2.0);
 
   pos.x += swingX;
   pos.y += swingY;
 
-  return (pos * uLength);
+  return (pos * u_length);
 }
