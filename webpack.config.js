@@ -16,6 +16,7 @@ const env = Object.entries({
 // eslint-disable-next-line
 module.exports = {
   entry: './src/index.jsx',
+
   output: {
     filename: 'bundle.[hash].js',
     path: path.resolve(__dirname, './dist'),
@@ -25,6 +26,8 @@ module.exports = {
     port: 7891,
     historyApiFallback: true,
   },
+  // node: { fs: 'empty' },
+  target: 'web',
   plugins: [
     new HtmlPlugin({ template: './src/index.html' }),
     new CleanWebpackPlugin(),
@@ -38,6 +41,7 @@ module.exports = {
   ],
   resolve: {
     extensions: ['.js', '.jsx'],
+    fallback: { path: 'path-browserify'},
   },
   module: {
     rules: [

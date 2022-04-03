@@ -5,6 +5,7 @@ import DreiSelect from '../SAND/dreiSelect';
 import Particles from "./Shaders/Particles";
 import { Suspense } from "react";
 import Grass from "../SAND/Grass";
+import GrassParticles from "./Shaders/GrassParticles";
 
 
 function Editor() {
@@ -21,6 +22,7 @@ function Editor() {
           <meshBasicMaterial color='tan' />
         </Sphere>
       </Grass>
+      <GrassParticles />
       {/* <Particles /> */}
     </Suspense>
     </>
