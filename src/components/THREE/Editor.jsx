@@ -6,7 +6,9 @@ import Particles from "./Shaders/Particles";
 import { Suspense } from "react";
 import Grass from "../SAND/Grass";
 import GrassParticles from "./Shaders/GrassParticles";
+import ShadeGeo from "./Shaders/ShadeGeo";
 
+import fragmentShader from './Shaders/Archive/11/fragment.glsl';
 
 function Editor() {
 
@@ -16,8 +18,16 @@ function Editor() {
       <Lights />
       <OrbitControls makeDefault/>
       {/* <Terrain /> */}
-      {/* <DreiSelect /> */}
-      <Grass>
+
+      {/* GEOMETRY SHADER  */}
+      <ShadeGeo fragment={fragmentShader} />
+
+      {/* GALAXY SHADER */}
+      {/* <Particles /> */}
+
+
+      {/* GRASS SHADER  */}
+      {/* <Grass>
         <Sphere position={[0, 0.001, 0]} scale={0.25}>
           <meshBasicMaterial color='purple' wireframe/>
         </Sphere>
@@ -25,8 +35,7 @@ function Editor() {
         <Sphere args={[0.5, 8, 8]} position={[0, 0.001, 0]}>
           <meshBasicMaterial color='white' wireframe/>
         </Sphere>
-      <GrassParticles />
-      {/* <Particles /> */}
+      <GrassParticles /> */}
     </Suspense>
     </>
   );
