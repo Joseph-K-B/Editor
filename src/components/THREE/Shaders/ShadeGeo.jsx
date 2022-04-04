@@ -2,13 +2,14 @@ import { useEffect, useRef, useState } from "react";
 import * as THREE from 'three';
 import vertex from './Archive/1/vertex.glsl';
 
-import { useFrame } from "@react-three/fiber";
+import { useFrame, useThree } from "@react-three/fiber";
 
 
-// import './ShadeMaterial';
+import './ShadeMaterial';
 import { useStore } from "../../../hooks/useStand";
 
 function ShadeGeo({fragment, l, w}) {
+  const { viewport } = useThree();
   const shaders = useStore((state) => state.shaders)
   const shadeMaterial = useRef();
   const ref = useRef();
@@ -16,7 +17,7 @@ function ShadeGeo({fragment, l, w}) {
 
 
   useEffect(() => {
-    // shadeMaterial.current.fragmentShader = fragmentShader
+    // shadeMaterial.current.resolution = (viewport.height, viewport.width)
     shadeMaterial.current ? setLoading(false) : null;
   }, []);
 
@@ -35,13 +36,13 @@ function ShadeGeo({fragment, l, w}) {
       >
         <planeBufferGeometry args={[l, w, 20, 20]} />
         {/* <boxBufferGeometry args={[3, 3, 3]} /> */}
-        {/* <shadeMaterial
+        {/* <sphereBufferGeometry /> */}
+        <shadeMaterial
           ref={shadeMaterial}
           blending={THREE.AdditiveBlending}
-          fragmentShader={fragment}
-          wireframe
-        /> */}
-        <shaderMaterial 
+          // wireframe
+        />
+        {/* <shaderMaterial 
           ref={shadeMaterial} 
           vertexShader={vertex}   
           fragmentShader={fragment}
@@ -50,7 +51,7 @@ function ShadeGeo({fragment, l, w}) {
             // uResolution: new THREE.Vector2(), 
             uMouse: new THREE.Vector2()
           }}  
-        />
+        /> */}
       </mesh>
     </>
   );
