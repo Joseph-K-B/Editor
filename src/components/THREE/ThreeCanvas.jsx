@@ -11,9 +11,9 @@ function ThreeCanvas() {
   return (
     <>
       <Canvas className={css.Canvas}>
-        {/* <Stats /> */}
-        {/* <Editor /> */}
-        <Gallery />
+        <Stats />
+        <Editor />
+        {/* <Gallery /> */}
       </Canvas>
     </>
   );

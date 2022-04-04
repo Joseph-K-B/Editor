@@ -1,9 +1,11 @@
 import { useEffect } from "react";
-import Drawer from "../components/HTML/Drawer";
 
-import ThreeCanvas from "../components/THREE/ThreeCanvas";
 import { useStore } from "../hooks/useStand";
-import HandFlow from "../components/HTML/HandFlow";
+
+import Drawer from "../components/HTML/Drawer";
+import ThreeCanvas from "../components/THREE/ThreeCanvas";
+// import HandFlow from "../components/HTML/HandFlow";
+// import HandFlowDos from "../components/HTML/HandFlowDos";
 
 
 function Main() {
@@ -14,8 +16,9 @@ function Main() {
   return (
     <>
       <Drawer />
-      <HandFlow />
-      {/* <ThreeCanvas />*/}
+      {/* <HandFlow /> */}
+      {/* <HandFlowDos /> */}
+      <ThreeCanvas />
     </>
   );
 };
