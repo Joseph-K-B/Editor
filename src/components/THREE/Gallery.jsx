@@ -1,7 +1,7 @@
 import { Scroll, ScrollControls } from "@react-three/drei";
 import { useThree } from "@react-three/fiber";
 import { Box, Flex } from "@react-three/flex";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { useStore } from "../../hooks/useStand";
 
 import ShadeGeo from "./Shaders/ShadeGeo";
@@ -37,11 +37,14 @@ function Gallery() {
         >
         {shaders.map(shade => 
           <Box key={shade.id} centerAnchor margin={0.25}>
-            <ShadeGeo 
-              l={3} 
-              w={3} 
-              fragment={shade.fragementShader} 
-            />
+            <Suspense fallback={null}>
+              <ShadeGeo 
+                l={3} 
+                w={3} 
+                fragment={shade.fragementShader}
+                gallery 
+              />
+            </Suspense>
           </Box>
         )}
         </Flex>

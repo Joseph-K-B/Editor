@@ -9,7 +9,7 @@ function Main() {
 
   return (
     <>
-      <Drawer />
+      {/* <Drawer /> */}
       <ThreeCanvas />      
     </>
   );

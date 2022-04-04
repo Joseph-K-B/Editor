@@ -20,14 +20,14 @@ function Editor() {
       {/* <Terrain /> */}
 
       {/* GEOMETRY SHADER  */}
-      {/* <ShadeGeo /> */}
+      <ShadeGeo />
 
       {/* GALAXY SHADER */}
       {/* <Particles /> */}
 
 
       {/* GRASS SHADER  */}
-      <Grass>
+      {/* <Grass>
         <Sphere position={[0, 0.001, 0]} scale={0.25}>
           <meshBasicMaterial color='purple' wireframe/>
         </Sphere>
@@ -35,7 +35,7 @@ function Editor() {
         <Sphere args={[0.5, 8, 8]} position={[0, 0.001, 0]}>
           <meshBasicMaterial color='white' wireframe/>
         </Sphere>
-      <GrassParticles />
+      <GrassParticles /> */}
     </Suspense>
     </>
   );
