@@ -12,9 +12,10 @@ function Drawer({ handlePosTwo, handlePosThree, handlePosFour }) {
   const setColor = useStore((state) => state.setColor);
   const setParticles = useStore((state) => state.setParticles);
   const setSelection = useStore((state) => state.setSelection);
+  const lActive = useStore((state) => state.lActive);
 
 
-  const [lActive, setLActive] = useState(false);
+  // const [lActive, setLActive] = useState(false);
   const [rActive, setRActive] = useState(false);
   
   const props = useSpring({

@@ -6,10 +6,12 @@ import Webcam from 'react-webcam';
 import { drawHand } from '../../utils/handGestures';
 
 import * as fp from 'fingerpose';
+import { useStore } from '../../hooks/useStand';
 
 function HandFlow() {
-  const webcamRef = useRef();
-  const canvasRef = useRef();
+  const setLActive = useStore((state) => state.setLActive);
+  const webcamRef = useRef(null);
+  const canvasRef = useRef(null);
 
 const runHandpose = async () => {
   const net = await handpose.load();
@@ -17,7 +19,7 @@ const runHandpose = async () => {
   setInterval(() => {
     detect(net);
   }, 10);
-}
+};
 
 const detect = async (net) => {
   if(
@@ -38,24 +40,25 @@ const detect = async (net) => {
     const hand = await net.estimateHands(video);
     // console.log(hand)
 
-    // if(hand.length > 0) {
-    //   const GE = new fp.GestureEstimatior([
-    //     fp.Gestures.VictoryGesture,
-    //     fp.Gestures.ThumbsUpGesture,
-    //   ]);
-    //   const gesture = await GE.estimate(hand[0].landmarks, 4);
-    //   if(gesture.gestures !== undefined && gesture.gestures.length > 0) {
-    //     console.log(gesture.gestures);
-
-    //     const confidence = gesture.gestures.map(
-    //       (prediction) => prediction.confidence
-    //     );
-    //     const maxConfidence = confidence.indexOf(
-    //       Math.max.apply(null, confidence)
-    //     );
-    //     console.log(gesture.gestures[maxConfidence].name);
-    //   }
-    // }
+    if(hand.length > 0) {
+      const GE = new fp.GestureEstimator([
+        fp.Gestures.VictoryGesture,
+        fp.Gestures.ThumbsUpGesture,
+      ]);
+      const gesture = await GE.estimate(hand[0].landmarks, 9.75);
+      if(gesture.gestures !== undefined && gesture.gestures.length > 0) {
+        const confidence = gesture.gestures.map(
+          (prediction) => prediction.confidence
+          );
+          const maxConfidence = confidence.indexOf(
+            Math.max.apply(null, confidence)
+            );
+        gesture.gestures[0].name === 'thumbs_up' ? setLActive(true) : null
+        gesture.gestures[0].name === 'victory' ? setLActive(false) : null
+        // console.log(gesture.gestures[maxConfidence].name);
+        // console.log(maxConfidence);
+      }
+    }
     const ctx = canvasRef.current.getContext('2d');
     drawHand(hand, ctx);
   }
