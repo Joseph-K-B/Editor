@@ -36,7 +36,9 @@
     "@react-three/drei": "^8.19.1",
     "@react-three/fiber": "^7.0.27",
     "@react-three/flex": "^0.7.0",
+    "@tensorflow-models/handpose": "0.0.7",
     "@tensorflow/tfjs": "^3.15.0",
+    "fingerpose": "^0.1.0",
     "fs": "0.0.1-security",
     "gl-noise": "1.6.1",
     "lamina": "1.1.8",
@@ -46,6 +48,7 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-spring": "^9.4.4",
+    "react-webcam": "^7.0.0",
     "three": "0.138.3",
     "zustand": "^3.7.1"
   },

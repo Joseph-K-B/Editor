@@ -1,8 +1,9 @@
 import { useEffect } from "react";
 import Drawer from "../components/HTML/Drawer";
-import Flow from "../components/HTML/Flow";
+
 import ThreeCanvas from "../components/THREE/ThreeCanvas";
 import { useStore } from "../hooks/useStand";
+import HandFlow from "../components/HTML/HandFlow";
 
 
 function Main() {
@@ -13,7 +14,7 @@ function Main() {
   return (
     <>
       <Drawer />
-      <Flow />
+      <HandFlow />
       {/* <ThreeCanvas />*/}
     </>
   );

@@ -1,7 +1,7 @@
-// import { Tensor, tensor } from "@tensorflow/tfjs";
+import * as tf from '@tensorflow/tfjs';
 import { useEffect, useState } from "react";
 
-function Flow() {
+function CarFlow() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -88,7 +88,7 @@ async function trainModel(model, inputs, labels) {
     const {inputMax, inputMin, labelMin, labelMax} = normalizationData;
 
     const [xs, preds] = tf.tidy(() => {
-      const xs = tf.linespace(0, 1, 100);
+      const xs = tf.linspace(0, 1, 100);
       const preds = model.predict(xs.reshape([100, 1]));
 
       const unNormXs = xs
@@ -165,7 +165,7 @@ async function trainModel(model, inputs, labels) {
   );
 };
 
-export default Flow;
+export default CarFlow;
 
 /*
  Best Practice 1: always shuffle data before handing to training algo
