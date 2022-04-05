@@ -54,10 +54,10 @@ function ShadeGeo({fragment, l, w, gallery}) {
             ref={ref}
             onClick={console.log(shadeMaterial)}
           >
-            <planeBufferGeometry />
-            {/* <boxBufferGeometry args={[3, 3, 3, 30, 30, 30]} /> */}
+            {/* <planeBufferGeometry args={[5, 5]}/> */}
+            <boxBufferGeometry args={[5, 5, 5, 30, 30, 30]} />
             {/* <sphereBufferGeometry /> */}
-            <shadeMaterial
+            <shadeMaterial              
               ref={shadeMaterial}
               blending={THREE.AdditiveBlending}
               // wireframe

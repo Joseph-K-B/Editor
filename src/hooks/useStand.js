@@ -4,6 +4,19 @@ import * as shaders from '../components/THREE/Shaders/Archive/index';
 import * as THREE from 'three';
 
 const useStore = create((set) => ({
+  
+  //Theme//
+  darkMode: false,
+  setDarkMode: (darkMode) => set({ darkMode }),
+
+
+  //Drawer Toggle
+  lActive: false,
+  setLActive: (lActive) => set({lActive}),
+  rActive: false,
+  setRActive: (rActive) => set({rActive}),
+
+
   /* GUI Controls */
   //Camera
   camera: {
@@ -34,9 +47,6 @@ const useStore = create((set) => ({
   setParticles: (particles) => set({particles}),
 
 
-  //TensorFlow gesture controls
-  lActive: false,
-  setLActive: (lActive) => set({lActive}),
 
 
   // Shaders Archive

@@ -7,16 +7,27 @@ import * as THREE from 'three';
 import css from '../../app.css';
 
 function Drawer({ handlePosTwo, handlePosThree, handlePosFour }) {
-  const selection = useStore((state) => state.selection);
-  const particleState = useStore((state) => state.particles);
-  const setColor = useStore((state) => state.setColor);
-  const setParticles = useStore((state) => state.setParticles);
-  const setSelection = useStore((state) => state.setSelection);
+  //Theme
+  const darkMode = useStore ((state) => state.darkMode);
+  const setDarkMode = useStore ((state) => state.setDarkMode);
+
+  //Drawer Toggle
   const lActive = useStore((state) => state.lActive);
+  const setLActive = useStore((state) => state.setLActive);
+  const rActive = useStore((state) => state.rActive);
+  const setRActive = useStore((state) => state.setRActive);
 
+  //Object Select
+  const selection = useStore((state) => state.selection);
+  const setSelection = useStore((state) => state.setSelection);
 
-  // const [lActive, setLActive] = useState(false);
-  const [rActive, setRActive] = useState(false);
+  //Color Select
+  const setColor = useStore((state) => state.setColor);
+
+  //Particle Count
+  const particleState = useStore((state) => state.particles);
+  const setParticles = useStore((state) => state.setParticles);
+
   
   const props = useSpring({
     right: lActive ? window.innerWidth - 200 : window.innerWidth - 0.001,
@@ -29,24 +40,11 @@ function Drawer({ handlePosTwo, handlePosThree, handlePosFour }) {
   })
   
   const handleToggleLeft = () => {
-    setLActive(v => !v);
-    console.log(lActive, 'left drawer')
+    setLActive(!lActive);
   }
   
   const handleToggleRight = () => {
-    setRActive(v => !v);
-    console.log(rActive, 'right drawer')
-  }
-  
-  const handleSelect = () => {
-    // console.log(selection[0].userData.values)
-    console.log(selection[0])
-  }
-  
-  const handleChange = () => {
-    console.log(selection[0].material.color)
-    setSelection(selection[0].material.color = {r: 0, g: 1, b: 0})
-    // setColor('red')
+    setRActive(!rActive);
   }
 
   const handleInsideColor = (e) => {
@@ -66,16 +64,16 @@ function Drawer({ handlePosTwo, handlePosThree, handlePosFour }) {
       <div className={css.toggle}>
       <button className={css.tab} onClick={handleToggleLeft}>
           { lActive ? 
-              <img  src='/pictures/white_L.png' /> : 
-              <img src='/pictures/white_R.png' alt='close'/>  
+            <img  src={darkMode ? '/pictures/white_L.png' : '/pictures/black_L.png'} /> : 
+            <img src={darkMode ? '/pictures/white_R.png' : '/pictures/black_R.png'} alt='close'/>  
           }          
         </button>
       </div>
       <div  className={css.panel}>
-        <button className={css.control} onClick={handleSelect}>
+        <button className={css.control} onClick={() => setDarkMode(!darkMode)}>
           1
         </button>
-        <button className={css.control} onClick={handleChange}>
+        <button className={css.control}>
           2
         </button>
         <button className={css.control} onClick={handlePosThree}>
@@ -93,8 +91,8 @@ function Drawer({ handlePosTwo, handlePosThree, handlePosFour }) {
       <div className={css.toggle}>
         <button className={css.tab} onClick={handleToggleRight}>
           { rActive ? 
-              <img src='/pictures/white_R.png' /> : 
-              <img  src='/pictures/white_L.png'alt='close'/>  
+              <img src={darkMode ? '/pictures/white_R.png' : '/pictures/black_R.png'} /> : 
+              <img  src={darkMode ? '/pictures/white_L.png' : '/pictures/black_L.png'}alt='close'/>  
           }          
         </button>
       </div>

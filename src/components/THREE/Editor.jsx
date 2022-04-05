@@ -15,12 +15,33 @@ function Editor() {
   return(
     <>
     <Suspense fallback={<Html><h1>Loading...</h1></Html>}>
-      <Lights />
+      {/* <Lights /> */}
       <OrbitControls makeDefault/>
       {/* <Terrain /> */}
 
       {/* GEOMETRY SHADER  */}
       <ShadeGeo />
+      <group position={[0, 5.5, 0]}>
+        <ShadeGeo />
+      </group>
+      <group position={[5.5, 5.5, 0]}>
+        <ShadeGeo />
+      </group>
+      <group position={[5.5, 0, 0]}>
+        <ShadeGeo />
+      </group>
+      <group position={[-5.5, 0, 0]}>
+        <ShadeGeo />
+      </group>
+      <group position={[0, -5.5, 0]}>
+        <ShadeGeo />
+      </group>
+      <group position={[5.5, -5.5, 0]}>
+        <ShadeGeo />
+      </group>
+      <group position={[-5.5, -5.5, 0]}>
+        <ShadeGeo />
+      </group>
 
       {/* GALAXY SHADER */}
       {/* <Particles /> */}

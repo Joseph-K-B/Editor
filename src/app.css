@@ -3,10 +3,18 @@
   padding: 0;
 }
 
+
+
+.CanvasDark {
+  min-height: 100vh;
+  min-width: 100vw;
+  background-color: #161618;
+}
+
 .Canvas {
   min-height: 100vh;
   min-width: 100vw;
-  background-color: black;
+  background-color: #FBFCF8;
 }
 
 .drawer {
