@@ -10,11 +10,9 @@ import { useStore } from "../../../hooks/useStand";
 
 function ShadeGeo({fragment, l, w, gallery}) {
   const { viewport } = useThree();
-  const shaders = useStore((state) => state.shaders)
   const shadeMaterial = useRef();
   const ref = useRef();
   const [loading, setLoading] = useState();
-  const { height, width} = useThree((state) => state.viewport);
 
 
   useEffect(() => {
