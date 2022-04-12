@@ -9,7 +9,11 @@ import './ShadeMaterial';
 import { useStore } from "../../../hooks/useStand";
 
 function ShadeGeo({ fragment, l, w, gallery }) {
+  const darkMode = useStore((state) => state.darkMode);
+  const geometry =useStore((state) => state.geometry);
+
   const [loading, setLoading] = useState();
+  
   const { viewport } = useThree();
 
 
@@ -24,26 +28,34 @@ function ShadeGeo({ fragment, l, w, gallery }) {
 
   useFrame((state, delta) => {
     const t = state.clock.getElapsedTime();
-    if(gallery) {
+    // if(gallery || darkMode) {
       shadeMaterial.current.uniforms.uTime.value = t
       shadeMaterial.current.uniforms.uMouse.value = state.mouse
-    } else 
-    shadeMaterial.current.time = t;
-    shadeMaterial.current.mouse = state.mouse;
+    // } else 
+    // shadeMaterial.current.time = t;
+    // shadeMaterial.current.mouse = state.mouse;
   });
 
   return (
     <>
-    { gallery ? 
+    {/* { gallery ?  */}
       <mesh
         ref={ref}
       >
-        {/* <planeBufferGeometry args ={[l, w, 10]}/> */}
-        <boxBufferGeometry args={[2, 2, 2, 30, 30, 30]} />
+        {
+          geometry.shape === 'plane' ? 
+            <planeBufferGeometry args={[l, w, 10]}/> :
+          geometry.shape === 'cube' ? 
+            <boxBufferGeometry args={[2.5, 2.5, 2.5, 30, 30, 30]} /> :
+          geometry.shape === 'sphere' ? 
+            <sphereBufferGeometry /> :
+          <torusBufferGeometry />
+        }
         <shaderMaterial 
           ref={shadeMaterial} 
           vertexShader={vertex}   
           fragmentShader={fragment}
+          blending={THREE.AdditiveBlending}
           uniforms={{
             uTime: {value: 1.0}, 
             // uResolution: new THREE.Vector2(), 
@@ -51,19 +63,19 @@ function ShadeGeo({ fragment, l, w, gallery }) {
           }}  
           /> 
         </mesh>
-        : <mesh
+        {/* : <mesh
             ref={ref}
           >
-            {/* <planeBufferGeometry args={[5, 5]}/> */}
+            <planeBufferGeometry args={[5, 5]}/>
             <boxBufferGeometry args={[5, 5, 5, 30, 30, 30]} />
-            {/* <sphereBufferGeometry /> */}
+            <sphereBufferGeometry />
             <shadeMaterial              
               ref={shadeMaterial}
               blending={THREE.AdditiveBlending}
-              // wireframe
+              wireframe
             />
           </mesh>
-        }
+        } */}
     </>
   );
 };

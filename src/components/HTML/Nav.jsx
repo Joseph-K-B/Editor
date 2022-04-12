@@ -12,8 +12,8 @@ function Nav() {
   const setNavActive = useStore((state) => state.setNavActive);
 
   const props = useSpring({
-    left: navActive ? window.innerWidth - 345 : window.innerWidth - 70,
-    bottom: navActive ? window.innerHeight - 275 : window.innerHeight - 50
+    left: navActive ? window.innerWidth - 345 : window.innerWidth - 90,
+    bottom: navActive ? window.innerHeight - 275 : window.innerHeight - 65
   })
 
   const handleToggle = () => {

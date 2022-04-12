@@ -34,6 +34,18 @@ const useStore = create((set) => ({
     prev: false, 
   },
   setCamera: (camera) => set({camera}),
+
+
+  //Grid Toggle
+  grid: false,
+  setGrid: (grid) => set({grid}),
+
+  //Geometry
+  geometry: {
+    shape: 'plane'},
+  setGeometry: (geometry) => set({geometry}),
+
+
   //Particles
   particles: {
     count: 5000,
@@ -55,83 +67,83 @@ const useStore = create((set) => ({
   shaders: [
     {
       id: '0',
-      fragementShader: shaders.frag0.default
+      fragmentShader: shaders.frag0.default
     },
     {
       id: '1',
-      fragementShader: shaders.frag1.default
+      fragmentShader: shaders.frag1.default
     },
     {
       id: '2',
-      fragementShader: shaders.frag2.default
+      fragmentShader: shaders.frag2.default
     },
     {
       id: '3',
-      fragementShader: shaders.frag3.default
+      fragmentShader: shaders.frag3.default
     },
     {
       id: '4',
-      fragementShader: shaders.frag4.default
+      fragmentShader: shaders.frag4.default
     },
     {
       id: '5',
-      fragementShader: shaders.frag5.default
+      fragmentShader: shaders.frag5.default
     },
     {
       id: '6',
-      fragementShader: shaders.frag6.default
+      fragmentShader: shaders.frag6.default
     },
     {
       id: '7',
-      fragementShader: shaders.frag7.default
+      fragmentShader: shaders.frag7.default
     },
     {
       id: '8',
-      fragementShader: shaders.frag8.default
+      fragmentShader: shaders.frag8.default
     },
     {
       id: '9',
-      fragementShader: shaders.frag9.default
+      fragmentShader: shaders.frag9.default
     },
     {
       id: '10',
-      fragementShader: shaders.frag10.default
+      fragmentShader: shaders.frag10.default
     },
     {
       id: '11',
-      fragementShader: shaders.frag11.default
+      fragmentShader: shaders.frag11.default
     },
     {
       id: '12',
-      fragementShader: shaders.frag12.default
+      fragmentShader: shaders.frag12.default
     },
     {
       id: '13',
-      fragementShader: shaders.frag13.default
+      fragmentShader: shaders.frag13.default
     },
     {
       id: '14',
-      fragementShader: shaders.frag14.default
+      fragmentShader: shaders.frag14.default
     },
     {
       id: '15',
-      fragementShader: shaders.frag15.default
+      fragmentShader: shaders.frag15.default
     },
     {
       id: '16',
-      fragementShader: shaders.frag16.default
+      fragmentShader: shaders.frag16.default
     },
     {
       id: '17',
-      fragementShader: shaders.frag17.default
+      fragmentShader: shaders.frag17.default
     },
     {
       id: '18',
-      fragementShader: shaders.frag18.default
+      fragmentShader: shaders.frag18.default
     },
     {
       id: '19',
-      fragementShader: shaders.frag19.default
+      fragmentShader: shaders.frag19.default
     },
   ],
 

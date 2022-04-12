@@ -6,20 +6,24 @@ import * as THREE from 'three';
 
 import css from '../../app.css';
 
-function Drawer({ handlePosTwo, handlePosThree, handlePosFour }) {
+function Drawer() {
   //Theme
   const darkMode = useStore ((state) => state.darkMode);
   const setDarkMode = useStore ((state) => state.setDarkMode);
+
+  //Grid
+  const grid = useStore ((state) => state.grid);
+  const setGrid = useStore ((state) => state.setGrid);
+
+
+  const geometry = useStore ((state) => state.geometry);
+  const setGeometry = useStore ((state) => state.setGeometry);
 
   //Drawer Toggle
   const lActive = useStore((state) => state.lActive);
   const setLActive = useStore((state) => state.setLActive);
   const rActive = useStore((state) => state.rActive);
   const setRActive = useStore((state) => state.setRActive);
-
-  //Object Select
-  const selection = useStore((state) => state.selection);
-  const setSelection = useStore((state) => state.setSelection);
 
   //Color Select
   const setColor = useStore((state) => state.setColor);
@@ -47,6 +51,15 @@ function Drawer({ handlePosTwo, handlePosThree, handlePosFour }) {
     setRActive(!rActive);
   }
 
+  const handleToggleGrid = () => {
+    setGrid(!grid);
+  }
+
+  const handleShape = (v) => {
+    geometry.shape = v
+    setGeometry({ ...geometry });
+  }
+
   const handleInsideColor = (e) => {
     particleState.insideColor = new THREE.Color(e.target.value);
     setParticles({...particleState});
@@ -64,26 +77,41 @@ function Drawer({ handlePosTwo, handlePosThree, handlePosFour }) {
       <div className={css.toggle}>
       <button className={css.tab} onClick={handleToggleLeft}>
           { lActive ? 
-            <img  src={darkMode ? '/pictures/white_L.png' : '/pictures/black_L.png'} /> : 
-            <img src={darkMode ? '/pictures/white_R.png' : '/pictures/black_R.png'} alt='close'/>  
+            <img  src={darkMode ? '/icons/white_L.png' : '/icons/black_L.png'} /> : 
+            <img src={darkMode ? '/icons/white_R.png' : '/icons/black_R.png'} alt='close'/>  
           }          
         </button>
       </div>
       <div  className={css.panel}>
-        <button className={darkMode ? css.controlDark : css.control} onClick={() => setDarkMode(!darkMode)}>
-          <img src='pictures/light_icon.png'/>
+        <button 
+          className={darkMode ? css.controlDark : css.control} 
+          onClick={() => setDarkMode(!darkMode)}
+        >
+          <img src='icons/light_icon.png'/>
         </button>
-        <button className={darkMode ? css.controlDark : css.control}>
-          2
+        <button 
+          className={darkMode ? css.controlDark : css.control}
+          onClick={() => handleShape('cube')}
+        >
+          <img src='icons/geometry/shapes_icon.png'/>
         </button>
-        <button className={darkMode ? css.controlDark : css.control} onClick={handlePosThree}>
-          3
+        <button 
+          className={darkMode ? css.controlDark : css.control} 
+          onClick={() => handleShape('cube')}
+        >
+          <img src='icons/geometry/cube_icon.png'/>
         </button>
-        <button className={darkMode ? css.controlDark : css.control} onClick={handlePosFour}>
-          4
+        <button 
+          className={darkMode ? css.controlDark : css.control} 
+          onClick={() => handleShape('sphere')}
+        >
+          <img src='icons/geometry/circle_icon.png'/>
         </button>
-        <button className={darkMode ? css.controlDark : css.control} onClick={() => console.log('testing 5')}>
-          5
+        <button 
+          className={darkMode ? css.controlDark : css.control} 
+          onClick={handleToggleGrid}
+        >
+          <img src='icons/grid_icon.png'/>
         </button>
       </div>
     </a.section>
@@ -91,8 +119,8 @@ function Drawer({ handlePosTwo, handlePosThree, handlePosFour }) {
       <div className={css.toggle}>
         <button className={css.tab} onClick={handleToggleRight}>
           { rActive ? 
-              <img src={darkMode ? '/pictures/white_R.png' : '/pictures/black_R.png'} /> : 
-              <img  src={darkMode ? '/pictures/white_L.png' : '/pictures/black_L.png'}alt='close'/>  
+              <img src={darkMode ? '/icons/white_R.png' : '/icons/black_R.png'} /> : 
+              <img  src={darkMode ? '/icons/white_L.png' : '/icons/black_L.png'}alt='close'/>  
           }          
         </button>
       </div>

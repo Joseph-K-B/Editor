@@ -44,7 +44,7 @@ function Gallery({ toggle }) {
               <ShadeGeo 
                 l={3} 
                 w={3} 
-                fragment={shade.fragementShader}
+                fragment={shade.fragmentShader}
                 gallery 
               />
             </Suspense>
