@@ -62,6 +62,29 @@ function Nav() {
             />
             Editor
           </NavLink>
+          <span />
+          <NavLink 
+            className={css.link} 
+            to='/editor'
+            >
+            <img
+              className={css.galleryIcon}
+              src='pictures/editor_icon.webp' 
+              alt='navigate-to-editor' 
+            />
+            T.B.D
+          </NavLink>
+          <NavLink 
+            className={css.link} 
+            to='/editor'
+            >
+            <img
+              className={css.galleryIcon}
+              src='pictures/editor_icon.webp' 
+              alt='navigate-to-editor' 
+            />
+            T.B.D
+          </NavLink>
         </div>
         <button onClick={handleToggle}>
           <img

@@ -9,10 +9,12 @@ import './ShadeMaterial';
 import { useStore } from "../../../hooks/useStand";
 
 function ShadeGeo({ fragment, l, w, gallery }) {
+  const [loading, setLoading] = useState();
   const { viewport } = useThree();
+
+
   const shadeMaterial = useRef();
   const ref = useRef();
-  const [loading, setLoading] = useState();
 
 
   useEffect(() => {
@@ -23,8 +25,8 @@ function ShadeGeo({ fragment, l, w, gallery }) {
   useFrame((state, delta) => {
     const t = state.clock.getElapsedTime();
     if(gallery) {
-      shadeMaterial.current.uniforms.uTime = t
-      // shadeMaterial.current.uniforms.uMouse = state.mouse
+      shadeMaterial.current.uniforms.uTime.value = t
+      shadeMaterial.current.uniforms.uMouse.value = state.mouse
     } else 
     shadeMaterial.current.time = t;
     shadeMaterial.current.mouse = state.mouse;
@@ -43,15 +45,14 @@ function ShadeGeo({ fragment, l, w, gallery }) {
           vertexShader={vertex}   
           fragmentShader={fragment}
           uniforms={{
-            uTime: 1.0, 
+            uTime: {value: 1.0}, 
             // uResolution: new THREE.Vector2(), 
-            // uMouse: new THREE.Vector2()
+            uMouse: {value: new THREE.Vector2()}
           }}  
           /> 
         </mesh>
         : <mesh
             ref={ref}
-            onClick={console.log(shadeMaterial)}
           >
             {/* <planeBufferGeometry args={[5, 5]}/> */}
             <boxBufferGeometry args={[5, 5, 5, 30, 30, 30]} />

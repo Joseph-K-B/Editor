@@ -117,6 +117,22 @@ const useStore = create((set) => ({
       id: '15',
       fragementShader: shaders.frag15.default
     },
+    {
+      id: '16',
+      fragementShader: shaders.frag16.default
+    },
+    {
+      id: '17',
+      fragementShader: shaders.frag17.default
+    },
+    {
+      id: '18',
+      fragementShader: shaders.frag18.default
+    },
+    {
+      id: '19',
+      fragementShader: shaders.frag19.default
+    },
   ],
 
   // Drei Select Test

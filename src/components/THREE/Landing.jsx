@@ -8,7 +8,7 @@ function Landing(){
   return (
     <>
     <Suspense fallback={<Html><h1>Loading...</h1></Html>}>
-      <OrbitControls />
+      <OrbitControls makeDefault/>
       {/* GEOMETRY SHADER  */}
       <ShadeGeo />
       <group position={[0, 5.5, 0]}>

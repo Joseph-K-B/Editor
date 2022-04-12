@@ -96,21 +96,20 @@
   border-radius: 0 0 0 10%;
   right: 0;
   color: white;
-  min-height: 35vh;
-  justify-content: space-evenly;
-  align-items: center;
+  min-height: 40vh;
 }
 
 .NavMenu div {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr;
+  margin-top: 7.5rem;
 }
 .NavMenu button{
   position: absolute;
   bottom: 0;
   left: 0;
-  padding: 0.5rem;
+  padding: 0.25rem;
   background: none;
   border: none;
   color: white;

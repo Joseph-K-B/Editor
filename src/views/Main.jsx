@@ -6,7 +6,6 @@ import Drawer from "../components/HTML/Drawer";
 import ThreeCanvas from "../components/THREE/ThreeCanvas";
 import Nav from "../components/HTML/Nav";
 // import HandFlow from "../components/HTML/HandFlow";
-// import HandFlowDos from "../components/HTML/HandFlowDos";
 
 
 function Main() {
@@ -19,7 +18,6 @@ function Main() {
       <Drawer />
       <Nav />
       {/* <HandFlow /> */}
-      {/* <HandFlowDos /> */}
       <ThreeCanvas />
     </>
   );
