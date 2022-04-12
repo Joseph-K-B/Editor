@@ -9,11 +9,12 @@ import * as frag7  from './7/fragment.glsl';
 import * as frag8  from './8/fragment.glsl';
 import * as frag9  from './9/fragment.glsl';
 import * as frag10  from './10/fragment.glsl';
-import * as frag11  from './sandbox/1/fragment.glsl';
-import * as frag12  from './sandbox/2/fragment.glsl';
-import * as frag13  from './11/fragment.glsl';
-import * as frag14  from './12/fragment.glsl';
-import * as frag15  from './13/fragment.glsl';
+import * as frag11  from './11/fragment.glsl';
+import * as frag12  from './12/fragment.glsl';
+import * as frag13  from './13/fragment.glsl';
+import * as frag14  from './14/fragment.glsl';
+import * as frag15  from './15/fragment.glsl';
+import * as frag16  from './16/fragment.glsl';
 
 
 export {
@@ -33,4 +34,5 @@ export {
   frag13,
   frag14,
   frag15,
+  frag16,
 }

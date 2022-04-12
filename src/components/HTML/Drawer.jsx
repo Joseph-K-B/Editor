@@ -70,19 +70,19 @@ function Drawer({ handlePosTwo, handlePosThree, handlePosFour }) {
         </button>
       </div>
       <div  className={css.panel}>
-        <button className={css.control} onClick={() => setDarkMode(!darkMode)}>
-          1
+        <button className={darkMode ? css.controlDark : css.control} onClick={() => setDarkMode(!darkMode)}>
+          <img src='pictures/light_icon.png'/>
         </button>
-        <button className={css.control}>
+        <button className={darkMode ? css.controlDark : css.control}>
           2
         </button>
-        <button className={css.control} onClick={handlePosThree}>
+        <button className={darkMode ? css.controlDark : css.control} onClick={handlePosThree}>
           3
         </button>
-        <button className={css.control} onClick={handlePosFour}>
+        <button className={darkMode ? css.controlDark : css.control} onClick={handlePosFour}>
           4
         </button>
-        <button className={css.control} onClick={() => console.log('testing 5')}>
+        <button className={darkMode ? css.controlDark : css.control} onClick={() => console.log('testing 5')}>
           5
         </button>
       </div>
@@ -99,13 +99,13 @@ function Drawer({ handlePosTwo, handlePosThree, handlePosFour }) {
       <div  className={css.panel}>
         <input type='color' onChange={handleInsideColor}/>
         <input type='color' onChange={handleOutsideColor}/>
-        <button className={css.control} onClick={() => console.log(particleState)}>
+        <button className={darkMode ? css.controlDark : css.control} onClick={() => console.log(particleState)}>
           1
         </button>
-        <button className={css.control} onClick={() => console.log('testing 3')}>
+        <button className={darkMode ? css.controlDark : css.control} onClick={() => console.log('testing 3')}>
           1
         </button>
-        <button className={css.control} onClick={() => console.log('testing 4')}>
+        <button className={darkMode ? css.controlDark : css.control} onClick={() => console.log('testing 4')}>
           1
         </button>
       </div>

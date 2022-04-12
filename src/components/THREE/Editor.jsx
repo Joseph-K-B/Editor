@@ -21,28 +21,7 @@ function Editor() {
 
       {/* GEOMETRY SHADER  */}
       <ShadeGeo />
-      <group position={[0, 5.5, 0]}>
-        <ShadeGeo />
-      </group>
-      <group position={[5.5, 5.5, 0]}>
-        <ShadeGeo />
-      </group>
-      <group position={[5.5, 0, 0]}>
-        <ShadeGeo />
-      </group>
-      <group position={[-5.5, 0, 0]}>
-        <ShadeGeo />
-      </group>
-      <group position={[0, -5.5, 0]}>
-        <ShadeGeo />
-      </group>
-      <group position={[5.5, -5.5, 0]}>
-        <ShadeGeo />
-      </group>
-      <group position={[-5.5, -5.5, 0]}>
-        <ShadeGeo />
-      </group>
-
+      
       {/* GALAXY SHADER */}
       {/* <Particles /> */}
 

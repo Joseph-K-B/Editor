@@ -66,9 +66,80 @@
 .control {
   min-width: 3.5rem;
   min-height: 3.5rem;
+  background-color: rgba(11, 11, 11, 0.742);
+  border: none;
+  color: white;
+  font-family: 'Exo';
+  font-weight: 600;
+}
+
+.controlDark {
+  min-width: 3.5rem;
+  min-height: 3.5rem;
   background-color: rgba(107, 0, 128, 0.171);
   border: none;
   color: white;
   font-family: 'Exo';
   font-weight: 600;
+}
+
+.panel img {
+  max-height: 3.5rem;
+}
+
+.NavMenu {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  background-color: rgba(11, 11, 11, 0.742);
+  z-index: 9;
+  border-radius: 0 0 0 10%;
+  right: 0;
+  color: white;
+  min-height: 35vh;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.NavMenu div {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+}
+.NavMenu button{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 0.5rem;
+  background: none;
+  border: none;
+  color: white;
+}
+.link{
+  text-decoration: none;
+  color: rgba(11, 11, 11, 0);
+  padding: 1rem;
+  text-align: center;
+}
+
+.link:hover {
+  color: white;
+}
+
+.galleryIcon {
+  border: solid white 0.15rem;
+  border-radius: 10%;
+  max-height: 3.5rem;
+  padding: 0.5rem;
+}
+
+.homeIcon {
+  border: solid white 0.15rem;
+  border-radius: 10%;
+  max-height: 3.5rem;
+  padding: 0.5rem;
+}
+
+.navToggleBtn {
+  max-height: 2.5rem;
 }

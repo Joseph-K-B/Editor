@@ -15,6 +15,8 @@ const useStore = create((set) => ({
   setLActive: (lActive) => set({lActive}),
   rActive: false,
   setRActive: (rActive) => set({rActive}),
+  navActive: false,
+  setNavActive: (navActive) => set({navActive}),
 
 
   /* GUI Controls */

@@ -8,7 +8,7 @@ import { useFrame, useThree } from "@react-three/fiber";
 import './ShadeMaterial';
 import { useStore } from "../../../hooks/useStand";
 
-function ShadeGeo({fragment, l, w, gallery}) {
+function ShadeGeo({ fragment, l, w, gallery }) {
   const { viewport } = useThree();
   const shadeMaterial = useRef();
   const ref = useRef();
@@ -21,7 +21,7 @@ function ShadeGeo({fragment, l, w, gallery}) {
   }, []);
 
   useFrame((state, delta) => {
-    const t = state.clock.getElapsedTime()
+    const t = state.clock.getElapsedTime();
     if(gallery) {
       shadeMaterial.current.uniforms.uTime = t
       // shadeMaterial.current.uniforms.uMouse = state.mouse
@@ -36,7 +36,8 @@ function ShadeGeo({fragment, l, w, gallery}) {
       <mesh
         ref={ref}
       >
-        <planeBufferGeometry args ={[l, w, 10]}/>
+        {/* <planeBufferGeometry args ={[l, w, 10]}/> */}
+        <boxBufferGeometry args={[2, 2, 2, 30, 30, 30]} />
         <shaderMaterial 
           ref={shadeMaterial} 
           vertexShader={vertex}   
