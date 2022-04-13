@@ -42,7 +42,7 @@ const useStore = create((set) => ({
 
   //Geometry
   geometry: {
-    shape: 'plane',
+    shape: 'cube',
     color: 'blue',
   },
   setGeometry: (geometry) => set({geometry}),
