@@ -38,7 +38,7 @@ function Nav() {
             <img 
               src='icons/nav/house_icon.png' 
               alt='navigate-home'
-              className={css.homeIcon} 
+              className={css.icon} 
               />
             <p>Home</p>
           </NavLink>
@@ -48,8 +48,8 @@ function Nav() {
           >
              
             <img
-              className={css.galleryIcon}
-              src='icons/nav/palette_icon.png' 
+              className={css.icon}
+              src='icons/nav/gallery_icon.svg' 
               alt='navigate-to-gallery' 
             />
             <p>Gallery</p>
@@ -59,8 +59,8 @@ function Nav() {
             to='/editor'
             >
             <img
-              className={css.galleryIcon}
-              src='icons/nav/pencil_icon.png' 
+              className={css.icon}
+              src='icons/nav/pencil_ruler_icon.svg' 
               alt='navigate-to-editor' 
             />
             Editor
@@ -71,7 +71,7 @@ function Nav() {
             to='/particles'
             >
             <img
-              className={css.galleryIcon}
+              className={css.icon}
               src='icons/nav/particles_icon.png' 
               alt='navigate-to-particles' 
             />
@@ -82,8 +82,8 @@ function Nav() {
             to='/models'
             >
             <img
-              className={css.galleryIcon}
-              src='icons/nav/tree_icon.png' 
+              className={css.icon}
+              src='icons/nav/blend_icon.svg' 
               alt='navigate-to-models' 
             />
             Models

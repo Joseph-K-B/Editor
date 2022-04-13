@@ -1,5 +1,6 @@
 
-import css from '/controls.css';
+import { useStore } from '../../../hooks/useStand';
+import css from './controls.css';
 
 /*
   Controls should be split into two columns to reduce clutter and avoid repetive code
@@ -11,24 +12,40 @@ import css from '/controls.css';
 */
 
 function Controls() {
+  const darkMode = useStore ((state) => state.darkMode);
+  const rActive = useStore((state) => state.rActive);    
+  const geometry = useStore((state) => state.geometry);
+  const setGeometry = useStore ((state) => state.setGeometry);
+
+  const handleShape = (v) => {
+    geometry.shape = v
+    setGeometry({ ...geometry });
+    console.log(geometry.shape)
+  }
+  
+  const handleColor= (e) => {
+    geometry.color = e.target.value;
+    setGeometry({ ...geometry });
+  }
 
   return(
     <>
       <div  className={rActive ? css.controls : css.hidden}>          
-          <button className={darkMode ? css.controlDark : css.control} onClick={() => handleShape('cube')}>
+
+          <button className={darkMode ? css.controlDark : css.control} onClick={() => console.log('clicked')}>
             <div className={css.btn}>
-              <img src='icons/geometry/material_icon.png'/>
+              <img src='icons/arrows/back_icon.svg'/>
               <label 
-                htmlFor="material-menu" 
-                aria-label="material-menu"
+                htmlFor="previous-menu" 
+                aria-label="previous-menu"
               >
-                Materials
+                Back
               </label>
             </div>
           </button>
           <button className={darkMode ? css.controlDark : css.control} onClick={() => handleShape('tetrahedron')}>
             <div className={css.btn}>
-              <img src='icons/geometry/triangle_icon.png'/>
+              <img src='icons/geometry/tetrahedron_icon.svg'/>
               <label 
                 htmlFor="tetrahedron-geometry" 
                 aria-label="tetrahedron-geometry"
@@ -39,7 +56,7 @@ function Controls() {
           </button>
           <button className={darkMode ? css.controlDark : css.control} onClick={() => handleShape('sphere')}>
             <div className={css.btn}>
-              <img src='icons/geometry/sphere_icon.png'/>
+              <img src='icons/geometry/sphere_icon.svg'/>
               <label 
                 htmlFor="sphere-geometry" 
                 aria-label="sphere-geometry"
@@ -48,20 +65,20 @@ function Controls() {
               </label>
             </div>
           </button>
-          <button className={darkMode ? css.controlDark : css.control} onClick={() => handleShape('column')}>
+          <button className={darkMode ? css.controlDark : css.control} onClick={() => handleShape('cylinder')}>
             <div className={css.btn}>
-              <img src='icons/geometry/column_icon.png'/>
+              <img src='icons/geometry/cylinder_icon.svg'/>
               <label 
-                htmlFor="column-geometry" 
-                aria-label="column-geometry"
+                htmlFor="cylinder-geometry" 
+                aria-label="cylinder-geometry"
               >
-                Torus
+                Cylinder
               </label>
             </div>
           </button>
           <button className={darkMode ? css.controlDark : css.control} onClick={() => handleShape('plane')}>
             <div className={css.btn}>
-              <img src='icons/geometry/plane_icon.png'/>
+              <img src='icons/geometry/plane_icon.svg'/>
               <label 
                 htmlFor="plane-geometry" 
                 aria-label="plane-geometry"
@@ -71,11 +88,26 @@ function Controls() {
             </div>
           </button>
         </div>
+
+        {/* ///////////////------------------------/////////////////////// */}
+
+
         <div  className={rActive ? css.controls : css.hidden}>
-          <input type='color' onChange={(v) => handleColor(v)}/>
+          {/* <input type='color' onChange={(v) => handleColor(v)}/> */}
           <button className={darkMode ? css.controlDark : css.control} onClick={() => handleShape('cube')}>
             <div className={css.btn}>
-              <img src='icons/geometry/cube_icon.png'/>
+              <img src='icons/geometry/material_icon.svg'/>
+              <label 
+                htmlFor="material-menu" 
+                aria-label="material-menu"
+              >
+                Materials
+              </label>
+            </div>
+          </button>
+          <button className={darkMode ? css.controlDark : css.control} onClick={() => handleShape('cube')}>
+            <div className={css.btn}>
+              <img src='icons/geometry/cube_icon.svg'/>
               <label 
                 htmlFor="cube-geometry" 
                 aria-label="cube-geometry"
@@ -84,31 +116,9 @@ function Controls() {
               </label>
             </div>
           </button>
-          <button className={darkMode ? css.controlDark : css.control} onClick={() => handleShape('torus')}>
-            <div className={css.btn}>
-              <img src='icons/geometry/torus_icon.png'/>
-              <label 
-                htmlFor="torus-geometry" 
-                aria-label="torus-geometry"
-              >
-                Torus
-              </label>
-            </div>
-          </button>
-          <button className={darkMode ? css.controlDark : css.control} onClick={() => handleShape('torusKnot')}>
-            <div className={css.btn}>
-              <img src='icons/geometry/knot_icon.png'/>
-              <label 
-                htmlFor="knot-geometry" 
-                aria-label="knot-geometry"
-              >
-                Knot
-              </label>
-            </div>
-          </button>
           <button className={darkMode ? css.controlDark : css.control} onClick={() => handleShape('cone')}>
             <div className={css.btn}>
-              <img src='icons/geometry/cone_icon.png'/>
+              <img src='icons/geometry/cone_icon.svg'/>
               <label 
                 htmlFor="cone-geometry" 
                 aria-label="cone-geometry"
@@ -117,6 +127,30 @@ function Controls() {
               </label>
             </div>
           </button>
+        
+          <button className={darkMode ? css.controlDark : css.control} onClick={() => handleShape('torusKnot')}>
+            <div className={css.btn}>
+              <img src='icons/geometry/rope_icon.svg' />
+              <label 
+                htmlFor="knot-geometry" 
+                aria-label="knot-geometry"
+              >
+                Knot
+              </label>
+            </div>
+          </button>
+
+        <button className={darkMode ? css.controlDark : css.control} onClick={() => handleShape('torus')}>
+          <div className={css.btn}>
+            <img src='icons/geometry/donut_icon.svg' className={css.donutHole}/>
+            <label 
+              htmlFor="torus-geometry" 
+              aria-label="torus-geometry"
+            >
+              Torus
+            </label>
+          </div>
+        </button>
         </div>
     </>
   );
