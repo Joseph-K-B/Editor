@@ -1,4 +1,8 @@
-#Editor
+# THREE JS EDITOR
+
+Custom GUI for building three scenes and experiments
+
+##Editor
 goals: 
   -improve upon 3-d UI
   -comprehensive scene building with simple
@@ -7,7 +11,7 @@ goals:
   -simplify the process to help people new to the space
   -build back end and make props/code exportable
 
-##Tickets
+###Tickets
   -finish 3/layer controller for mesh / refactor for reuse
   -update object in state for mesh
   -put something on screen for particles and models routes
@@ -15,12 +19,12 @@ goals:
   -solve orbit controls bug after rerouting from scroll
 
 
-### Code attributions
+#### Code attributions
   Most of these attrubutions can be found right where the codes used and is cleary idicated, 
   however will update this section.
 
 
-#### Icon attributions
+##### Icon attributions
   !Update these with svg artist
 https://creativecommons.org/licenses/by/4.0/
 https://creativecommons.org/licenses/by/3.0/
@@ -45,3 +49,6 @@ https://www.iconfinder.com/icons/2357054/blend_blender_drink_juice_mixer_smoothi
 https://www.streamlinehq.com/
 https://www.iconfinder.com/webalys
 https://www.iconfinder.com/icons/185063/photo_camera_polaroid_icon
+
+
+
