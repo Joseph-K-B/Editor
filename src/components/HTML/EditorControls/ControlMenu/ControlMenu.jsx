@@ -1,6 +1,6 @@
 import { animated as a, useSpring } from "react-spring";
 
-import { useStore } from "../../../hooks/useStand";
+import { useStore } from "../../../../hooks/useStand";
 
 import css from './control-menu.css';
 
@@ -19,8 +19,12 @@ function ControlMenu() {
 
   const handleActiveControls = (e) => {
     setActiveControls(e);
-    console.log(activeControls)
   };
+
+  const handlePrev = (e) => {
+    console.log(meshControls, activeControls)
+  }
+
 
   return(
   <>   
@@ -48,6 +52,20 @@ function ControlMenu() {
             </button>
           </a.div>
         )}
+        <button 
+          className={darkMode ? css.darkBtn : css.btn} 
+          onClick={handlePrev}
+        >
+          <div className={css.btn}>
+            <img src='icons/arrows/back_icon.svg'/>
+            <label 
+              htmlFor="previous-menu" 
+              aria-label="previous-menu"
+            >
+              Back
+            </label>
+          </div>
+        </button>
       </section>
     </>    
   );

@@ -63,7 +63,7 @@ function Drawer() {
           className={darkMode ? css.controlDark : css.control}
           onClick={() => handleShape('cube')}
           >
-          <img src='icons/geometry/mesh_icon.svg'/>
+          <img src='icons/mesh/geometry/mesh_icon.svg'/>
           <p>Mesh</p>
         </button>
         <button 

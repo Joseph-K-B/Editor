@@ -44,7 +44,7 @@ function Editor() {
               p={2}
               q={5}
             /> :
-          geometry.shape === 'tetrahedron' ?
+          mesh.geometry.shape === 'tetrahedron' ?
             <tetrahedronBufferGeometry /> :
           null
       }

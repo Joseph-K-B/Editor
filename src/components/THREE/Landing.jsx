@@ -29,7 +29,6 @@ function Landing(){
       }
     }
     setLoading(false);
-    console.log(positions);
   }, []);
 
 

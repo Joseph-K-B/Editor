@@ -1,0 +1,57 @@
+.inventory {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  background-color: rgba(11, 11, 11, 0.742);
+  z-index: 9;
+  border-radius: 0 0 0 10%;
+  right: 0;
+  color: white;
+  min-height: 40vh;
+}
+
+.inventory img {
+  max-height: 4rem;
+  max-width: 4rem;
+}
+
+.selection {
+  min-width: 3.75rem;
+  min-height: 3rem;
+  background-color: transparent;
+  border: none;
+  color: rgba(11, 11, 11, 0);
+  font-weight: 400;
+  padding: 2.5%;
+  margin: 2%;
+}
+
+.selection:hover {
+  color: white;
+}
+
+.selectionDark {
+  min-width: 3.5rem;
+  min-height: 5rem;
+  background-color: rgba(107, 0, 128, 0.171);
+  border: none;
+  color: rgba(107, 0, 128, 0.171);
+  font-family: 'Exo';
+  font-weight: 400;
+}
+
+.selectionDark:hover {
+  color: white;
+}
+
+.hidden {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  opacity: 0;
+  min-width: 1.45rem;
+}
+
+.hidden button{
+  display: none;
+}
