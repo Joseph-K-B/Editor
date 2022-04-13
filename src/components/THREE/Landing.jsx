@@ -13,28 +13,23 @@ function Landing(){
   const [positions, setPositions] = useState([]);
 
   useEffect(() => {
-    for(let i = 0; i < 12; i++) {
+    for(let i = 0; i < 10; i++) {
       {
         i % 2 === 0 && i < 8 ?
-        positions.push([i + i, 3, 0],)
+          positions.push([(i + i) - 5, 3.75, 0])
         :
-        i === 1 ?
-        positions.push([0, 0, 0],)
+        i >= 8 ?
+          positions.push([
+            ((i + i) - 14) + ((i % 2 ) * 2) + 1, 
+            7.5, 
+            0
+          ])
         :
-        i === 8 ?
-        positions.push([0, 6, 0],)
-        :
-        i > 8 && i % 2 === 0 ?
-        positions.push([(i + i) / 5, 6, 0],)
-        :
-        i > 8 && i % 2 > 0 ?
-        positions.push([(i + i) - 10, 6, 0],)
-        :
-        positions.push([(i + i) - 2, 0, 0],)
+          positions.push([(i + i) - 7, 0, 0])
       }
     }
     setLoading(false);
-    console.log(positions)
+    console.log(positions);
   }, []);
 
 
@@ -48,8 +43,9 @@ function Landing(){
       <OrbitControls makeDefault/>
       <Suspense fallback={null}>
       {positions.map((position) => 
-        <ShadeGeo 
+        <ShadeGeo
           key={position} 
+          scale={1.35} 
           fragment={shaders[12].fragmentShader} 
           position={[...position]} />
       )}                          

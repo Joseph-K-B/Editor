@@ -8,7 +8,7 @@ import { useFrame, useThree } from "@react-three/fiber";
 import './ShadeMaterial';
 import { useStore } from "../../../hooks/useStand";
 
-function ShadeGeo({ fragment, l, w, gallery, position }) {
+function ShadeGeo({ fragment, l, w, gallery, position, scale }) {
   const darkMode = useStore((state) => state.darkMode);
   const geometry =useStore((state) => state.geometry);
 
@@ -42,6 +42,7 @@ function ShadeGeo({ fragment, l, w, gallery, position }) {
       <mesh
         ref={ref}
         position={position}
+        scale={scale}
       >
         {
           geometry.shape === 'plane' ? 

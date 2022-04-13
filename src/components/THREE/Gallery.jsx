@@ -39,13 +39,14 @@ function Gallery({ toggle }) {
           onReflow={handleReflow}
         >
         {shaders.map(shade => 
-          <Box key={shade.id} centerAnchor margin={0.25}>
+          <Box key={shade.id} centerAnchor margin={0.35} marginTop={1}>
             <Suspense fallback={null}>
               <ShadeGeo 
                 l={3} 
                 w={3} 
                 fragment={shade.fragmentShader}
-                gallery 
+                gallery
+                scale={1} 
               />
             </Suspense>
           </Box>
