@@ -75,8 +75,8 @@ const useStore = create((set) => ({
   mesh: {
     geometry: {
       shape: 'cube',
-      args: [],
-      position: [],
+      args: [1, 1, 1],
+      position: [0, 0, 0],
       scale: 1,
     },
     material: {

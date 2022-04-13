@@ -17,7 +17,7 @@ function ThreeCanvas() {
       <Canvas className={darkMode ? css.CanvasDark : css.Canvas}>
         <Stats />
         { 
-          location.pathname === '/gallery' ? <Gallery toggle/> : 
+          location.pathname === '/gallery' ? <Gallery toggle /> : 
           location.pathname === '/editor' ? <Editor /> : 
           <Landing />          
         }

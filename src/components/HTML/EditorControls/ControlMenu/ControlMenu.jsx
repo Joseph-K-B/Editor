@@ -52,20 +52,23 @@ function ControlMenu() {
             </button>
           </a.div>
         )}
-        <button 
-          className={darkMode ? css.darkBtn : css.btn} 
-          onClick={handlePrev}
-        >
-          <div className={css.btn}>
-            <img src='icons/arrows/back_icon.svg'/>
-            <label 
-              htmlFor="previous-menu" 
-              aria-label="previous-menu"
+        {
+          activeControls ?
+            <button 
+              className={darkMode ? css.darkBtn : css.btn} 
+              onClick={handlePrev}
             >
-              Back
-            </label>
-          </div>
-        </button>
+              <div className={css.btn}>
+                <img src='icons/arrows/back_icon.svg'/>
+                <label 
+                  htmlFor="previous-menu" 
+                  aria-label="previous-menu"
+                >
+                  Back
+                </label>
+              </div>
+            </button> : null
+        }
       </section>
     </>    
   );
