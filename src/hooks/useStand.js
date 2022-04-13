@@ -21,15 +21,15 @@ const useStore = create((set) => ({
   setCamera: (camera) => set({camera}),
   //Particles
   particles: {
-    count: 100000,
-    size: 0.01,
+    count: 5000,
+    size: 0.2,
     radius: 5,
     branches: 3,
     spin: 1,
     randomness: 0.2,
     randomPower: 3,
-    insideColor: new THREE.Color('#de4f4f'),
-    outsideColor: new THREE.Color('#1b3984'),
+    insideColor: new THREE.Color('#ffff4f'),
+    outsideColor: new THREE.Color('#1bFFFF'),
   },
   setParticles: (particles) => set({particles}),
   // Shaders Archive

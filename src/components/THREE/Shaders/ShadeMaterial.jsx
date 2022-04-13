@@ -2,7 +2,7 @@ import * as THREE from 'three';
 import { extend } from '@react-three/fiber';
 
 import vertexShader from './Archive/1/vertex.glsl';
-// import fragmentShader from './Archive/sandbox/2/fragment.glsl'
+import fragmentShader from './Archive/11/fragment.glsl';
 
 export default class ShadeMaterial extends THREE.ShaderMaterial {
   constructor() {
@@ -14,17 +14,10 @@ export default class ShadeMaterial extends THREE.ShaderMaterial {
       },
 
       vertexShader: vertexShader,
-      fragmentShader: {value: ``},
+      fragmentShader: fragmentShader,
     });
   };
-  
-  get fragmentShader() {
-    return this.fragmentShader.value
-  }
 
-  set fragmentShader(t) {
-    this.fragmentShader.value = t
-  }
   get time() {
     return this.uniforms.uTime.value
   }

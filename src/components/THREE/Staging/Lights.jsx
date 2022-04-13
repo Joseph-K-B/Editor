@@ -9,7 +9,7 @@ function Lights() {
         intensity={0.15}
       />
       <directionalLight
-        intensity={0.2}
+        // intensity={0.2}
       />
       <fog near={1} far={10} color='tan'/>
     </>
