@@ -44,11 +44,11 @@ vec3 palette( in float t, in vec3 a, in vec3 b, in vec3 c, in vec3 d )
 //--------------//
 
 void main() {
-  // vec2 st = (- 0.5 * vUv.xy) / min(vUv.y, vUv.x);
+  // vec2 st = (gl_FragCoord.xy - 0.5 * vUv.xy) / min(vUv.y, vUv.x);
   // vec2 st = vUv - 0.5 / min(vUv.y, vUv.x);
-  vec2 st = (vUv - 0.5) * vUv / min(vUv.y, vUv.x);
+  vec2 st = (vUv - 0.5)/ min(vUv.y, vUv.x);
   vec2 z = st;
-  // vec2 z = vUv;
+  // vec2 z = vUv - 0.5 / fract(vUv);
   // vec2 uv = (gl_FragCoord.xy - 0.5 * uResolution.xy) / min(uResolution.y, uResolution.x);
   // vec2 z = uv;
 
@@ -61,10 +61,12 @@ void main() {
 
   //Lower-left point
   // vec2 p = vec2(-0.25, -0.25);
-  vec2 p = vec2(s * angle, c * length);
+  vec2 p = vec2( s*angle, c*length);
+  // vec2 p = vec2( s*angle, c*length) * uMouse;
   //Upper-right point
   // vec2 q = vec2(0.25, 0.25);
-  vec2 q = vec2(s * -length, c * -length);
+  vec2 q = vec2( s*-length, c*-length);
+  // vec2 q = vec2( s*-length, c*-length)  * uMouse;
 
   //Divide z-p by z-q using complex division
   vec2 division = cx_div((z - p), (z - q));
@@ -73,10 +75,10 @@ void main() {
   vec2 log_p_over_q = cx_log(division);
 
   //Extract imaginary number
-  float imaginary = log_p_over_q.y;
+  float imaginary = log_p_over_q.y / PI;
 
   vec3 color = palette( imaginary, vec3(0.50, .52, 0.53), vec3(.46, .32, .35), vec3(.82, .84, .65), vec3(0.53, 0.23, 0.22));
-  // vec3 color = palette( imaginary, vec3(0.4784, 0.5804, 0.6314), vec3(0.0392, 0.4235, 0.4588), vec3(0.4353, 0.2078, 0.2078), vec3(0.6549, 0.5569, 0.898));
-
+  // vec3 colorA = palette( imaginary, vec3(0.4784, 0.5804, 0.6314), vec3(0.0392, 0.4235, 0.4588), vec3(0.4353, 0.2078, 0.2078), vec3(0.6549, 0.5569, 0.898));
+  // color = mix(color, colorA, vec3(0.5));
   gl_FragColor = vec4(color, 1.0);
 }

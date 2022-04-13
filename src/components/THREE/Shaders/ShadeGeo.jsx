@@ -8,51 +8,76 @@ import { useFrame, useThree } from "@react-three/fiber";
 import './ShadeMaterial';
 import { useStore } from "../../../hooks/useStand";
 
-function ShadeGeo({fragment, l, w}) {
+function ShadeGeo({ fragment, l, w, gallery, position, scale }) {
+  const darkMode = useStore((state) => state.darkMode);
+  const mesh =useStore((state) => state.mesh);
+
+  const [loading, setLoading] = useState();
+  
   const { viewport } = useThree();
-  const shaders = useStore((state) => state.shaders)
+
+
   const shadeMaterial = useRef();
   const ref = useRef();
-  const [loading, setLoading] = useState();
 
 
   useEffect(() => {
-    // shadeMaterial.current.resolution = (viewport.height, viewport.width)
+    shadeMaterial.current.resolution = [viewport.height, viewport.width]
     shadeMaterial.current ? setLoading(false) : null;
   }, []);
 
   useFrame((state, delta) => {
-    shadeMaterial.current.time += delta;
-    shadeMaterial.current.mouse = state.mouse;
+    const t = state.clock.getElapsedTime();
+    // if(gallery || darkMode) {
+      shadeMaterial.current.uniforms.uTime.value = t
+      shadeMaterial.current.uniforms.uMouse.value = state.mouse
+    // } else 
+    // shadeMaterial.current.time = t;
+    // shadeMaterial.current.mouse = state.mouse;
   });
-
-  console.log(shaders);
 
   return (
     <>
+    {/* { gallery ?  */}
       <mesh
         ref={ref}
-        onClick={console.log(shadeMaterial)}
+        position={position}
+        scale={scale}
       >
-        <planeBufferGeometry args={[l, w, 20, 20]} />
-        {/* <boxBufferGeometry args={[3, 3, 3]} /> */}
-        {/* <sphereBufferGeometry /> */}
-        <shadeMaterial
-          ref={shadeMaterial}
-          blending={THREE.AdditiveBlending}
-          // wireframe
-        />
-        {/* <shaderMaterial 
+        {
+          mesh.geometry.shape === 'plane' ? 
+            <planeBufferGeometry args={[l, w, 10]}/> :
+          mesh.geometry.shape === 'cube' ? 
+            <boxBufferGeometry args={[2.5, 2.5, 2.5, 30, 30, 30]} /> :
+          mesh.geometry.shape === 'sphere' ? 
+            <sphereBufferGeometry /> :
+          <torusBufferGeometry />
+        }
+        <shaderMaterial 
           ref={shadeMaterial} 
           vertexShader={vertex}   
           fragmentShader={fragment}
+          blending={THREE.AdditiveBlending}
           uniforms={{
-            uTime: 1, 
+            uTime: {value: 1.0}, 
             // uResolution: new THREE.Vector2(), 
-            uMouse: new THREE.Vector2()
+            uMouse: {value: new THREE.Vector2()}
           }}  
-        /> */}
-      </mesh>
+          /> 
+        </mesh>
+        {/* : <mesh
+            ref={ref}
+          >
+            <planeBufferGeometry args={[5, 5]}/>
+            <boxBufferGeometry args={[5, 5, 5, 30, 30, 30]} />
+            <sphereBufferGeometry />
+            <shadeMaterial              
+              ref={shadeMaterial}
+              blending={THREE.AdditiveBlending}
+              wireframe
+            />
+          </mesh>
+        } */}
     </>
   );
 };

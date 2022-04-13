@@ -1,66 +1,91 @@
 * {
   margin: 0;
   padding: 0;
+  font-family: 'Exo', sans-serif;
+}
+
+
+
+.CanvasDark {
+  min-height: 100vh;
+  min-width: 100vw;
+  background-color: #161618;
 }
 
 .Canvas {
   min-height: 100vh;
   min-width: 100vw;
-  background-color: black;
+  background-color: #FBFCF8;
 }
 
-.drawer {
+.panel img {
+  max-height: 3.5rem;
+}
+
+.NavMenu {
   display: flex;
-  flex-direction: row-reverse;
-  justify-content: space-evenly;
+  flex-direction: column;
   position: fixed;
-  left: 0;
-  min-height: 85vh;
+  background-color: rgba(11, 11, 11, 0.742);
   z-index: 9;
-}
-
-.rDrawer {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  position: fixed;
+  border-radius: 0 0 0 10%;
   right: 0;
-  min-height: 85vh;
-  z-index: 9;
-}
-
-.panel {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-}
-
-.toggle {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  min-width: 2rem;
-}
-
-.tab {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-color: #ffffff00;
-  min-width: 1rem;
-  min-height: 6rem;
-  border: none;
-  border-radius: 40%;
   color: white;
+  min-height: 40vh;
 }
 
-.control {
-  min-width: 3.5rem;
-  min-height: 3.5rem;
+.NavMenuDark {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
   background-color: rgba(107, 0, 128, 0.171);
+  z-index: 9;
+  border-radius: 0 0 0 10%;
+  right: 0;
+  color: white;
+  min-height: 40vh;
+}
+
+.NavMenuDiv {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  margin-top: 7.5rem;
+}
+.NavMenuButton{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 0.25rem;
+  background: none;
   border: none;
   color: white;
-  font-family: 'Exo';
-  font-weight: 600;
+}
+.link{
+  text-decoration: none;
+  color: rgba(11, 11, 11, 0);
+  padding: 1rem;
+  text-align: center;
+}
+
+.link:hover {
+  color: white;
+}
+
+.galleryIcon {
+  border: solid white 0.15rem;
+  border-radius: 10%;
+  max-height: 3.5rem;
+  padding: 0.5rem;
+}
+
+.homeIcon {
+  border: solid white 0.15rem;
+  border-radius: 10%;
+  max-height: 3.5rem;
+  padding: 0.5rem;
+}
+
+.navToggleBtn {
+  max-height: 2.5rem;
 }
