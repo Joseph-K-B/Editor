@@ -86,7 +86,7 @@ function Drawer() {
           onClick={handleToggleGrid}
         >
           <div className={css.btn}>
-            <img src='icons/grid_icon.png'/>
+            <img src='icons/grid_icon.svg'/>
             <label 
               htmlFor="grid-toggle" 
               aria-label="grid-toggle"

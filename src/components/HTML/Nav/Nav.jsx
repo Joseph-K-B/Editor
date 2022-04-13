@@ -49,7 +49,7 @@ function Nav() {
              
             <img
               className={css.icon}
-              src='icons/nav/gallery_icon.svg' 
+              src='icons/nav/photo_icon.svg' 
               alt='navigate-to-gallery' 
             />
             <p>Gallery</p>
@@ -83,7 +83,7 @@ function Nav() {
             >
             <img
               className={css.icon}
-              src='icons/nav/blend_icon.svg' 
+              src='icons/nav/landscape_icon.svg' 
               alt='navigate-to-models' 
             />
             Models

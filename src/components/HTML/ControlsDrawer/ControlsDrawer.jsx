@@ -6,6 +6,7 @@ import { animated as a, useSpring } from "react-spring";
 import css from './controls-drawer.css';
 import { useStore } from "../../../hooks/useStand";
 import Controls from "../Controls/Controls";
+import ControlMenu from "../ControlMenu/ControlMenu";
 
 /*starting with mesh controls to be refactored for light etc */
 
@@ -41,7 +42,8 @@ function ControlsDrawer(){
             }          
           </button>
         </div>
-        <Controls />
+        {/* <Controls /> */}
+        <ControlMenu />
     </a.section>
     </>
   )

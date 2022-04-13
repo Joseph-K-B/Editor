@@ -10,7 +10,7 @@ import { useStore } from "../../../hooks/useStand";
 
 function ShadeGeo({ fragment, l, w, gallery, position, scale }) {
   const darkMode = useStore((state) => state.darkMode);
-  const geometry =useStore((state) => state.geometry);
+  const mesh =useStore((state) => state.mesh);
 
   const [loading, setLoading] = useState();
   
@@ -45,11 +45,11 @@ function ShadeGeo({ fragment, l, w, gallery, position, scale }) {
         scale={scale}
       >
         {
-          geometry.shape === 'plane' ? 
+          mesh.geometry.shape === 'plane' ? 
             <planeBufferGeometry args={[l, w, 10]}/> :
-          geometry.shape === 'cube' ? 
+          mesh.geometry.shape === 'cube' ? 
             <boxBufferGeometry args={[2.5, 2.5, 2.5, 30, 30, 30]} /> :
-          geometry.shape === 'sphere' ? 
+          mesh.geometry.shape === 'sphere' ? 
             <sphereBufferGeometry /> :
           <torusBufferGeometry />
         }

@@ -40,12 +40,52 @@ const useStore = create((set) => ({
   grid: false,
   setGrid: (grid) => set({grid}),
 
-  //Geometry
-  geometry: {
-    shape: 'cube',
-    color: 'blue',
+  //Mesh
+  mesh: {
+    geometry: {
+      shape: 'cube',
+      args: [],
+      position: [],
+      scale: 1,
+    },
+    material: {
+      type: 'basic',
+      color: 'blue',
+      wireframe: false,
+    },
+
   },
-  setGeometry: (geometry) => set({geometry}),
+  setMesh: (mesh) => set({mesh}),
+
+  meshControls: {
+    activeControls: '',
+    meshMenu: [
+      {
+        name: 'material',
+        parent: 'mesh',
+        handler: 'materialControls',
+        label: 'Material',
+      },
+      {
+        name: 'geometry',
+        parent: 'mesh',
+        handler: 'geoControls',
+        label: 'Geometry',
+      },
+    ],
+    geoControls: [
+      {
+        name: 'cube',
+      },
+    ],
+    materialControls: [
+      {
+        name: 'meshBasicMaterial',
+      },
+    ]
+  },
+
+  setMeshControls: (meshControls) => set({meshControls}),
 
 
   //Particles

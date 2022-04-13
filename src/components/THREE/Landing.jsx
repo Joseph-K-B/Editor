@@ -41,16 +41,22 @@ function Landing(){
       <Suspense fallback={<Html><h1>Loading...</h1></Html>}>
       { grid ? <Terrain /> : null }
       <OrbitControls makeDefault/>
-      <Suspense fallback={null}>
-      {positions.map((position) => 
-        <ShadeGeo
-          key={position} 
-          scale={1.35} 
-          fragment={shaders[12].fragmentShader} 
-          position={[...position]} />
-      )}                          
+        <Suspense fallback={null}>
+          <group 
+            scale={0.25}
+            position={[-0.25, -1, 0]}
+            rotation={[0, -Math.PI * 0.1, 0]}
+          >
+            {positions.map((position) => 
+              <ShadeGeo
+                key={position} 
+                scale={1.35} 
+                fragment={shaders[12].fragmentShader} 
+                position={[...position]} />
+            )}
+        </group>                          
       </Suspense>
-      </Suspense>
+    </Suspense>
     </>
   );
 };

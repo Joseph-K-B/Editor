@@ -6,7 +6,7 @@ import { useFrame, useLoader } from "@react-three/fiber";
 import { Point, Points, Sphere } from "@react-three/drei";
 
 
-import { useStore } from "../../../hooks/useStand";
+import { useStore } from "../../../../hooks/useStand";
 import './ParticleMaterial'
 
 function Particles() {
