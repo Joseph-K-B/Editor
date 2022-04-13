@@ -105,90 +105,7 @@ const useStore = create((set) => ({
 
 
 
-  // Shaders Archive
-  shaders: [
-    {
-      id: '0',
-      fragmentShader: shaders.frag0.default
-    },
-    {
-      id: '1',
-      fragmentShader: shaders.frag1.default
-    },
-    {
-      id: '2',
-      fragmentShader: shaders.frag2.default
-    },
-    {
-      id: '3',
-      fragmentShader: shaders.frag3.default
-    },
-    {
-      id: '4',
-      fragmentShader: shaders.frag4.default
-    },
-    {
-      id: '5',
-      fragmentShader: shaders.frag5.default
-    },
-    {
-      id: '6',
-      fragmentShader: shaders.frag6.default
-    },
-    {
-      id: '7',
-      fragmentShader: shaders.frag7.default
-    },
-    {
-      id: '8',
-      fragmentShader: shaders.frag8.default
-    },
-    {
-      id: '9',
-      fragmentShader: shaders.frag9.default
-    },
-    {
-      id: '10',
-      fragmentShader: shaders.frag10.default
-    },
-    {
-      id: '11',
-      fragmentShader: shaders.frag11.default
-    },
-    {
-      id: '12',
-      fragmentShader: shaders.frag12.default
-    },
-    {
-      id: '13',
-      fragmentShader: shaders.frag13.default
-    },
-    {
-      id: '14',
-      fragmentShader: shaders.frag14.default
-    },
-    {
-      id: '15',
-      fragmentShader: shaders.frag15.default
-    },
-    {
-      id: '16',
-      fragmentShader: shaders.frag16.default
-    },
-    {
-      id: '17',
-      fragmentShader: shaders.frag17.default
-    },
-    {
-      id: '18',
-      fragmentShader: shaders.frag18.default
-    },
-    {
-      id: '19',
-      fragmentShader: shaders.frag19.default
-    },
-  ],
-
+  
   // Drei Select Test
   selection: [],
   setSelection: (selection) => set({selection}),
@@ -200,6 +117,101 @@ const useStore = create((set) => ({
   setColor: (color) => set({color}),
   centerLight: true,
   setCenterLight: (centerLight) => set({centerLight}),
-}));
 
+
+// Shaders Archive
+// plug this into a useEffect on component mount
+// {for (let i = 0; i < 19; i++) {
+//   shader: [
+//     {
+//       id: `${i}`,
+//       fragmentShader: shaders.frag[i].default
+//     }
+//   ]
+// }}
+
+shaders: [
+  {
+    id: '0',
+    fragmentShader: shaders.frag0.default
+  },
+  {
+    id: '1',
+    fragmentShader: shaders.frag1.default
+  },
+  {
+    id: '2',
+    fragmentShader: shaders.frag2.default
+  },
+  {
+    id: '3',
+    fragmentShader: shaders.frag3.default
+  },
+  {
+    id: '4',
+    fragmentShader: shaders.frag4.default
+  },
+  {
+    id: '5',
+    fragmentShader: shaders.frag5.default
+  },
+  {
+    id: '6',
+    fragmentShader: shaders.frag6.default
+  },
+  {
+    id: '7',
+    fragmentShader: shaders.frag7.default
+  },
+  {
+    id: '8',
+    fragmentShader: shaders.frag8.default
+  },
+  {
+    id: '9',
+    fragmentShader: shaders.frag9.default
+  },
+  {
+    id: '10',
+    fragmentShader: shaders.frag10.default
+  },
+  {
+    id: '11',
+    fragmentShader: shaders.frag11.default
+  },
+  {
+    id: '12',
+    fragmentShader: shaders.frag12.default
+  },
+  {
+    id: '13',
+    fragmentShader: shaders.frag13.default
+  },
+  {
+    id: '14',
+    fragmentShader: shaders.frag14.default
+  },
+  {
+    id: '15',
+    fragmentShader: shaders.frag15.default
+  },
+  {
+    id: '16',
+    fragmentShader: shaders.frag16.default
+  },
+  {
+    id: '17',
+    fragmentShader: shaders.frag17.default
+  },
+  {
+    id: '18',
+    fragmentShader: shaders.frag18.default
+  },
+  {
+    id: '19',
+    fragmentShader: shaders.frag19.default
+  },
+],
+
+}));
 export {useStore}
