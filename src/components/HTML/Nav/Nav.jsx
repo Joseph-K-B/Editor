@@ -1,13 +1,14 @@
 import { NavLink } from "react-router-dom";
 import { animated as a, useSpring } from "react-spring";
 
-import { useStore } from "../../hooks/useStand";
+import { useStore } from "../../../hooks/useStand";
 
 
-import css from '../../app.css';
+import css from './nav.css';
 
 
 function Nav() {
+  const darkMode = useStore((state) => state.darkMode);
   const navActive = useStore((state) => state.navActive);
   const setNavActive = useStore((state) => state.setNavActive);
 
@@ -25,15 +26,17 @@ function Nav() {
     <>
       <a.section
         style={props}
-        className={css.NavMenu}
+        className={darkMode ? css.NavMenuDark : css.NavMenu }
       >
-        <div>
+        <div
+          className={css.NavMenuDiv}
+        >
           <NavLink 
             className={css.link} 
             to='/'
           >
             <img 
-              src='pictures/white_home_icon.png' 
+              src='icons/nav/house_icon.png' 
               alt='navigate-home'
               className={css.homeIcon} 
               />
@@ -46,7 +49,7 @@ function Nav() {
              
             <img
               className={css.galleryIcon}
-              src='pictures/palette_icon.png' 
+              src='icons/nav/palette_icon.png' 
               alt='navigate-to-gallery' 
             />
             <p>Gallery</p>
@@ -57,7 +60,7 @@ function Nav() {
             >
             <img
               className={css.galleryIcon}
-              src='pictures/editor_icon.webp' 
+              src='icons/nav/pencil_icon.png' 
               alt='navigate-to-editor' 
             />
             Editor
@@ -65,31 +68,34 @@ function Nav() {
           <span />
           <NavLink 
             className={css.link} 
-            to='/editor'
+            to='/particles'
             >
             <img
               className={css.galleryIcon}
-              src='pictures/editor_icon.webp' 
-              alt='navigate-to-editor' 
+              src='icons/nav/particles_icon.png' 
+              alt='navigate-to-particles' 
             />
-            T.B.D
+            Particles
           </NavLink>
           <NavLink 
             className={css.link} 
-            to='/editor'
+            to='/models'
             >
             <img
               className={css.galleryIcon}
-              src='pictures/editor_icon.webp' 
-              alt='navigate-to-editor' 
+              src='icons/nav/tree_icon.png' 
+              alt='navigate-to-models' 
             />
-            T.B.D
+            Models
           </NavLink>
         </div>
-        <button onClick={handleToggle}>
+        <button 
+          className={css.NavMenuButton} 
+          onClick={handleToggle}
+        >
           <img
             className={css.navToggleBtn} 
-            src='pictures/hamburger_white.png' 
+            src='icons/nav/hamburger_white.png' 
             alt='navigation-links'
           />
         </button>

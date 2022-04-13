@@ -1,26 +1,4 @@
-* {
-  margin: 0;
-  padding: 0;
-  font-family: 'Exo', sans-serif;
-}
 
-
-
-.CanvasDark {
-  min-height: 100vh;
-  min-width: 100vw;
-  background-color: #161618;
-}
-
-.Canvas {
-  min-height: 100vh;
-  min-width: 100vw;
-  background-color: #FBFCF8;
-}
-
-.panel img {
-  max-height: 3.5rem;
-}
 
 .NavMenu {
   display: flex;

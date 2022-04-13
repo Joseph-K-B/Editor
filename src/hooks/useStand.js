@@ -42,14 +42,16 @@ const useStore = create((set) => ({
 
   //Geometry
   geometry: {
-    shape: 'plane'},
+    shape: 'plane',
+    color: 'blue',
+  },
   setGeometry: (geometry) => set({geometry}),
 
 
   //Particles
   particles: {
     count: 5000,
-    size: 0.2,
+    size: 1,
     radius: 5,
     branches: 3,
     spin: 1,

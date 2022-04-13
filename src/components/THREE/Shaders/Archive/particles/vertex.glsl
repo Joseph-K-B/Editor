@@ -14,6 +14,6 @@ void main() {
 
   gl_Position = projectedPosition;
 
-  gl_PointSize = uSize * aScale;
+  gl_PointSize = uSize * (aScale * 10.0);
   vUv = uv;
 }
