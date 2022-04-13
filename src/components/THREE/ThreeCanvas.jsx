@@ -18,7 +18,7 @@ function ThreeCanvas() {
         <Stats />
         { 
           location.pathname === '/gallery' ? <Gallery toggle /> : 
-          location.pathname === '/editor' ? <Editor /> : 
+          location.pathname === '/editor' ? <Editor /> :
           <Landing />          
         }
       </Canvas>

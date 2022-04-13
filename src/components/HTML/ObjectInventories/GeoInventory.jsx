@@ -29,10 +29,6 @@ function GeoInventory(){
   }, []);
 
   const handleShape = (v) => {
-    // dispatch({
-      // type: `${mesh.geometry.shape}`,
-      // v
-    // })
     mesh.geometry.shape = v
     setMesh({ ...mesh });
   }
