@@ -5,7 +5,7 @@ import { useStore } from "../../../hooks/useStand";
 import css from './control-panel.css';
 
 function ControlPanel() {
-  const [active, setActive] = useState(false);
+  const [active, setActive] = useState();
   const darkMode = useStore((state) => state.darkMode);
   
   const rActive = useStore((state) => state.rActive);
@@ -14,20 +14,15 @@ function ControlPanel() {
   const setMesh = useStore ((state) => state.setMesh);
   const meshControls = useStore ((state) => state.meshControls);
   const activeControls = useStore ((state) => state.activeControls);
+  const vectorOptions = useStore ((state) => state.vectorOptions);
 
   const props= useSpring({
     display: active ? 'block' : 'none',
   });
-  const hide = useSpring({
-    display: 'none',
-  });
 
-  useEffect(() => {
-    console.log(meshControls[activeControls]);
-  }, []);
-
-  const handleToggle = (e) => {
-    console.log(e.target.value);
+  const handleToggle = (v) => {
+    active === v ? setActive(null) : setActive(v);
+    console.log(active)
   }
     
   const handleColor= (e) => {
@@ -37,35 +32,70 @@ function ControlPanel() {
 
   return(
     <>
-      {/* <section className={rActive ? css.controls : css.hidden}> */}
+        <section 
+          className={css.controlSection}
+        >
         {meshControls[activeControls].inputs.map(input =>
-          <a.section 
-            className={css.btn}
-            key={input.key}
-          >
-            <label 
-              htmlFor={`${input.name}-input`} 
-              aria-label={`${input.name}-input`}
-              value = {`${input.name}`}
+            <>
+              <label 
+                htmlFor={`${input.label}-toggle`} 
+                aria-label={`${input.label}-toggle`}
+              >
+                <button  
+                  onClick={() => handleToggle(input.label)}
+                  className={rActive ? css.toggleBtn : css.hidden}
+                >
+                  {input.label}
+                </button>
+              </label>
+            <a.section 
+              style={active === input.label ? props : null} 
+              className={css.hidden}
             >
-            <button value = {`${input.name}`} onClick={(e) => handleToggle(e)}>
-                {input.label}
-              </button>
-            <a.div style={active === `${input.name}` ? props : hide}>
+              <div className={css.yayCss}>
+              <label 
+                htmlFor={`${input.label}-input`} 
+                aria-label={`${input.label}-input`}
+                value = {`${input.label}`}
+              />
+              <div className={css.vectorOptions}>
+                {
+                  input.dataType === 'v3' ?
+                  vectorOptions.inputs.map(input =>
+                    <>
+                      <label 
+                        htmlFor={`${input.label}-vector-options`}
+                        aria-label={`${input.label}-vector`}
+                        // className={css.vectorOptions}
+                      >
+                        {input.label}
+                      <input
+                          name='vectorInput' 
+                          value={input.label}
+                          type={input.type} 
+                          onChange={(e) => console.log(e.target.value)}
+                          id={`${input.label}-vector-options`}
+                          />
+                      </label>
+                    </> 
+                  ) : null
+                }
+              </div>
               <input
                 type={input.type} 
                 className={darkMode ? css.controlDark : css.control} 
                 onClick={() => console.log('control')}
-                id={`${input.name}-input`}
+                id={`${input.label}-input`}
               />
               <img 
                 src={`icons/${meshControls[activeControls].parent}/${meshControls[activeControls].name}/${input.icon}_icon.svg`} 
-                alt={input.name}
+                alt={input.label}
               />
-              </a.div>
-            </label>
-          </a.section>
+              </div>
+            </a.section>
+          </>
         )}
+        {/* </section> */}
         
         {/* <input type='color' onChange={(v) => handleColor(v)}/> */}
         {/* <button className={darkMode ? css.controlDark : css.control} onClick={() => handleShape('cube')}>
@@ -125,7 +155,7 @@ function ControlPanel() {
           </label>
         </div>
       </button> */}
-      {/* </section> */}
+      </section>
     </>
     
   );

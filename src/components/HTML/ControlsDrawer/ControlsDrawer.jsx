@@ -45,14 +45,11 @@ function ControlsDrawer(){
             }          
           </button>
           </div>
-          {/* <Controls /> */}
-          <section className={rActive ? css.controls : css.hidden}>
-            <ControlMenu />
+          {/* <span /> */}
             {
               activeControls.length > 0 ?
-                <ControlPanel /> : null 
+              <ControlPanel /> : <ControlMenu /> 
             }
-          </section>
       </a.section>
     </>
   )
