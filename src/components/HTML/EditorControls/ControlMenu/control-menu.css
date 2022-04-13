@@ -1,0 +1,48 @@
+.controlMenu {
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 10%;
+}
+
+.hidden {
+  display: none;
+}
+
+.control {
+  display: flex;
+  flex-direction: column;
+}
+
+.control:hover {
+  color: white;
+}
+
+.btn {
+  min-width: 7rem;
+  min-height: 7rem;
+  background-color: transparent;
+  border: none;
+  color: rgba(11, 11, 11, 0);
+  font-weight: 400;
+  padding: 2.5%;
+  margin: 2%;
+}
+
+.btn img {
+  max-height: 7rem;
+}
+
+.darkBtn {
+  max-width: 5rem;
+  max-height: 3rem;
+  background-color: rgba(107, 0, 128, 0.171);
+  border: none;
+  color: rgba(107, 0, 128, 0.171);
+  font-weight: 400;
+}
+
+.darkBtn:hover {
+  color: white;
+}

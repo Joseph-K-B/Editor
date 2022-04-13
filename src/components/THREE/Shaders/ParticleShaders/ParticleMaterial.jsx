@@ -26,6 +26,14 @@ export default class ParticleMaterial extends THREE.ShaderMaterial {
   set time(f) {
     this.uniforms.uTime.value = f
   };
+
+  get size() {
+    return this.uniforms.uTime.value
+  };
+
+  set size(f) {
+    this.uniforms.uSize.value = f
+  };
   
   get resolution() {
     return this.uniforms.uResolution.value

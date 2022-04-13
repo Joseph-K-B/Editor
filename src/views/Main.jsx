@@ -1,16 +1,23 @@
-import Drawer from "../components/HTML/Drawer";
 import ThreeCanvas from "../components/THREE/ThreeCanvas";
-import { useStore } from "../hooks/useStand";
+
+import Nav from "../components/HTML/Nav/Nav";
+import Drawer from "../components/HTML/Drawer/Drawer";
+import ControlsDrawer from "../components/HTML/EditorControls/ControlsDrawer/ControlsDrawer";
+
+import useResize from "../hooks/useResize";
+import GeoInventory from "../components/HTML/ObjectInventories/GeoInventory";
 
 
 function Main() {
-  const selection = useStore((state) => state.selection);
-
+  useResize();
 
   return (
     <>
-      {/* <Drawer /> */}
-      <ThreeCanvas />      
+      <ThreeCanvas />
+      <ControlsDrawer />
+      <GeoInventory />
+      <Drawer />
+      <Nav />
     </>
   );
 };
