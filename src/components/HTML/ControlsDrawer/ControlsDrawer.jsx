@@ -7,6 +7,7 @@ import css from './controls-drawer.css';
 import { useStore } from "../../../hooks/useStand";
 import Controls from "../Controls/Controls";
 import ControlMenu from "../ControlMenu/ControlMenu";
+import ControlPanel from "../ControlPanels/ControlPanels";
 
 /*starting with mesh controls to be refactored for light etc */
 
@@ -15,6 +16,8 @@ function ControlsDrawer(){
 
   const rActive = useStore((state) => state.rActive);
   const setRActive = useStore((state) => state.setRActive);
+
+  const activeControls = useStore((state) => state.activeControls);
 
   const rProps = useSpring({
     left: rActive ? window.innerWidth - 300 : window.innerWidth -0.001,
@@ -41,10 +44,16 @@ function ControlsDrawer(){
               />  
             }          
           </button>
-        </div>
-        {/* <Controls /> */}
-        <ControlMenu />
-    </a.section>
+          </div>
+          {/* <Controls /> */}
+          <section className={rActive ? css.controls : css.hidden}>
+            <ControlMenu />
+            {
+              activeControls.length > 0 ?
+                <ControlPanel /> : null 
+            }
+          </section>
+      </a.section>
     </>
   )
 };

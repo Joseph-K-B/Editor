@@ -18,8 +18,37 @@ const useStore = create((set) => ({
   navActive: false,
   setNavActive: (navActive) => set({navActive}),
 
-
+  
   /* GUI Controls */
+  activeControls: '',
+  setActiveControls: (activeControls) => set({activeControls}),
+
+  vectorOptions: {
+    inputs: [
+      {
+        type: 'radio',
+        dataType: 'f',
+        label: 'X',
+        icon: '',
+        handler: '',
+      },
+      {
+        type: 'radio',
+        dataType: 'f',
+        label: 'Y',
+        icon: '',
+        handler: '',
+      },
+      {
+        type: 'radio',
+        dataType: 'f',
+        label: 'Z',
+        icon: '',
+        handler: '',
+      },
+    ]
+  },
+
   //Camera
   camera: {
     positions: [
@@ -58,7 +87,6 @@ const useStore = create((set) => ({
   setMesh: (mesh) => set({mesh}),
 
   meshControls: {
-    activeControls: '',
     meshMenu: [
       {
         name: 'material',
@@ -73,15 +101,67 @@ const useStore = create((set) => ({
         label: 'Geometry',
       },
     ],
-    geoControls: [
+      shapes: [
+        'cube', 
+        'sphere', 
+        'cone', 
+        'cylinder', 
+        'torus', 
+        'icosahedron', 
+        'plane', 
+        'torus_knot',
+      ],
+      geoControls:
       {
-        name: 'cube',
+        name: 'geometry',
+        parent: 'mesh',
+        key: 'geoControls',
+          inputs: [
+            {
+              type: 'button',
+              dataType: 'bool',
+              icon: 'cube',
+              label: 'Shape',
+              handler: false,
+            },
+            {
+              type: 'range',
+              dataType: 'v3',
+              label: 'Args',
+              icon: 'cube',
+              handler: [],
+            },
+            {
+              type: 'range',
+              label: 'Position',
+              dataType: 'v3',
+              icon: 'cube',
+              handler: [],
+            },
+            {
+              type: 'range',
+              label: 'Scale',
+              dataType: 'f',
+              icon: 'cube',
+              handler: null,
+            },
+          ],
+        },
+      materialControls: [
+        {
+          name: 'material',
+          parent: 'mesh',
+          inputs: [
+            {
+              type: 'color',
+              label: 'Color',
+              handler: 'handleColor',
+            }
+          ]
       },
-    ],
-    materialControls: [
-      {
-        name: 'meshBasicMaterial',
-      },
+      // {
+      //   name: 'meshNormalMaterial',
+      // }
     ]
   },
 
@@ -213,5 +293,6 @@ shaders: [
   },
 ],
 
+setShaders: (shaders) => set({ shaders }),
 }));
 export {useStore}

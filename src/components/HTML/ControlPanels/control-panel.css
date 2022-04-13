@@ -1,0 +1,62 @@
+.controls {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 5%;
+}
+
+.hidden {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  opacity: 0;
+  min-width: 1.45rem;
+}
+
+.hidden button{
+  display: none;
+}
+
+.control {
+  min-width: 3.5rem;
+  min-height: 3rem;
+  background-color: transparent;
+  border: none;
+  color: rgba(11, 11, 11, 0);
+  color: black;
+  font-weight: 400;
+  padding: 2.5%;
+  margin: 2%;
+}
+
+.control:hover {
+  color: white;
+}
+
+.controlDark {
+  min-width: 10rem;
+  min-height: 3rem;
+  background-color: rgba(107, 0, 128, 0.171);
+  border: none;
+  color: rgba(107, 0, 128, 0.171);
+  font-weight: 400;
+}
+
+.controlDark:hover {
+  color: white;
+}
+
+.btn {
+  display: flex;
+  flex-direction: column;
+}
+
+.panel img {
+  max-height: 3.5rem;
+}
+
+.btn {
+  display: flex;
+  flex-direction: column;
+}
