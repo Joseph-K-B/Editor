@@ -18,29 +18,28 @@ import * as frag16  from './16/fragment.glsl';
 import * as frag17  from './17/fragment.glsl';
 import * as frag18  from './18/fragment.glsl';
 import * as frag19  from './19/fragment.glsl';
-import * as frag20  from './20/fragment.glsl';
+
 
 
 export {
   frag0,
-  frag1,
-  frag2,
-  frag3,
-  frag4,
-  frag5,
-  frag6,
-  frag7,
-  frag8,
-  frag9,
-  frag10,
-  frag11,
-  frag12,
-  frag13,
-  frag14,
-  frag15,
-  frag16,
-  frag17,
-  frag18,
-  frag19,
-  frag20,
+  // frag1,
+  // frag2,
+  // frag3,
+  // frag4,
+  // frag5,
+  // frag6,
+  // frag7,
+  // frag8,
+  // frag9,
+  // frag10,
+  // frag11,
+  // frag12,
+  // frag13,
+  // frag14,
+  // frag15,
+  // frag16,
+  // frag17,
+  // frag18,
+  // frag19,
 }

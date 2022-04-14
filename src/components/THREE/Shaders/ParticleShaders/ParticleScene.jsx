@@ -1,12 +1,11 @@
-import Grass from "../SAND/Grass";
-import GrassParticles from "./Shaders/ParticleShaders/GrassParticles";
-import ShadeGeo from "./Shaders/ShadeGeo";
+import Grass from "./Grass";
+import GrassParticles from "./GrassParticles";
+import Particles from "./Particles";
 
-function ParticleScene() {
 
+function ParticleScene({ grass }) {
+  
   return(
-    
-    
     grass ?
       <> 
         <Grass>

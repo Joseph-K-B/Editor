@@ -203,10 +203,10 @@ const useStore = create((set) => ({
 
 // Shaders Archive 
 shaders: [
-  // {
-  //   id: '0',
-  //   fragmentShader: shaders.frag0.default
-  // },
+  {
+    id: '0',
+    fragmentShader: shaders.frag0.default
+  },
   // {
   //   id: '1',
   //   fragmentShader: shaders.frag1.default
@@ -283,10 +283,6 @@ shaders: [
   //   id: '19',
   //   fragmentShader: shaders.frag19.default
   // },
-  {
-    id: '20',
-    fragmentShader: shaders.frag20.default
-  },
 ],
 
 setShaders: (shaders) => set({ shaders }),

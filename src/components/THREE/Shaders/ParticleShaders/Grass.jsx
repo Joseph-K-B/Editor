@@ -6,7 +6,7 @@ import { Sampler } from "@react-three/drei";
 import { Depth, LayerMaterial } from "lamina";
 import Perlin from 'perlin.js';
 
-import WindLayer from '../THREE/Shaders/WindLayer';
+import WindLayer from '../Noise/WindLayer';
 
 Perlin.seed(Math.random())
 extend({ WindLayer })

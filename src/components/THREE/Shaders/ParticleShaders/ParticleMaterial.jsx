@@ -1,8 +1,8 @@
 import * as THREE from "three";
 import { extend } from '@react-three/fiber';
 
-import vertexShader from './Archive/particles/vertex.glsl';
-import fragmentShader from './Archive/particles/fragment.glsl';
+import vertexShader from './glsl/particles/vertex.glsl';
+import fragmentShader from './glsl/particles/fragment.glsl';
 
 export default class ParticleMaterial extends THREE.ShaderMaterial {
   constructor() {
