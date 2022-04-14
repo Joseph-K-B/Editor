@@ -36,7 +36,7 @@ function Nav() {
             to='/'
           >
             <img 
-              src='icons/nav/house_icon.png' 
+              src='/icons/nav/house_icon.png' 
               alt='navigate-home'
               className={css.icon} 
               />
@@ -49,7 +49,7 @@ function Nav() {
              
             <img
               className={css.icon}
-              src='icons/nav/photo_icon.svg' 
+              src='/icons/nav/photo_icon.svg' 
               alt='navigate-to-gallery' 
             />
             <p>Gallery</p>
@@ -60,7 +60,7 @@ function Nav() {
             >
             <img
               className={css.icon}
-              src='icons/nav/pencil_ruler_icon.svg' 
+              src='/icons/nav/pencil_ruler_icon.svg' 
               alt='navigate-to-editor' 
             />
             Editor
@@ -72,7 +72,7 @@ function Nav() {
             >
             <img
               className={css.icon}
-              src='icons/nav/particles_icon.png' 
+              src='/icons/nav/particles_icon.png' 
               alt='navigate-to-particles' 
             />
             Particles
@@ -83,7 +83,7 @@ function Nav() {
             >
             <img
               className={css.icon}
-              src='icons/nav/landscape_icon.svg' 
+              src='/icons/nav/landscape_icon.svg' 
               alt='navigate-to-models' 
             />
             Models
@@ -95,7 +95,7 @@ function Nav() {
         >
           <img
             className={css.navToggleBtn} 
-            src='icons/nav/hamburger_white.png' 
+            src='/icons/nav/hamburger_white.png' 
             alt='navigation-links'
           />
         </button>

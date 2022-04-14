@@ -4,11 +4,9 @@ import { animated as a, useSpring } from "react-spring";
 
 import css from './inventory.css';
 import { useEffect, useReducer, useState } from "react";
-import useGeometry from "../../THREE/threeHooks/useGeometry";
 
 
 function GeoInventory(){
-  const [ref, dispatch] = useReducer(useGeometry, ref)
   const [loading, setLoading] = useState(true);
   const darkMode = useStore((state) => state.darkMode);
   const inventoryActive = useStore((state) => state.inventoryActive);
@@ -44,10 +42,10 @@ function GeoInventory(){
         {shapes.map((shape) => 
             <button 
               className={darkMode ? css.selectionDark : css.selection} 
-              onClick={() => handleShape({shape})}
+              onClick={() => handleShape(shape)}
             >
             <div className={css.btn}>
-              <img src={`icons/mesh/geometry/${shape}_icon.svg`} />
+              <img src={`/icons/mesh/geometry/${shape}_icon.svg`} />
               <label 
                 htmlFor="${shape}-geometry" 
                 aria-label="${shape}-geometry"
@@ -58,6 +56,9 @@ function GeoInventory(){
           </button>
           )
         }
+        <button onClick={() => setInventoryActive(false)}>
+          Toggle
+        </button>
       </a.section>
     </>
   );

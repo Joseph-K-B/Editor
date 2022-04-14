@@ -1,5 +1,5 @@
 import { Canvas } from '@react-three/fiber';
-import { Stats } from '@react-three/drei';
+import { OrbitControls, Stats } from '@react-three/drei';
 import { useLocation } from 'react-router-dom';
 
 import { useStore } from '../../hooks/useStand';
@@ -18,11 +18,12 @@ function ThreeCanvas() {
   return (
     <>
       <Canvas className={darkMode ? css.CanvasDark : css.Canvas}>
+
         <Stats />
         { 
           location.pathname === '/gallery' ? <Gallery toggle /> : 
           location.pathname === '/editor' ? <Editor /> :
-          location.pathname === '/particles' ? <ParticleScene /> :
+          location.pathname === '/particles' ? <ParticleScene grass/> :
           <Landing />          
         }
       </Canvas>

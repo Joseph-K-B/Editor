@@ -17,12 +17,6 @@ function Drawer() {
   //Drawer Toggle
   const lActive = useStore((state) => state.lActive);
   const setLActive = useStore((state) => state.setLActive);
-  const rActive = useStore((state) => state.rActive);
-  const setRActive = useStore((state) => state.setRActive);
-
-  //Particle Count
-  const particleState = useStore((state) => state.particles);
-  const setParticles = useStore((state) => state.setParticles);
 
   
   const props = useSpring({
@@ -56,28 +50,28 @@ function Drawer() {
           className={darkMode ? css.controlDark : css.control} 
           onClick={() => setDarkMode(!darkMode)}
         >
-          <img src={darkMode ? 'icons/theme/sun_icon.png' : 'icons/theme/moon_icon.png'}/>
+          <img src={darkMode ? '/icons/theme/sun_icon.png' : '/icons/theme/moon_icon.png'}/>
           <p>Theme</p>
         </button>
         <button 
           className={darkMode ? css.controlDark : css.control}
           onClick={() => handleShape('cube')}
           >
-          <img src='icons/mesh/geometry/mesh_icon.svg'/>
+          <img src='/icons/mesh/geometry/mesh_icon.svg'/>
           <p>Mesh</p>
         </button>
         <button 
           className={darkMode ? css.controlDark : css.control} 
           onClick={() => handleShape('cube')}
           >
-          <img src='icons/camera/camera_icon.png'/>
+          <img src='/icons/camera/camera_icon.png'/>
           <p>Camera</p>
         </button>
         <button 
           className={darkMode ? css.controlDark : css.control} 
           onClick={() => handleShape('sphere')}
           >
-          <img src='icons/lights/lights_icon.png'/>
+          <img src='/icons/lights/lights_icon.png'/>
           <p>Lights</p>
         </button>
         <button

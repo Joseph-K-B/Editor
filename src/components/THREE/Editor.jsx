@@ -6,8 +6,6 @@ import Terrain from "./Staging/Terrain";
 import { useStore } from "../../hooks/useStand";
 import GeometriesSwitch from './Geometries/GeometriesSwtch';
 
-
-
 function Editor() {
   const shaders = useStore((state) => state.shaders);
   const mesh = useStore((state) => state.mesh);

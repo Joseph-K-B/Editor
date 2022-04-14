@@ -40,11 +40,10 @@ function ShadeGeo({ fragment, position, scale }) {
           position={position}
           scale={scale}
         >
-          {/* <GeometriesSwitch shape={mesh.geometry.shape} /> */}
-          <planeBufferGeometry />        
+          <GeometriesSwitch shape={mesh.geometry.shape} />
           <shaderMaterial 
             ref={shadeMaterial} 
-            vertex={vertex}   
+            vertexShader={vertex}   
             fragmentShader={fragment}
             blending={THREE.AdditiveBlending}
             uniforms={{

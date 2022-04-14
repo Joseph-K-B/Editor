@@ -50,7 +50,7 @@ function Landing(){
             <ShadeGeo
               key={position} 
               scale={1.35} 
-              fragment={shaders[0].fragmentShader}
+              fragment={shaders[12].fragmentShader}
               position={[...position]} 
             />
           )}

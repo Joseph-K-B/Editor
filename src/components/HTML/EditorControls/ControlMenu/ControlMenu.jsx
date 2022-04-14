@@ -40,7 +40,7 @@ function ControlMenu() {
               onClick={(e) => handleActiveControls(control.handler)}
             >
               <img 
-                src={`icons/${control.parent}/${control.name}/${control.name}_icon.svg`} 
+                src={`/icons/${control.parent}/${control.name}/${control.name}_icon.svg`} 
                 alt={control.name}
               />
               <label 
@@ -59,7 +59,7 @@ function ControlMenu() {
               onClick={handlePrev}
             >
               <div className={css.btn}>
-                <img src='icons/arrows/back_icon.svg'/>
+                <img src='/icons/arrows/back_icon.svg'/>
                 <label 
                   htmlFor="previous-menu" 
                   aria-label="previous-menu"

@@ -92,7 +92,8 @@ function ControlPanel() {
                   id={`${input.label}-input`}
                 />
                 <img 
-                  src={`icons/${meshControls[activeControls].parent}/${meshControls[activeControls].name}/${input.icon}_icon.svg`} 
+                  src={`/icons/${meshControls[activeControls].parent}/${meshControls[activeControls].name}/${input.icon}_icon.svg`}
+                  onClick={(v) => handleToggleInventory(input.label)} 
                   alt={input.label}
                 />
               </div>
