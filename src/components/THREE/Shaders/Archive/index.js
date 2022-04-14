@@ -18,7 +18,7 @@ import * as frag16  from './16/fragment.glsl';
 import * as frag17  from './17/fragment.glsl';
 import * as frag18  from './18/fragment.glsl';
 import * as frag19  from './19/fragment.glsl';
-import * as frag20  from './20/fragment.glsl';
+
 
 
 export {
@@ -42,5 +42,4 @@ export {
   frag17,
   frag18,
   frag19,
-  frag20,
 }

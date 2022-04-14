@@ -4,15 +4,13 @@ import { useStore } from "../../hooks/useStand";
 import ShadeGeo from "./Shaders/ShadeGeo";
 import Terrain from "./Staging/Terrain";
 
-import frag from './Shaders/Archive/20/fragment.glsl';
-
 
 function Landing(){
   const shaders = useStore((state) => state.shaders)
   const grid = useStore((state) => state.grid);
 
   const [loading, setLoading] = useState();
-  const [positions, setPositions] = useState([]);
+  const [positions] = useState([]);
 
   useEffect(() => {
     for(let i = 0; i < 10; i++) {
@@ -48,14 +46,14 @@ function Landing(){
             position={[-0.25, -1, 0]}
             rotation={[0, -Math.PI * 0.1, 0]}
           >
-          {/* {positions.map((position) =>  */}
+          {positions.map((position) => 
             <ShadeGeo
-              // key={position} 
+              key={position} 
               scale={1.35} 
-              fragment={frag}
-              // position={[...position]} 
+              fragment={shaders[12].fragmentShader}
+              position={[...position]} 
             />
-            {/* // )} */}
+          )}
         </group>                          
       </Suspense>
     </Suspense>

@@ -1,5 +1,3 @@
-// Author @patriciogv - 2015
-
 #ifdef GL_ES
 precision mediump float;
 #endif
@@ -11,6 +9,8 @@ uniform vec2 uResolution;
 uniform float uTime;
 
 varying vec2 vUv;
+
+// Author @patriciogv - 2015
 
 vec2 rotate2D(vec2 _st, float _angle) {
   _st -= 0.5;

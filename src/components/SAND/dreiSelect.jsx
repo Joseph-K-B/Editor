@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from "react";
-import * as THREE from 'three';
 
 import { Select, Sphere, SpotLight } from "@react-three/drei";
 
@@ -92,8 +91,6 @@ function DreiSelect() {
           >
             <meshPhongMaterial 
               color={color.shoulderRColor}
-              // emissive='red'
-              // emissiveIntensity={0.7} 
             />
           </Sphere>
         </group>

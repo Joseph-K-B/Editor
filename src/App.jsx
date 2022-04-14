@@ -9,6 +9,7 @@ export default function App() {
           <Route path='/' element={<Main />} />
           <Route path='/gallery' element={<Main />} />
           <Route path='/editor' element={<Main />} />
+          <Route path='/particles' element={<Main />} />
         </Routes>
       </Router>
     </>

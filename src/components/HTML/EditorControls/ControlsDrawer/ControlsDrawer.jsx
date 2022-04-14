@@ -8,9 +8,6 @@ import { useStore } from "../../../../hooks/useStand";
 import ControlPanel from "../ControlPanels/ControlPanels";
 import ControlMenu from "../ControlMenu/ControlMenu";
 
-
-/*starting with mesh controls to be refactored for light etc */
-
 function ControlsDrawer(){
   const darkMode = useStore ((state) => state.darkMode);
 
