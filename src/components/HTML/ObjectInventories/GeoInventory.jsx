@@ -3,10 +3,12 @@ import { useStore } from "../../../hooks/useStand";
 import { animated as a, useSpring } from "react-spring";
 
 import css from './inventory.css';
-import { useEffect, useState } from "react";
+import { useEffect, useReducer, useState } from "react";
+import useGeometry from "../../THREE/threeHooks/useGeometry";
 
 
 function GeoInventory(){
+  const [ref, dispatch] = useReducer(useGeometry, ref)
   const [loading, setLoading] = useState(true);
   const darkMode = useStore((state) => state.darkMode);
   const inventoryActive = useStore((state) => state.inventoryActive);

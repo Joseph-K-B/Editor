@@ -26,7 +26,7 @@ function ControlsDrawer(){
 
   const handleToggle = () => {
     setRActive(!rActive);
-  }
+  };
 
   return(
     <>

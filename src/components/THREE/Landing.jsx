@@ -1,8 +1,10 @@
 import { Html, OrbitControls } from "@react-three/drei";
-import { Suspense, useEffect, useRef, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { useStore } from "../../hooks/useStand";
 import ShadeGeo from "./Shaders/ShadeGeo";
 import Terrain from "./Staging/Terrain";
+
+import frag from './Shaders/Archive/20/fragment.glsl';
 
 
 function Landing(){
@@ -25,7 +27,7 @@ function Landing(){
             0
           ])
         :
-          positions.push([(i + i) - 7, 0, 0])
+        positions.push([(i + i) - 7, 0, 0])
       }
     }
     setLoading(false);
@@ -46,13 +48,14 @@ function Landing(){
             position={[-0.25, -1, 0]}
             rotation={[0, -Math.PI * 0.1, 0]}
           >
-            {positions.map((position) => 
-              <ShadeGeo
-                key={position} 
-                scale={1.35} 
-                fragment={shaders[12].fragmentShader} 
-                position={[...position]} />
-            )}
+          {/* {positions.map((position) =>  */}
+            <ShadeGeo
+              // key={position} 
+              scale={1.35} 
+              fragment={frag}
+              // position={[...position]} 
+            />
+            {/* // )} */}
         </group>                          
       </Suspense>
     </Suspense>
