@@ -7,7 +7,7 @@ import { useEffect, useReducer, useState } from "react";
 
 
 function GeoInventory(){
-  const [setLoading] = useState(true);
+  const [loading, setLoading] = useState(true);
   const darkMode = useStore((state) => state.darkMode);
 
   const activeInventory = useStore((state) => state.activeInventory);
