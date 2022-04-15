@@ -5,7 +5,6 @@ import { useLocation } from 'react-router-dom';
 import { useStore } from '../../hooks/useStand';
 
 import Editor from './Editor';
-import Gallery from './Gallery';
 import Landing from './Landing';
 import ParticleScene from './Shaders/ParticleShaders/ParticleScene';
 
@@ -18,6 +17,7 @@ function ThreeCanvas() {
   return (
     <>
       <Canvas className={darkMode ? css.CanvasDark : css.Canvas}>
+      <OrbitControls />
 
         <Stats />
         { 

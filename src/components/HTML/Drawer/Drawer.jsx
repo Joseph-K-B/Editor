@@ -57,7 +57,7 @@ function Drawer() {
           className={darkMode ? css.controlDark : css.control}
           onClick={() => handleShape('cube')}
           >
-          <img src='/icons/mesh/geometry/mesh_icon.svg'/>
+          <img src='/icons/mesh/mesh_icon.svg'/>
           <p>Mesh</p>
         </button>
         <button 
@@ -80,7 +80,7 @@ function Drawer() {
           onClick={handleToggleGrid}
         >
           <div className={css.btn}>
-            <img src='icons/grid_icon.svg'/>
+            <img src='/icons/grid/grid_icon.svg'/>
             <label 
               htmlFor="grid-toggle" 
               aria-label="grid-toggle"

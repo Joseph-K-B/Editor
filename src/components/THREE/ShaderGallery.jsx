@@ -9,7 +9,7 @@ import ShadeGeo from "./Shaders/ShadeGeo";
 
 
 
-function Gallery({ toggle }) {
+function ShaderGallery({ toggle }) {
   const shaders = useStore((state) => state.shaders)
   const [scrollPages, setScrollPages] = useState(1);
   const [loading, setLoading] = useState();
@@ -54,4 +54,4 @@ function Gallery({ toggle }) {
   );
 };
 
-export default Gallery;
+export default ShaderGallery;

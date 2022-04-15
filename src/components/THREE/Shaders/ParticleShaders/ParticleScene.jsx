@@ -1,4 +1,4 @@
-import { OrbitControls, Sphere } from "@react-three/drei";
+import { Sphere } from "@react-three/drei";
 import Grass from "./Grass";
 import GrassParticles from "./GrassParticles";
 import Particles from "./Particles";
@@ -8,7 +8,6 @@ function ParticleScene({ grass }) {
   
   return(
     <>
-      <OrbitControls />
       {grass ?
         <> 
           <Grass>

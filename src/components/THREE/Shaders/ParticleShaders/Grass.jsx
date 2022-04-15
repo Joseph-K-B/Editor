@@ -4,6 +4,7 @@ import * as THREE from 'three';
 import { extend, useFrame } from "@react-three/fiber";
 import { Sampler } from "@react-three/drei";
 import { Depth, LayerMaterial } from "lamina";
+
 import Perlin from 'perlin.js';
 
 import WindLayer from '../Noise/WindLayer';
@@ -45,7 +46,7 @@ function Grass({ children, strands = 6000, ...props }) {
       />
     </LayerMaterial>
     </instancedMesh>
-    <group>
+      <group>
         <Sampler
           transform={({ position, normal, dummy: object }) => {
             const p = position.clone().multiplyScalar(5)
