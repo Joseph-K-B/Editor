@@ -9,8 +9,8 @@ import { useEffect, useReducer, useState } from "react";
 function GeoInventory(){
   const [loading, setLoading] = useState(true);
   const darkMode = useStore((state) => state.darkMode);
-  const inventoryActive = useStore((state) => state.inventoryActive);
-  const setInventoryActive = useStore((state) => state.setInventoryActive); 
+  const activeInventory = useStore((state) => state.activeInventory);
+  const setActiveInventory = useStore((state) => state.setActiveInventory); 
   
   
   const meshControls = useStore((state) => state.meshControls);
@@ -18,8 +18,8 @@ function GeoInventory(){
   const setMesh = useStore ((state) => state.setMesh);
 
   const props = useSpring({
-    right: inventoryActive ? window.innerWidth - 100 : window.innerWidth - 90,
-    top: inventoryActive ? window.innerHeight - 750 : window.innerHeight - 65
+    right: activeInventory ? window.innerWidth - 100 : window.innerWidth - 90,
+    top: activeInventory ? window.innerHeight - 750 : window.innerHeight - 65
   })
 
   useEffect(() => {
@@ -35,8 +35,8 @@ function GeoInventory(){
 
   return (
     <>
-      <a.section className={css.inventory} style={inventoryActive ? props : null}>
-        <button onClick={() => setInventoryActive(false)}>
+      <a.section className={css.inventory} style={activeInventory ? props : null}>
+        <button onClick={() => setActiveInventory(null)}>
           Toggle
         </button>
         {shapes.map((shape) => 
@@ -56,9 +56,12 @@ function GeoInventory(){
           </button>
           )
         }
-        <button onClick={() => setInventoryActive(false)}>
-          Toggle
-        </button>
+        <div>
+          <img src=''/>
+          <button onClick={() => setActiveInventory(null)}>
+            Toggle
+          </button>
+        </div>
       </a.section>
     </>
   );

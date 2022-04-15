@@ -17,14 +17,9 @@ function ControlMenu() {
     display: 'none',
   })
 
-  const handleActiveControls = (e) => {
-    setActiveControls(e);
+  const handleActiveControls = (v) => {
+    setActiveControls(v);
   };
-
-  const handlePrev = (e) => {
-    console.log(meshControls, activeControls)
-  }
-
 
   return(
   <>   
@@ -37,7 +32,7 @@ function ControlMenu() {
               key= {i}
               value={control.handler} 
               className={darkMode ? css.darkBtn : css.btn} 
-              onClick={(e) => handleActiveControls(control.handler)}
+              onClick={() => handleActiveControls(control.handler)}
             >
               <img 
                 src={`/icons/${control.parent}/${control.name}/${control.name}_icon.svg`} 
@@ -52,23 +47,6 @@ function ControlMenu() {
             </button>
           </a.div>
         )}
-        {
-          activeControls ?
-            <button 
-              className={darkMode ? css.darkBtn : css.btn} 
-              onClick={handlePrev}
-            >
-              <div className={css.btn}>
-                <img src='/icons/arrows/back_icon.svg'/>
-                <label 
-                  htmlFor="previous-menu" 
-                  aria-label="previous-menu"
-                >
-                  Back
-                </label>
-              </div>
-            </button> : null
-        }
       </section>
     </>    
   );

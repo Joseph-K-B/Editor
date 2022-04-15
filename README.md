@@ -35,7 +35,9 @@ https://www.iconfinder.com/search?q=cone&price=free
 https://www.iconfinder.com/search?q=geometry&price=free
 https://www.iconfinder.com/search?q=wood&price=free
 https://www.iconfinder.com/search?q=model&price=free
-https://www.iconfinder.com/icons/5945314/geometry_mesh_shape_icon
+
+
+
 
 https://www.iconfinder.com/korawan_m
 https://www.iconfinder.com/icons/3847915/arrow_back_icon
@@ -49,6 +51,9 @@ https://www.iconfinder.com/icons/2357054/blend_blender_drink_juice_mixer_smoothi
 https://www.streamlinehq.com/
 https://www.iconfinder.com/webalys
 https://www.iconfinder.com/icons/185063/photo_camera_polaroid_icon
+https://www.iconfinder.com/icons/185058/grid_lines_icon
 
+https://www.iconfinder.com/iconfinder
+https://www.iconfinder.com/icons/5945314/geometry_mesh_shape_icon
 
 

@@ -7,7 +7,6 @@ import css from './control-panel.css';
 function ControlPanel() {
   const [active, setActive] = useState();
   const darkMode = useStore((state) => state.darkMode);
-  const setInventoryActive = useStore((state) => state.setInventoryActive);  
   
   const rActive = useStore((state) => state.rActive);
   
@@ -15,24 +14,39 @@ function ControlPanel() {
   const setMesh = useStore ((state) => state.setMesh);
   const meshControls = useStore ((state) => state.meshControls);
   const activeControls = useStore ((state) => state.activeControls);
+  const activeInventory = useStore ((state) => state.activeInventory);
   const vectorOptions = useStore ((state) => state.vectorOptions);
 
+  const setActiveInventory = useStore((state) => state.setActiveInventory);  
+  const setActiveControls = useStore((state) => state.setActiveControls);  
+  
   const props= useSpring({
     display: active ? 'block' : 'none',
   });
-
+  
   const handleToggle = (v) => {
     active === v ? setActive(null) : setActive(v);
-    console.log(active)
   }
+  
+  // const handleColor= (e) => {
+    //   mesh.material.color = e.target.value;
+    //   setMesh({ ...mesh });
+    // }
     
-  const handleColor= (e) => {
-    mesh.material.color = e.target.value;
-    setMesh({ ...mesh });
+    const handleChange= (e) => {
+      activeControls === 'geoControls' ?
+      mesh.geometry[e.target.id] = e.target.value
+      : mesh.material[e.target.id] = e.target.value
+      setMesh({ ...mesh });
+      console.log(e.target)
   }
 
   const handleToggleInventory = (v) => {
-    setInventoryActive(v)
+    activeInventory ? setActiveInventory(null) : setActiveInventory(v)
+  }
+
+  const handlePrev = (e) => {
+    setActiveControls(0)
   }
 
   return(
@@ -40,6 +54,18 @@ function ControlPanel() {
         <section 
           className={css.controlSection}
         >
+          <div className={css.btn}>
+          <button 
+            className={darkMode ? css.darkBtn : css.btn} 
+            onClick={handlePrev}
+          >
+            <img src='/icons/arrows/back_icon.svg'/>
+            <label 
+              htmlFor="previous-menu" 
+              aria-label="previous-menu"
+            />
+          </button>
+          </div>
         {meshControls[activeControls].inputs.map(input =>
             <>
               <label 
@@ -47,12 +73,16 @@ function ControlPanel() {
                 aria-label={`${input.label}-toggle`}
               >
                 <button  
-                  onClick={() => handleToggle(input.label)}
+                  onClick={ () => 
+                    input.key === 'inventory' ? 
+                    handleToggleInventory(input.label) :
+                    handleToggle(input.label) 
+                }
                   className={rActive ? css.toggleBtn : css.hidden}
                 >
                   {input.label}
                 </button>
-              </label>
+              </label> 
             <a.section 
               style={active === input.label ? props : null} 
               className={css.hidden}
@@ -86,15 +116,12 @@ function ControlPanel() {
                   }
                 </div>
                 <input
+                  id={input.value} 
                   type={input.type} 
                   className={darkMode ? css.controlDark : css.control} 
-                  onClick={(v) => handleToggleInventory(input.label)}
-                  id={`${input.label}-input`}
-                />
-                <img 
-                  src={`/icons/${meshControls[activeControls].parent}/${meshControls[activeControls].name}/${input.icon}_icon.svg`}
-                  onClick={(v) => handleToggleInventory(input.label)} 
-                  alt={input.label}
+                  onChange={(v) => handleChange(v)}
+                  min={input.type === 'range' ? 0.25 : null}
+                  max={input.type === 'range' ? 10.0 : null}
                 />
               </div>
             </a.section>

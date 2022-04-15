@@ -2,6 +2,7 @@ import create from 'zustand'
 import * as shaders from '../components/THREE/Shaders/Archive/index';
 
 import * as THREE from 'three';
+import { bool } from 'prop-types';
 
 const useStore = create((set) => ({
   
@@ -17,13 +18,13 @@ const useStore = create((set) => ({
   setRActive: (rActive) => set({rActive}),
   navActive: false,
   setNavActive: (navActive) => set({navActive}),
-  inventoryActive: '',
-  setInventoryActive: (inventoryActive) => set({inventoryActive}),
-
+  
   
   /* GUI Controls */
   activeControls: '',
   setActiveControls: (activeControls) => set({activeControls}),
+  activeInventory: '',
+  setActiveInventory: (activeInventory) => set({activeInventory}),
 
   vectorOptions: {
     inputs: [
@@ -93,7 +94,7 @@ const useStore = create((set) => ({
       {
         name: 'material',
         parent: 'mesh',
-        handler: 'materialControls',
+        handler: 'matControls',
         label: 'Material',
       },
       {
@@ -109,7 +110,7 @@ const useStore = create((set) => ({
         'cone', 
         'cylinder', 
         'torus', 
-        'icosahedron', 
+        'tetrahedron', 
         'plane', 
         'torus_knot',
       ],
@@ -120,6 +121,7 @@ const useStore = create((set) => ({
         key: 'geoControls',
           inputs: [
             {
+              key: 'inventory',
               type: 'button',
               dataType: 'bool',
               icon: 'cube',
@@ -129,42 +131,57 @@ const useStore = create((set) => ({
             {
               type: 'range',
               dataType: 'v3',
+              value: [1, 1, 1],
               label: 'Args',
               icon: 'cube',
-              handler: [],
+              handler: 'handleVecThree',
             },
             {
               type: 'range',
               label: 'Position',
               dataType: 'v3',
               icon: 'cube',
-              handler: [],
+              handler: 'handleVecThree',              
             },
             {
               type: 'range',
               label: 'Scale',
               dataType: 'f',
               icon: 'cube',
-              handler: null,
+              handler: 'handleFloat',              
+              value: 'scale',
             },
           ],
         },
-      materialControls: [
+        matControls:
         {
           name: 'material',
           parent: 'mesh',
+          key: 'matControls',
           inputs: [
             {
+              key: 'inventory',
+              type: 'button',
+              label: 'materials',
+              handler: false,
+              dataType: 'bool',
+            },
+            {
+              value: 'color',
               type: 'color',
               label: 'Color',
               handler: 'handleColor',
-            }
+              //technically a vector but would conflict w/ map
+              dataType: 'rgba',
+            },
+            {
+              value: 'wireframe',
+              type: 'radio',
+              label: 'Wireframe',
+              dataType: 'bool',
+            },
           ]
       },
-      // {
-      //   name: 'meshNormalMaterial',
-      // }
-    ]
   },
 
   setMeshControls: (meshControls) => set({meshControls}),
