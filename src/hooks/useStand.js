@@ -81,7 +81,7 @@ const useStore = create((set) => ({
       scale: 1,
     },
     material: {
-      type: 'basic',
+      name: 'Basic',
       color: 'blue',
       wireframe: false,
     },
@@ -113,6 +113,14 @@ const useStore = create((set) => ({
         'tetrahedron', 
         'plane', 
         'torus_knot',
+      ],
+      materials: [
+        'Basic', 
+        'Normal', 
+        'Standard', 
+        'Physical', 
+        'Phong',
+        'Reflector',
       ],
       geoControls:
       {
@@ -299,6 +307,14 @@ shaders: [
   {
     id: '19',
     fragmentShader: shaders.frag19.default
+  },
+  {
+    id: '20',
+    fragmentShader: shaders.frag20.default
+  },
+  {
+    id: '21',
+    fragmentShader: shaders.frag21.default
   },
 ],
 

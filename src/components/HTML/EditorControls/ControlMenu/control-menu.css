@@ -35,12 +35,17 @@
 }
 
 .darkBtn {
-  max-width: 5rem;
-  max-height: 3rem;
+  max-width: 10rem;
+  max-height: 10rem;
   background-color: rgba(107, 0, 128, 0.171);
   border: none;
   color: rgba(107, 0, 128, 0.171);
   font-weight: 400;
+}
+
+.darkBtn img {
+  min-width: 10rem;
+  min-height: 10rem;
 }
 
 .darkBtn:hover {

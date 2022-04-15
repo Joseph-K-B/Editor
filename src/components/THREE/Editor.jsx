@@ -6,7 +6,7 @@ import { a } from "@react-spring/three";
 
 import Terrain from "./Staging/Terrain";
 import { useStore } from "../../hooks/useStand";
-import GeometriesSwitch from './Geometries/GeometriesSwtch';
+import GeometriesSwitch from './Switches/GeometriesSwtch';
 
 function Editor() {
   const shaders = useStore((state) => state.shaders);

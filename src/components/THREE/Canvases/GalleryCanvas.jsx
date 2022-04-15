@@ -2,12 +2,12 @@ import { Canvas } from '@react-three/fiber';
 import {Stats } from '@react-three/drei';
 import { useLocation } from 'react-router-dom';
 
-import { useStore } from '../../hooks/useStand';
+import { useStore } from '../../../hooks/useStand';
 
-import ShaderGallery from './ShaderGallery';
+import ShaderGallery from '../ShaderGallery';
 
 
-import css from '../../app.css';
+import css from './canvas.css';
 
 function ThreeCanvas() {
   const darkMode = useStore((state) => state.darkMode);

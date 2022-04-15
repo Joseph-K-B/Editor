@@ -5,7 +5,7 @@ import { useFrame, useThree } from "@react-three/fiber";
 
 import { useStore } from "../../../hooks/useStand";
 
-import GeometriesSwitch from "../Geometries/GeometriesSwtch";
+import GeometriesSwitch from "../Switches/GeometriesSwtch";
 
 import vertex from './Archive/1/vertex.glsl';
 

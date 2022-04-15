@@ -8,6 +8,7 @@ import css from './control-menu.css';
 function ControlMenu() {
   const darkMode = useStore((state) => state.darkMode);
   
+  const rActive = useStore((state) => state.rActive);
 
   const meshControls = useStore ((state) => state.meshControls);
   const activeControls = useStore ((state) => state.activeControls);
@@ -21,15 +22,17 @@ function ControlMenu() {
     setActiveControls(v);
   };
 
+  // 
+
   return(
   <>   
       <section className={css.controlMenu}>
         {meshControls.meshMenu.map((control, i) =>
-          <a.div 
-            className={css.control} 
+          <a.div
+            key= {i} 
+            className={rActive ? css.control : css.hidden} 
             style={activeControls && control.handler != activeControls ? props : null}>
-            <button
-              key= {i}
+            <button              
               value={control.handler} 
               className={darkMode ? css.darkBtn : css.btn} 
               onClick={() => handleActiveControls(control.handler)}

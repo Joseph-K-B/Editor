@@ -17,6 +17,7 @@ function Drawer() {
   //Drawer Toggle
   const lActive = useStore((state) => state.lActive);
   const setLActive = useStore((state) => state.setLActive);
+  const activeInventory = useStore((state) => state.activeInventory);
 
   
   const props = useSpring({
@@ -36,7 +37,7 @@ function Drawer() {
 
   return(
     <>
-    <a.section className={css.drawer} style={props}>
+    <a.section className={activeInventory ? css.hidden : css.drawer} style={props}>
       <div className={css.toggle}>
       <button className={css.tab} onClick={handleToggleLeft}>
           { lActive ? 

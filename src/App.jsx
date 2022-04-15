@@ -1,8 +1,8 @@
 import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 
-
-import Main from "./views/Main";
-import Gallery from "./views/Gallery";
+import GalleryView from './views/GalleryView';
+import Main from './views/MainView';
+import ParticleView from './views/ParticleView';
 
 export default function App() {
   return (
@@ -10,9 +10,9 @@ export default function App() {
       <Router>
         <Routes>
           <Route path='/' element={<Main />} />
-          <Route path='/gallery' element={<Gallery />} />
+          <Route path='/gallery' element={<GalleryView />} />
+          <Route path='/gallery' element={<ParticleView />} />
           <Route path='/editor' element={<Main />} />
-          <Route path='/particles' element={<Main />} />
         </Routes>
       </Router>
     </>

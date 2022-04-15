@@ -70,3 +70,7 @@
 .panel img {
   max-height: 3.5rem;
 }
+
+.hidden {
+  display: none;
+}
