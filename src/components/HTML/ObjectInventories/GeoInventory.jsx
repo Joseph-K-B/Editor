@@ -7,8 +7,9 @@ import { useEffect, useReducer, useState } from "react";
 
 
 function GeoInventory(){
-  const [loading, setLoading] = useState(true);
+  const [setLoading] = useState(true);
   const darkMode = useStore((state) => state.darkMode);
+
   const activeInventory = useStore((state) => state.activeInventory);
   const setActiveInventory = useStore((state) => state.setActiveInventory); 
   
@@ -18,9 +19,9 @@ function GeoInventory(){
   const setMesh = useStore ((state) => state.setMesh);
 
   const props = useSpring({
-    right: activeInventory ? window.innerWidth - 100 : window.innerWidth - 90,
-    top: activeInventory ? window.innerHeight - 750 : window.innerHeight - 65
-  })
+    right: activeInventory ? window.innerWidth - 220 : window.innerWidth - 220,
+    top: activeInventory ? window.innerHeight - 750 : window.innerHeight
+  });
 
   useEffect(() => {
     setLoading(false)
@@ -35,16 +36,19 @@ function GeoInventory(){
 
   return (
     <>
-      <a.section className={css.inventory} style={activeInventory ? props : null}>
+      <a.section 
+        className={css.inventory} 
+        style={props}
+      >
         <button onClick={() => setActiveInventory(null)}>
           Toggle
         </button>
-        {shapes.map((shape) => 
+        {shapes.map((shape, i) => 
+          <div className={darkMode ? css.selectionDark : css.selection}  key={i}>
             <button 
-              className={darkMode ? css.selectionDark : css.selection} 
+              className={css.btn} 
               onClick={() => handleShape(shape)}
             >
-            <div className={css.btn}>
               <img src={`/icons/mesh/geometry/${shape}_icon.svg`} />
               <label 
                 htmlFor="${shape}-geometry" 
@@ -52,8 +56,8 @@ function GeoInventory(){
               >
                 {shape.charAt(0).toUpperCase() + shape.slice(1)}
               </label>
-            </div>
-          </button>
+            </button>
+          </div>
           )
         }
         <div>

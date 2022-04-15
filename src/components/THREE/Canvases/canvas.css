@@ -1,0 +1,15 @@
+.CanvasDark {
+  min-height: 100vh;
+  min-width: 100vw;
+  background-color: #161618;
+  margin: 0;
+  padding: 0;
+}
+
+.Canvas {
+  min-height: 100vh;
+  min-width: 100vw;
+  background-color: #FBFCF8;
+  margin: 0;
+  padding: 0;
+}

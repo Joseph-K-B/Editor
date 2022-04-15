@@ -6,7 +6,8 @@
   right: 0;
   min-height: 85vh;
   z-index: 9;
-  background-color: rgba(11, 11, 11, 0.742);
+  background-color: rgba(107, 0, 128, 0.171);
+  /* background-color: rgba(11, 11, 11, 0.742); */
   padding:0 5% 0 0;
 }
 

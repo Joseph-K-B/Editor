@@ -66,9 +66,10 @@ function ControlPanel() {
             />
           </button>
           </div>
-        {meshControls[activeControls].inputs.map(input =>
+        {meshControls[activeControls].inputs.map((input, i) =>
             <>
-              <label 
+              <label
+                key={i} 
                 htmlFor={`${input.label}-toggle`} 
                 aria-label={`${input.label}-toggle`}
               >
