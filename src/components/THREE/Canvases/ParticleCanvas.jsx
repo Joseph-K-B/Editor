@@ -14,7 +14,7 @@ function ParticleCanvas() {
   return (
     <>
       <Canvas className={darkMode ? css.CanvasDark : css.Canvas}>
-      <OrbitControls />
+        <OrbitControls />
         <Stats />
         <ParticleScene grass/>
       </Canvas>

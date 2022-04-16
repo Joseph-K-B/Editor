@@ -11,7 +11,7 @@ export default function App() {
         <Routes>
           <Route path='/' element={<Main />} />
           <Route path='/gallery' element={<GalleryView />} />
-          <Route path='/gallery' element={<ParticleView />} />
+          <Route path='/particles' element={<ParticleView />} />
           <Route path='/editor' element={<Main />} />
         </Routes>
       </Router>

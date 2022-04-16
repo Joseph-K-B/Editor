@@ -3,7 +3,7 @@ import Drawer from "../components/HTML/Drawer/Drawer";
 import ControlsDrawer from "../components/HTML/EditorControls/ControlsDrawer/ControlsDrawer";
 
 import GeoInventory from "../components/HTML/ObjectInventories/GeoInventory";
-import GalleryCanvas from "../components/THREE/Canvases/ParticleCanvas";
+import GalleryCanvas from "../components/THREE/Canvases/GalleryCanvas";
 
 import useResize from "../hooks/useResize";
 
