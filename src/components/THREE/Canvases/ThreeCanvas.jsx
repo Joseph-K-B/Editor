@@ -17,7 +17,7 @@ function ThreeCanvas() {
   return (
     <>
       <Canvas className={darkMode ? css.CanvasDark : css.Canvas}>
-      <OrbitControls />
+      {/* <OrbitControls /> */}
 
         <Stats />
         { 

@@ -1,4 +1,4 @@
-import { Suspense, useEffect} from "react";
+import { Suspense, useEffect, useRef} from "react";
 import { Html, OrbitControls } from "@react-three/drei";
 import { useSpring } from "@react-spring/core";
 import { a } from "@react-spring/three";
@@ -13,18 +13,23 @@ function Editor() {
   const mesh = useStore((state) => state.mesh);
   const grid = useStore((state) => state.grid);
 
-  const { spring } = useSpring({
-    spring: mesh,
-    config: { mass: 5, tension: 400, friction: 50, precision: 0.0001 },
-  });
 
-  const scale = spring.to([0, 1], [1, mesh.geometry.scale]);
+  const ref = useRef();
+
+  // const { spring } = useSpring({
+  //   spring: mesh,
+  //   config: { mass: 5, tension: 400, friction: 50, precision: 0.0001 },
+  // });
+
+  // const target = mesh ? mesh.geometry.scale : 1
+  // const scale = spring.to([0, target]);
 
   return(
     <>
       <Suspense fallback={<Html><h1>Loading...</h1></Html>}>
         {grid ? <Terrain /> : null}
         <a.mesh
+          ref={ref}
           // scale={scale}
           scale={mesh.geometry.scale}
         >
