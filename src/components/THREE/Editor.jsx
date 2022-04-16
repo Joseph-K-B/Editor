@@ -19,7 +19,7 @@ function Editor() {
   // const { spring } = useSpring({
   //   spring: mesh,
   //   config: { mass: 5, tension: 400, friction: 50, precision: 0.0001 },
-  // });
+  // }); 
 
   // const target = mesh ? mesh.geometry.scale : 1
   // const scale = spring.to([0, target]);
