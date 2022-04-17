@@ -5,12 +5,9 @@ import { Html, OrbitControls } from "@react-three/drei";
 import { useThree } from "@react-three/fiber";
 
 import { useStore } from "../../hooks/useStand";
-import Anemone from "../SAND/Glyph";
-import Geo from "../SAND/Geo";
+
 import ShadeGeo from "./Shaders/ShadeGeo";
 import Terrain from "./Staging/Terrain";
-import DragGesture from "../SAND/DragGesture";
-import Glyph from "../SAND/Glyph";
 import OceanGeo from "./Shaders/ClassShaders/Ocean/OceanGeo";
 
 

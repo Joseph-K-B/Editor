@@ -1,26 +1,28 @@
+import { Suspense } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls, Stats } from '@react-three/drei';
-import { useLocation } from 'react-router-dom';
 
 import { useStore } from '../../../hooks/useStand';
 
-import Editor from '../Editor';
-import Landing from '../Landing';
+import Rio from '../Models/Rio';
 
 import css from './canvas.css';
 
-function ThreeCanvas() {
+
+function ModelCanvas() {
   const darkMode = useStore((state) => state.darkMode);
-  const location = useLocation();
 
   return (
     <>
       <Canvas className={darkMode ? css.CanvasDark : css.Canvas}>
         <Stats />
-          { location.pathname === '/editor' ? <Editor /> : <Landing /> }
+        <OrbitControls />
+        <Suspense fallback={null}>
+          <Rio />
+        </Suspense>
       </Canvas>
     </>
   );
 };
 
-export default ThreeCanvas;
+export default ModelCanvas;
