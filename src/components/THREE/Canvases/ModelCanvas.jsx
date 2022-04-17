@@ -1,6 +1,6 @@
 import { Suspense } from 'react';
 import { Canvas } from '@react-three/fiber';
-import { OrbitControls, Stats } from '@react-three/drei';
+import { OrbitControls, Stars, Stats } from '@react-three/drei';
 
 import { useStore } from '../../../hooks/useStand';
 
