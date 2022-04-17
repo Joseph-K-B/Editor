@@ -6,7 +6,7 @@ import { useFrame } from "@react-three/fiber";
     
 import './OceanMaterial'    
     
-function OceanGeo({gallery}) {
+function OceanGeo({ gallery }) {
   const oceanMaterial = useRef();
 
   const props = {
