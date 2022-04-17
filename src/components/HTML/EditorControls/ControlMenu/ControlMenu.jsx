@@ -23,8 +23,6 @@ function ControlMenu() {
     setActiveControls(v);
   };
 
-  // 
-
   return(
   <>   
       <section className={css.controlMenu}>

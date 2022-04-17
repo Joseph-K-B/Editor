@@ -9,6 +9,7 @@ import { useStore } from "../../hooks/useStand";
 import GeometriesSwitch from './Switches/GeometriesSwtch';
 
 function Editor() {
+  // const [active, setActive] = useState(0);
   const shaders = useStore((state) => state.shaders);
   const mesh = useStore((state) => state.mesh);
   const grid = useStore((state) => state.grid);
@@ -17,7 +18,7 @@ function Editor() {
   const ref = useRef();
 
   // const { spring } = useSpring({
-  //   spring: mesh,
+  //   spring: active,
   //   config: { mass: 5, tension: 400, friction: 50, precision: 0.0001 },
   // }); 
 

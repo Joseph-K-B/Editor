@@ -10,6 +10,8 @@ import Geo from "../SAND/Geo";
 import ShadeGeo from "./Shaders/ShadeGeo";
 import Terrain from "./Staging/Terrain";
 import DragGesture from "../SAND/DragGesture";
+import Glyph from "../SAND/Glyph";
+import OceanGeo from "./Shaders/ClassShaders/Ocean/OceanGeo";
 
 
 function Landing(){
@@ -47,18 +49,15 @@ function Landing(){
   //   setLoading(false);
   // }, []);
 
-  const targetPosition = new THREE.Vector3()
+  const targetPosition = new THREE.Vector3();
+  
   useEffect(() => {
     if( orbitRef.current && activeObject ) {
       const currentCamera = camera.position.clone()
       if(activeObject) {
-        // setActiveOrbit(false)
         orbitRef.current.reset()
         targetPosition.set(activeObject.position);
       }
-      // if(!activeObject) {
-      //   setActiveOrbit(true)
-      // }
       camera.position.copy(currentCamera);
       camera.lookAt(0, 0, 0);
     }
@@ -73,7 +72,7 @@ function Landing(){
       <Suspense fallback={<Html><h1>Loading...</h1></Html>}>
       { grid ? <Terrain /> : null }
       <OrbitControls 
-        enabled={activeCamera ? true : false} 
+        enabled={activeObject ? false : true} 
         ref={orbitRef}
       />
         <Suspense fallback={null}>
@@ -92,7 +91,9 @@ function Landing(){
           )}
           </group>*/}
           {/* <Geo revolution={2} xRad={1} zRad={1} scale={0.25}/> */}
-          <DragGesture />
+          {/* <DragGesture /> */}
+          {/* <Glyph /> */}
+          <OceanGeo />
       </Suspense>
     </Suspense>
     </>

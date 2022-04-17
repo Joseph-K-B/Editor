@@ -22,7 +22,7 @@ const useStore = create((set) => ({
   /*Scene Controls*/
   activeObject: null,
   setActiveObject: (activeObject) => set({activeObject}),
-  activeCamera: null,
+  activeCamera: true,
   setActiveCamera: (activeCamera) => set({activeCamera}),
 
 

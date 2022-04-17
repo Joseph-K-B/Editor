@@ -17,8 +17,6 @@ function ThreeCanvas() {
   return (
     <>
       <Canvas className={darkMode ? css.CanvasDark : css.Canvas}>
-      {/* <OrbitControls /> */}
-
         <Stats />
         { 
           location.pathname === '/gallery' ? <Gallery toggle /> : 

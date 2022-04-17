@@ -4,6 +4,7 @@ import { Box, Flex } from "@react-three/flex";
 import { Suspense, useEffect, useState } from "react";
 
 import { useStore } from "../../hooks/useStand";
+import OceanGeo from "./Shaders/ClassShaders/Ocean/OceanGeo";
 
 import ShadeGeo from "./Shaders/ShadeGeo";
 
@@ -48,6 +49,11 @@ function ShaderGallery({ toggle }) {
             </Suspense>
           </Box>
         )}
+          <Box key={'oceanGeo'} centerAnchor margin={0.35} marginTop={1}>
+            <Suspense fallback={null}>
+              <OceanGeo l={3} w={3} gallery/>
+            </Suspense>
+          </Box>
         </Flex>
       </Scroll>
     </ScrollControls>

@@ -22,6 +22,7 @@ function Drawer() {
   //Camera Toggle
   const activeCamera = useStore((state) => state.activeCamera);
   const setActiveCamera = useStore ((state) => state.setActiveCamera);
+  const setActiveObject = useStore ((state) => state.setActiveObject);
 
   
   const props = useSpring({
@@ -41,6 +42,7 @@ function Drawer() {
 
   const handleToggleCamera = () => {
     setActiveCamera(!activeCamera);
+    setActiveObject(null);
   }
 
   return(
