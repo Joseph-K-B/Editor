@@ -9,6 +9,8 @@ import { useStore } from "../../hooks/useStand";
 import ShadeGeo from "./Shaders/ShadeGeo";
 import Terrain from "./Staging/Terrain";
 import OceanGeo from "./Shaders/ClassShaders/Ocean/OceanGeo";
+import Glyph from "../SAND/Glyph";
+import Ecliptic from "../SAND/Ecliptic";
 
 
 function Landing(){
@@ -87,10 +89,14 @@ function Landing(){
             />
           )}
           </group>*/}
-          {/* <Geo revolution={2} xRad={1} zRad={1} scale={0.25}/> */}
           {/* <DragGesture /> */}
           {/* <Glyph /> */}
-          <OceanGeo />
+          <Ecliptic 
+            color='blue'
+            xRad={1}
+            zRad={1}
+          />
+          {/* <OceanGeo /> */}
       </Suspense>
     </Suspense>
     </>

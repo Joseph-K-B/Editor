@@ -5,6 +5,8 @@ import {animated as a, useSpring} from '@react-spring/three';
 
 import { useStore } from "../../hooks/useStand";
 import { useDrag } from "react-use-gesture";
+import Geo from "./Geo";
+import Ecliptic from "./Ecliptic";
 
 
 function Glyph() {
@@ -23,19 +25,19 @@ function Glyph() {
 
   const [spring, setSpring] = useSpring(() => ({ position: [0, 0, 0], scale: [1, 1, 1] }))
 
-  const bind = useDrag(({ offset: [x, y] }) => activeObject ? setSpring({ position: [x, y, 0] }) : null, {
+  const bind = useDrag(({ offset: [x, y] }) => activeObject ? setSpring({ position: [0, y, 0] }) : null, {
     // bounds are expressed in canvas coordinates!
     bounds: { left: -width / 2, right: width / 2, top: -height / 2, bottom: height / 2 },
     rubberband: true,
     transform: ([x, y]) => [x / factor, -y / factor]
-  })
+  });
 
 
   const handleToggleDrag = () => {
     setActiveCamera(false);
     setActiveObject(!activeObject)
     console.log(activeObject)
-  }
+  };
 
   return(
     <>
@@ -65,6 +67,11 @@ function Glyph() {
           />
         </a.mesh>
       </group>
+        <Ecliptic 
+          color='blue'
+          xRad={1}
+          zRad={1}
+        />
     </>
   );
 };

@@ -28,14 +28,16 @@ function ControlsDrawer(){
   return(
     <>
       <a.section className={css.rDrawer} style={rProps}>
-        <div className={css.toggle}>
+        <div className={css.toggle} unselectable='on'>
           <button className={css.tab} onClick={handleToggle}>
             { rActive ? 
-              <img 
+              <img
+                unselectable='on' 
                 src={darkMode ? '/icons/arrows/white_R.png' : '/icons/arrows/black_R.png'} 
                 alt='open'
               /> : 
-              <img  
+              <img
+                unselectable='on'  
                 src={darkMode ? '/icons/arrows/white_L.png' : '/icons/arrows/black_L.png'} 
                 alt='close'
               />  

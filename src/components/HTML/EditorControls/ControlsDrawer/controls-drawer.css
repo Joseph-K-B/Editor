@@ -19,6 +19,7 @@
   min-width: 0.15rem;
   min-height: 85vh;
   padding-right: 5%;
+  user-select: none;
 }
 
 .btn {
