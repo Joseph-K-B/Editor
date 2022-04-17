@@ -19,12 +19,20 @@ const useStore = create((set) => ({
   navActive: false,
   setNavActive: (navActive) => set({navActive}),
   
-  
+  /*Scene Controls*/
+  activeObject: null,
+  setActiveObject: (activeObject) => set({activeObject}),
+  activeCamera: true,
+  setActiveCamera: (activeCamera) => set({activeCamera}),
+
+
+
   /* GUI Controls */
   activeControls: '',
   setActiveControls: (activeControls) => set({activeControls}),
   activeInventory: '',
   setActiveInventory: (activeInventory) => set({activeInventory}),
+  
 
   vectorOptions: {
     inputs: [

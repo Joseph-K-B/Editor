@@ -14,6 +14,7 @@ function ControlMenu() {
   const activeControls = useStore ((state) => state.activeControls);
   const setActiveControls = useStore ((state) => state.setActiveControls);
 
+
   const props = useSpring({
     display: 'none',
   })
@@ -21,8 +22,6 @@ function ControlMenu() {
   const handleActiveControls = (v) => {
     setActiveControls(v);
   };
-
-  // 
 
   return(
   <>   

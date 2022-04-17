@@ -19,6 +19,11 @@ function Drawer() {
   const setLActive = useStore((state) => state.setLActive);
   const activeInventory = useStore((state) => state.activeInventory);
 
+  //Camera Toggle
+  const activeCamera = useStore((state) => state.activeCamera);
+  const setActiveCamera = useStore ((state) => state.setActiveCamera);
+  const setActiveObject = useStore ((state) => state.setActiveObject);
+
   
   const props = useSpring({
     right: lActive ? window.innerWidth - 200 : window.innerWidth - 0,
@@ -33,6 +38,11 @@ function Drawer() {
 
   const handleToggleGrid = () => {
     setGrid(!grid);
+  }
+
+  const handleToggleCamera = () => {
+    setActiveCamera(!activeCamera);
+    setActiveObject(null);
   }
 
   return(
@@ -63,7 +73,7 @@ function Drawer() {
         </button>
         <button 
           className={darkMode ? css.controlDark : css.control} 
-          onClick={() => handleShape('cube')}
+          onClick={handleToggleCamera}
           >
           <img src='/icons/camera/camera_icon.png'/>
           <p>Camera</p>

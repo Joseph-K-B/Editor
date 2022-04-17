@@ -32,7 +32,7 @@ function Terrain() {
         ref={mesh}
         args={[100, 100, 100, 100]} 
         rotation={[-Math.PI / 2, 0, 0]} 
-        position={[0, -1, 0]} 
+        position={[0, -2, 0]} 
         // receiveShadow        
       >
         {/* <meshPhysicalMaterial 
