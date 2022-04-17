@@ -50,7 +50,10 @@ function OceanGeo({ gallery }) {
         colorOffset = {props.uColorOffset}
         colorMultiplier= {props.uColorMultiplier}    
       />
-      <planeBufferGeometry args={[4, 4, 512, 512]}/>
+      {gallery ?
+      <boxBufferGeometry args={[1, 1, 1, 512, 512, 512]}/>
+      :
+      <planeBufferGeometry args={[4, 4, 512, 512]}/>}
     </mesh>
   );
 };

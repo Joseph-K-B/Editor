@@ -6,6 +6,7 @@ import * as THREE from 'three';
 
 import { useGLTF } from '@react-three/drei'
 import { useLoader } from '@react-three/fiber';
+import Fireflies from '../Shaders/ClassShaders/Firefly/Fireflies';
 
 export default function Rio({ ...props }) {
   const group = useRef()
