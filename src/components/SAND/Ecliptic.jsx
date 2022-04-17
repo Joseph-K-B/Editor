@@ -6,7 +6,7 @@ import {animated as a, useSpring} from '@react-spring/three';
 import { useStore } from "../../hooks/useStand";
 import { useDrag } from "react-use-gesture";
 
-function Ecliptic({ xRad, zRad, color, revolution = 3}) {
+function Ecliptic({ xRad, zRad, color, planeIntersect}) {
   const activeObject = useStore((state) => state.activeObject);
   const setActiveObject = useStore((state) => state.setActiveObject);
 
@@ -15,27 +15,69 @@ function Ecliptic({ xRad, zRad, color, revolution = 3}) {
   const [active, setActive] = useState();
   const [loading, setLoading] = useState(true);
   
-  const { size, viewport } = useThree();
+  const { size, viewport, intersect } = useThree();
   
   const mesh = useRef();
   const ref = useRef();
   
   const { width, height, factor } = viewport
+  const [pos, setPos] = useState([1, 0, 0])
+  const aspect = size.width / viewport.width;
+
+  const [spring, api] = useSpring(() => ({
+    position: pos,
+    scale: 1,
+    config: { friction: 10 },
+     
+  }));
+
+  let planeIntersectPoint = new THREE.Vector3();
+
+  const bind = useDrag(
+    ({active, offset: [x, z], event}) => {
+      if(active) {
+        event.ray.intersectPlane(planeIntersect, planeIntersectPoint)
+        console.log(event.ray.intersectPlane(planeIntersect, planeIntersectPoint))
+        setPos([planeIntersectPoint.x, 0, planeIntersectPoint.z])
+      }
+      setActiveObject(active);
+
+      api.start({
+        position: pos,
+        // scale: active ? 1.2: 1,
+        bounds: { left: -width / 2 * Math.cos(), right: width / 2 * Math.sin(), top: -height / 2, bottom: height / 2 },
+        rubberband: true,
+        transform: ([x, z]) => [x / factor, z / factor],
+      });
+      // return
+    },
+    { delay: true }
+  )
+
+
+
+
+
+
+
+
+
+
+
 
   
-  const [spring, setSpring] = useSpring(() => ({ position: [1, 0, 0], scale: [1, 1, 1] }))
+  // const [spring, setSpring] = useSpring(() => ({ position: [1, 0, 0], scale: [1, 1, 1] }))
 
-  const bind = useDrag(({ offset: [x, z] }) => activeObject ? setSpring({ position: [x, 0, z] }) : null, {
-    // bounds are expressed in canvas coordinates!
-    bounds: { left: 1 * Math.cos(-width / -width), right: 1 * Math.sin( width / width), top: -height / 2, bottom: height / 2 },
-    rubberband: true,
-    transform: ([x, z]) => [x / factor, z / factor]
-  });
+  // const bind = useDrag(({ offset: [x, z] }) => activeObject ? setSpring({ position: [x, 0, z] }) : null, {
+  //   bounds: { left: 1 * Math.cos(-width / -width), right: 1 * Math.sin( width / width), top: -height / 2, bottom: height / 2 },
+  //   rubberband: true,
+  //   transform: ([x, z]) => [x / factor, z / factor]
+  // });
 
   const handleToggleDrag = () => {
     setActiveCamera(false);
     setActiveObject(!activeObject)
-    console.log(activeObject)
+    // console.log(viewport)
   };
 
   useEffect(() => {

@@ -1,7 +1,7 @@
 import { Suspense, useEffect, useRef, useState } from "react";
 import * as THREE from 'three';
 
-import { Html, OrbitControls } from "@react-three/drei";
+import { Html, OrbitControls, Plane } from "@react-three/drei";
 import { useThree } from "@react-three/fiber";
 
 import { useStore } from "../../hooks/useStand";
@@ -28,6 +28,8 @@ function Landing(){
   const [positions] = useState([]);
 
   const orbitRef = useRef();
+  // const planeIntersect = useRef();
+  const planeHelper = new THREE.Plane(new THREE.Vector3(0, 0, 0) ,0);
 
   // useEffect(() => {
   //   for(let i = 0; i < 10; i++) {
@@ -60,6 +62,7 @@ function Landing(){
       camera.position.copy(currentCamera);
       camera.lookAt(0, 0, 0);
     }
+    // planeIntersect.current ? setLoading(false) : null;
   })
 
 
@@ -95,7 +98,12 @@ function Landing(){
             color='blue'
             xRad={1}
             zRad={1}
+            planeIntersect={planeHelper}
           />
+          {/* <Plane args={[3, 3, 10, 10]} rotation={[Math.PI * 0.5, 0, 0]} ref={planeIntersect}> */}
+          <planeHelper args={[planeHelper, 5, "red"]}/>
+            {/* <meshBasicMaterial color='orange' wireframe/> */}
+          {/* </Plane> */}
           {/* <OceanGeo /> */}
       </Suspense>
     </Suspense>
