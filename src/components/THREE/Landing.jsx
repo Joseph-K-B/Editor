@@ -27,9 +27,9 @@ function Landing(){
   const [activeOrbit, setActiveOrbit] = useState();
   const [positions] = useState([]);
 
-  const orbitRef = useRef();
+  // const orbitRef = useRef();
   // const planeIntersect = useRef();
-  const planeHelper = new THREE.Plane(new THREE.Vector3(0, 0, 0) ,0);
+  // const planeHelper = new THREE.Plane(new THREE.Vector3(0, 0, 0) ,0);
 
   // useEffect(() => {
   //   for(let i = 0; i < 10; i++) {
@@ -50,20 +50,20 @@ function Landing(){
   //   setLoading(false);
   // }, []);
 
-  const targetPosition = new THREE.Vector3();
+  // const targetPosition = new THREE.Vector3();
   
-  useEffect(() => {
-    if( orbitRef.current && activeObject ) {
-      const currentCamera = camera.position.clone()
-      if(activeObject) {
-        orbitRef.current.reset()
-        targetPosition.set(activeObject.position);
-      }
-      camera.position.copy(currentCamera);
-      camera.lookAt(0, 0, 0);
-    }
+  // useEffect(() => {
+  //   if( orbitRef.current && activeObject ) {
+  //     const currentCamera = camera.position.clone()
+  //     if(activeObject) {
+  //       orbitRef.current.reset()
+  //       targetPosition.set(activeObject.position);
+  //     }
+  //     camera.position.copy(currentCamera);
+  //     camera.lookAt(0, 0, 0);
+  //   }
     // planeIntersect.current ? setLoading(false) : null;
-  })
+  // })
 
 
 
@@ -94,17 +94,13 @@ function Landing(){
           </group>*/}
           {/* <DragGesture /> */}
           {/* <Glyph /> */}
-          <Ecliptic 
+          <OceanGeo />
+          {/* <Ecliptic 
             color='blue'
             xRad={1}
             zRad={1}
             planeIntersect={planeHelper}
-          />
-          {/* <Plane args={[3, 3, 10, 10]} rotation={[Math.PI * 0.5, 0, 0]} ref={planeIntersect}> */}
-          <planeHelper args={[planeHelper, 5, "red"]}/>
-            {/* <meshBasicMaterial color='orange' wireframe/> */}
-          {/* </Plane> */}
-          {/* <OceanGeo /> */}
+          /> */}
       </Suspense>
     </Suspense>
     </>
