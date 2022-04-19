@@ -25,11 +25,8 @@ function Landing(){
 
   const [loading, setLoading] = useState();
   const [activeOrbit, setActiveOrbit] = useState();
-  const [positions] = useState([]);
 
-  // const orbitRef = useRef();
-  // const planeIntersect = useRef();
-  // const planeHelper = new THREE.Plane(new THREE.Vector3(0, 0, 0) ,0);
+  const orbitRef = useRef();;
 
   // useEffect(() => {
   //   for(let i = 0; i < 10; i++) {
@@ -92,15 +89,13 @@ function Landing(){
             />
           )}
           </group>*/}
-          {/* <DragGesture /> */}
           {/* <Glyph /> */}
-          <OceanGeo />
-          {/* <Ecliptic 
+          {/* <OceanGeo /> */}
+          <Ecliptic 
             color='blue'
             xRad={1}
             zRad={1}
-            planeIntersect={planeHelper}
-          /> */}
+          />
       </Suspense>
     </Suspense>
     </>

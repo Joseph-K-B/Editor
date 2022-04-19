@@ -15,201 +15,150 @@
     - synchronously apply value to position state of torus
 */
 
+import * as THREE from 'three';
+import { useEffect, useRef, useState } from 'react';
+import { useFrame, useThree } from '@react-three/fiber';
+import {animated as a, useSpring} from '@react-spring/three';
 
+import { useStore } from "../../hooks/useStand";
+import { useDrag } from "react-use-gesture";
 
+function Ecliptic({ xRad, zRad, color }) {
+  const activeObject = useStore((state) => state.activeObject);
+  const setActiveObject = useStore((state) => state.setActiveObject);
 
+  const setActiveCamera = useStore ((state) => state.setActiveCamera);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// import * as THREE from 'three';
-// import { useEffect, useRef, useState } from 'react';
-// import { useFrame, useThree } from '@react-three/fiber';
-// import {animated as a, useSpring} from '@react-spring/three';
-
-// import { useStore } from "../../hooks/useStand";
-// import { useDrag } from "react-use-gesture";
-
-// function Ecliptic({ xRad, zRad, color, planeIntersect}) {
-//   const activeObject = useStore((state) => state.activeObject);
-//   const setActiveObject = useStore((state) => state.setActiveObject);
-
-//   const setActiveCamera = useStore ((state) => state.setActiveCamera);
-
-//   const [active, setActive] = useState();
-//   const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(true);
   
-//   const { size, viewport, intersect } = useThree();
+  const { viewport } = useThree();
   
-//   const mesh = useRef();
-//   const ref = useRef();
+  const mesh = useRef();
   
-//   const { width, height, factor } = viewport
-//   const [pos, setPos] = useState([1, 0, 0])
-//   const aspect = size.width / viewport.width;
+  const { width, height, factor } = viewport;
 
-//   // const [spring, api] = useSpring(() => ({
-//   //   position: pos,
-//   //   scale: 1,
-//   //   config: { friction: 10 },     
-//   // }));
+  const [spring, setSpring] = useSpring(() => ({
+    position: [1, 0, 0],
+    scale: 1,   
+  }));
 
-//   let planeIntersectPoint = new THREE.Vector3();
+  let planeIntersectPoint = new THREE.Vector3();
 
-//   // const bind = useDrag(
-//   //   ({ active, movement: [x, z], event }) => {
-//   //     if(active) {
-//   //       event.ray.intersectPlane(planeIntersect, planeIntersectPoint)
-//   //       console.log(event.ray.intersectPlane(planeIntersect, planeIntersectPoint))
-//   //       setPos([x, 0, z])
-//   //     }
-//   //     setActiveObject(active);
+  // float distFromNuc = 
+  //   Vector3.Distance(
+  //     Camera.main.ScreenToWorldPoint(Input.mousePosition + new Vector3(0,0,cameraZ)), 
+  //     nucleus.position
+  //     );
+  // float deg = 
+  //   Mathf.Atan2(
+  //     Camera.main.ScreenToWorldPoint
+  // (Input.mousePosition + new Vector3(0,0,cameraZ)).y - nucleus.position.y, 
+  //     Camera.main.ScreenToWorldPoint
+  // (Input.mousePosition + new Vector3(0,0,cameraZ)).x - nucleus.position.x
+  //     )
 
-//   //     api.start({
-//   //       position: [x, 0, z],
-//   //       scale: active ? 1.2: 1,
-//   //       bounds: { left: 1 * Math.cos(-width / -width), right: 1 * Math.sin( width / width), top: -height / 2, bottom: height / 2 },
-//   //       rubberband: true,
-//   //       transform: ([x, z]) => [x / factor, z / factor],
-//   //     });
-//   //     return
-//   //   },
-//   //   { delay: true }
-//   //   )
-    
-//     const [spring, setSpring] = useSpring(() => ({ position: [1, 0, 0], scale: [1, 1, 1] }))
+  /* 
+    It’s helpful to think about sine and cosine as the Y(Z) and X 
+    coordinates on a plane as Θ (theta) increases
+  */
+  const bind = useDrag(({ active,  offset: [x, z]}) => activeObject ? setSpring({
+    position: [x, 0, z]
+  }) : null, {
+    /* 
+      bounds are expressed in canvas coordinates!
+      the center point is Vector3(0, 0, 0)
+      diameter: 2
+      circumfrence: Math.PI * 2 
+    */
+
+      bounds: { 
+        left: -width / 2 * Math.acos(theta), 
+        right: width / 2 * Math.sin(theta), 
+        top: -height / 2, 
+        bottom: height / 2
+      },
+      rubberband: true,
+      transform: ([x, z]) => [(x / factor), (z / factor)],
+    });
+
+    const handleToggleDrag = () => {
+      setActiveCamera(false);
+      setActiveObject(!activeObject)
+      console.log(factor)
+    };
   
-//     const bind = useDrag(({ offset: [x, z] }) => activeObject ? setSpring({ position: [x, 0, z] }) : null, {
-//       bounds: { left: -width / Math.acos(0), right: width / Math.sin(0), top: -height / 2, bottom: height / 2 },
-//       rubberband: true,
-//       transform: ([x, z]) => [x / factor, z / factor]
-//     });
-  
-//     const handleToggleDrag = () => {
-//       setActiveCamera(false);
-//       setActiveObject(!activeObject)
-//       // console.log(viewport)
-//     };
-  
-//     useEffect(() => {
-//       mesh.current ? setLoading(false) : null
-//       console.log(mesh.current)
-//     }, []);
+    useEffect(() => {
+      mesh.current ? setLoading(false) : null
+      console.log(mesh.current)
+    }, []);
   
     
     
-//     const points = [];
-//     for (let i = 0; i < 64; i++) {
-//       const angle = (i / 64) * 2 * Math.PI;
-//       const x = xRad * Math.cos(angle);
-//       const z = zRad * Math.sin(angle);
-//       points.push(new THREE.Vector3(x, 0, z));
-//     };
+    const points = [];
+    for (let i = 0; i < 64; i++) {
+      const angle = (i / 64) * 2 * Math.PI;
+      const x = xRad * Math.cos(angle);
+      const z = zRad * Math.sin(angle);
+      points.push(new THREE.Vector3(x, 0, z));
+    };
   
-//     points.push(points[0]);
+    points.push(points[0]);
   
-//     const lineGeo = new THREE.BufferGeometry().setFromPoints(points);
+    const lineGeo = new THREE.BufferGeometry().setFromPoints(points);
   
-//   const vec = new THREE.Vector3();
-//   // const target = useRef();
+  const vec = new THREE.Vector3();
+  // const target = useRef();
 
-//   const rotationMatrix = new THREE.Matrix4();
-//   const targetQuaternion = new THREE.Quaternion();
+  const rotationMatrix = new THREE.Matrix4();
+  const targetQuaternion = new THREE.Quaternion();
 
-//   useEffect(() => {
-//     //traget quaternion should be slightly ahead of obj on revolution of ecliptic
-//     // target.current.position.set(xRad, 0, zRad);  
-//     // rotationMatrix.lookAt( target.current.position, mesh.current.position, mesh.current.up);
-//     targetQuaternion.setFromRotationMatrix( rotationMatrix );
-//   }, [])
+  useEffect(() => {
+    //traget quaternion should be slightly ahead of obj on revolution of ecliptic
+    // target.current.position.set(xRad, 0, zRad);  
+    // rotationMatrix.lookAt( target.current.position, mesh.current.position, mesh.current.up);
+    targetQuaternion.setFromRotationMatrix( rotationMatrix );
+  }, [])
     
-//     // useFrame((state, delta) => {
-//     //   const step = 0.5;
-//     //   if(active) {
-//     //     vec.set(mesh.current.position)
-//     //     mesh.current.position.lerp(vec, step);
-//     //   } else {
-//     //     const t = state.clock.getElapsedTime() * revolution / 7;
-//     //     const x = xRad * Math.sin(t);
-//     //     const z = zRad * Math.cos(t);
-//     //     mesh.current.position.x = x;
-//     //     mesh.current.position.z = z;
-//     //   }
-//     // });
+    // useFrame((state, delta) => {
+    //   const step = 0.5;
+    //   if(active) {
+    //     vec.set(mesh.current.position)
+    //     mesh.current.position.lerp(vec, step);
+    //   } else {
+    //     const t = state.clock.getElapsedTime() * revolution / 7;
+    //     const x = xRad * Math.sin(t);
+    //     const z = zRad * Math.cos(t);
+    //     mesh.current.position.x = x;
+    //     mesh.current.position.z = z;
+    //   }
+    // });
   
-//     return (
-//       <group>
-//         <line 
-//           geometry={lineGeo}
-//         >
-//           <lineBasicMaterial 
-//             color={color} 
-//             linewidth={1} 
-//           />
-//         <a.mesh
-//           ref={mesh}
-//           {...bind()}
-//           {...spring}
-//           scale={0.25}
-//           onClick={handleToggleDrag}
-//         >
-//           <torusBufferGeometry  args={[1, 0.2, 16, 100]} />
-//           <meshBasicMaterial color={activeObject ? 'purple' : 'gold'} />
-//           {/* <gridHelper colorGrid='green'/> */}
-//         </a.mesh>
-//         </line>
-//       </group>
-//     )
-//   };
+    return (
+      <group>
+        <line 
+          geometry={lineGeo}
+        >
+          <lineBasicMaterial 
+            color={color} 
+            linewidth={1} 
+          />
+        <a.mesh
+          ref={mesh}
+          {...bind()}
+          {...spring}
+          scale={0.25}
+          onClick={handleToggleDrag}
+        >
+          <torusBufferGeometry  args={[1, 0.2, 16, 100]} />
+          <meshBasicMaterial color={activeObject ? 'purple' : 'gold'} />
+          {/* <gridHelper colorGrid='green'/> */}
+        </a.mesh>
+        </line>
+      </group>
+    )
+  };
   
-//   export default Ecliptic;
+  export default Ecliptic;
 
 
 
