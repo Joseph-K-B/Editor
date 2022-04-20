@@ -12,17 +12,17 @@ function Terrain() {
 
   const color = new THREE.Color();
 
-  useFrame(() => {
-    const step = 0.05
-   if(darkMode) {
-     color.set('white');
-     mesh.current.material.color.lerp(color, step);
-    }
-    if(!darkMode) {
-      color.set('black')
-      mesh.current.material.color.lerp(color, step);
-   } 
-  })
+  // useFrame(() => {
+  //   const step = 0.05
+  //  if(darkMode) {
+  //    color.set('white');
+  //    mesh.current.material.color.lerp(color, step);
+  //   }
+  //   if(!darkMode) {
+  //     color.set('black')
+  //     mesh.current.material.color.lerp(color, step);
+  //  } 
+  // })
 
   return (
     <>
@@ -41,7 +41,7 @@ function Terrain() {
           clearcoat={1}
           clearcoatRoughness={1}
         /> */}
-        <meshBasicMaterial wireframe color={darkMode ?  'white' : 'black'}/>
+        <meshBasicMaterial wireframe color={darkMode ?  'purple' : 'black'}/>
       </Plane>
     </>
   );

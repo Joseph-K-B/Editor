@@ -72,19 +72,19 @@ function Ecliptic({ xRad, zRad, color }) {
     */
 
       bounds: { 
-        left: -width / 2 * Math.acos(theta), 
-        right: width / 2 * Math.sin(theta), 
+        left: -width / 2, 
+        right: width / 2, 
         top: -height / 2, 
         bottom: height / 2
       },
       rubberband: true,
-      transform: ([x, z]) => [(x / factor), (z / factor)],
+      transform: ([x, z]) => [(x / factor)  * Math.acos(1), (z / factor)  * Math.sin(1)],
     });
 
     const handleToggleDrag = () => {
       setActiveCamera(false);
       setActiveObject(!activeObject)
-      console.log(factor)
+      console.log(mesh.current.position)
     };
   
     useEffect(() => {
