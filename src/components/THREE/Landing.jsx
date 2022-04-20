@@ -91,10 +91,16 @@ function Landing(){
           </group>*/}
           {/* <Glyph /> */}
           {/* <OceanGeo /> */}
-          <Ecliptic 
+          {/* <Ecliptic 
             color='blue'
             xRad={1}
             zRad={1}
+          /> */}
+          <ShadeGeo
+            key={'eyeball'} 
+            scale={1.35} 
+            fragment={shaders[22].fragmentShader}
+            position={[0, 0, 0]} 
           />
       </Suspense>
     </Suspense>

@@ -324,6 +324,10 @@ shaders: [
     id: '21',
     fragmentShader: shaders.frag21.default
   },
+  {
+    id: '22',
+    fragmentShader: shaders.frag22.default
+  },
 ],
 
 setShaders: (shaders) => set({ shaders }),
