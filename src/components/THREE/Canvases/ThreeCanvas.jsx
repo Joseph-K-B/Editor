@@ -1,11 +1,11 @@
-import { Canvas } from '@react-three/fiber';
-import { OrbitControls, Stats } from '@react-three/drei';
 import { useLocation } from 'react-router-dom';
+import { Canvas } from '@react-three/fiber';
+import { Stats } from '@react-three/drei';
 
 import { useStore } from '../../../hooks/useStand';
 
-import Editor from '../Editor';
-import Landing from '../Landing';
+import Editor from '../Scenes/Editor';
+import Landing from '../Scenes/Landing';
 
 import css from './canvas.css';
 
