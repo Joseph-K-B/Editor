@@ -25,24 +25,27 @@ function ControlMenu() {
 
   return(
   <>   
-      <section className={css.controlMenu}>
+      <section key={'control_menu_section'}className={css.controlMenu}>
         {meshControls.meshMenu.map((control, i) =>
           <a.div
-            key= {i} 
-            className={rActive ? css.control : css.hidden} 
+            key= {`${i}_controls_menu_div`}
+            className={rActive ? css.control : css.hidden}
             style={activeControls && control.handler != activeControls ? props : null}>
-            <button              
-              value={control.handler} 
-              className={darkMode ? css.darkBtn : css.btn} 
+            <button
+              key= {`${i}_controls_menu_btn`}
+              value={control.handler}
+              className={darkMode ? css.darkBtn : css.btn}
               onClick={() => handleActiveControls(control.handler)}
             >
-              <img 
-                src={`/icons/${control.parent}/${control.name}/${control.name}_icon.svg`} 
+              <img
+                key= {`${i}_controls_menu_img`}
+                src={`/icons/${control.parent}/${control.name}/${control.name}_icon.svg`}
                 alt={control.name}
               />
-              <label 
-                htmlFor={`${control.name}-menu`} 
-                aria-label={`${control.name}-menu`}            
+              <label
+                key= {`${i}_controls_menu_label`}
+                htmlFor={`${control.name}-menu`}
+                aria-label={`${control.name}-menu`}         
               >
                 {control.label}
               </label>

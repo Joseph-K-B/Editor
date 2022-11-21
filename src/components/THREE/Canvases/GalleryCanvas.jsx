@@ -3,8 +3,7 @@ import {Stats } from '@react-three/drei';
 import { useLocation } from 'react-router-dom';
 
 import { useStore } from '../../../hooks/useStand';
-
-import ShaderGallery from '../ShaderGallery';
+import ShaderGallery from '../Scenes/ShaderGallery';
 
 
 import css from './canvas.css';

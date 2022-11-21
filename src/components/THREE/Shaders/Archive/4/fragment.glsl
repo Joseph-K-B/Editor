@@ -55,7 +55,7 @@ float box(in vec2 _st, in vec2 _size) {
     return uv.x * uv.y;
 }
 
-float cross(in vec2 _st, float _size) {
+float crosscolor(in vec2 _st, float _size) {
   return box(_st, vec2(_size, _size / 4.0)) +
   box(_st, vec2(_size/4.0, _size));
 }

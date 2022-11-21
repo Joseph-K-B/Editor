@@ -1,12 +1,12 @@
-// import { useState } from "react";
-// import * as THREE from 'three';
-
-import { animated as a, useSpring } from "react-spring";
-
+//Dependencies
+import { animated as a, useSpring } from 'react-spring';
+//Context Managment
+import { useStore } from '../../../../hooks/useStand';
+//Children
+import ControlPanel from '../ControlPanels/ControlPanels';
+import ControlMenu from '../ControlMenu/ControlMenu';
+//Styles
 import css from './controls-drawer.css';
-import { useStore } from "../../../../hooks/useStand";
-import ControlPanel from "../ControlPanels/ControlPanels";
-import ControlMenu from "../ControlMenu/ControlMenu";
 
 function ControlsDrawer(){
   const darkMode = useStore ((state) => state.darkMode);

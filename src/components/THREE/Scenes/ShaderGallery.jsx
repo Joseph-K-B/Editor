@@ -3,12 +3,10 @@ import { useThree } from "@react-three/fiber";
 import { Box, Flex } from "@react-three/flex";
 import { Suspense, useEffect, useState } from "react";
 
-import { useStore } from "../../hooks/useStand";
-import OceanGeo from "./Shaders/ClassShaders/Ocean/OceanGeo";
+import { useStore } from "../../../hooks/useStand";
 
-import ShadeGeo from "./Shaders/ShadeGeo";
-
-
+import ShadeGeo from "../Shaders/ShadeGeo";
+import OceanGeo from "../Shaders/ClassShaders/Ocean/OceanGeo";
 
 function ShaderGallery({ toggle }) {
   const shaders = useStore((state) => state.shaders)
@@ -39,7 +37,7 @@ function ShaderGallery({ toggle }) {
         {shaders.map(shade => 
           <Box key={shade.id} centerAnchor margin={0.35} marginTop={1}>
             <Suspense fallback={null}>
-              <ShadeGeo 
+              <ShadeGeo
                 l={3} 
                 w={3} 
                 fragment={shade.fragmentShader}

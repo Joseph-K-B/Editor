@@ -27,7 +27,7 @@ float box(in vec2 _st, in vec2 _size){
     return uv.x*uv.y;
 }
 
-float cross(in vec2 _st, float _size){
+float crosscolor(in vec2 _st, float _size){
     return  box(_st, vec2(_size,_size/4.)) +
             box(_st, vec2(_size/4.,_size));
 }
@@ -69,9 +69,9 @@ void main() {
 
   float pct = plot(st, y);
 
-  x += vec3(cross(st, 0.5));
+  x += vec3(crosscolor(st, 0.5));
 
-  z += vec3(cross(vec2(pct, st.y), y));
+  z += vec3(crosscolor(vec2(pct, st.y), y));
 
   z += fract(x * z);
   x += abs(vec3(sin(x * uTime)) * atan(z));

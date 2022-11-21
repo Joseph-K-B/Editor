@@ -1,7 +1,9 @@
-import { useEffect, useState } from "react";
+//Dependencies
+import { useState } from "react";
 import { animated as a, useSpring } from "react-spring";
+//Context Managment
 import { useStore } from "../../../../hooks/useStand";
-
+//Styles
 import css from './control-panel.css';
 
 function ControlPanel() {
@@ -27,18 +29,13 @@ function ControlPanel() {
   const handleToggle = (v) => {
     active === v ? setActive(null) : setActive(v);
   }
-  
-  // const handleColor= (e) => {
-    //   mesh.material.color = e.target.value;
-    //   setMesh({ ...mesh });
-    // }
     
-    const handleChange= (e) => {
-      activeControls === 'geoControls' ?
-      mesh.geometry[e.target.id] = e.target.value
-      : mesh.material[e.target.id] = e.target.value
-      setMesh({ ...mesh });
-      console.log(e.target)
+  const handleChange= (e) => {
+    activeControls === 'geoControls' ?
+    mesh.geometry[e.target.id] = e.target.value
+    : mesh.material[e.target.id] = e.target.value
+    setMesh({ ...mesh });
+    // console.log(e.target)
   }
 
   const handleToggleInventory = (v) => {
@@ -51,65 +48,73 @@ function ControlPanel() {
 
   return(
     <>
-        <section 
+        <section
+          key={'controls_section'} 
           className={css.controlSection}
         >
-          <div className={css.btn}>
-          <button 
-            className={darkMode ? css.darkBtn : css.btn} 
-            onClick={handlePrev}
-          >
-            <img src='/icons/arrows/back_icon.svg'/>
-            <label 
-              htmlFor="previous-menu" 
-              aria-label="previous-menu"
-            />
-          </button>
+          <div key = {'control_btn_div'} className={css.btn}>
+            <button
+              key = {'control_btn'}
+              className={darkMode ? css.darkBtn : css.btn} 
+              onClick={handlePrev}
+            >
+              <img key = {'control_btn_img'} src='/icons/arrows/back_icon.svg'/>
+              <label
+                key = {'control_btn_label'}
+                htmlFor="previous-menu" 
+                aria-label="previous-menu"
+              />
+            </button>
           </div>
         {meshControls[activeControls].inputs.map((input, i) =>
             <>
               <label
-                key={i} 
+                key={`${i}_panel_title`}
                 htmlFor={`${input.label}-toggle`} 
                 aria-label={`${input.label}-toggle`}
               >
-                <button  
+                <button
+                  key={`${i}_panel_button`}
                   onClick={ () => 
                     input.key === 'inventory' ? 
                     handleToggleInventory(input.label) :
                     handleToggle(input.label) 
-                }
+                  }
                   className={rActive ? css.toggleBtn : css.hidden}
                 >
                   {input.label}
                 </button>
               </label> 
-            <a.section 
+            <a.section
+              key={`${i}_panel_section`}
               style={active === input.label ? props : null} 
               className={css.hidden}
             >
-              <div className={css.yayCss}>
-              <label 
+              <div key={`${i}_panel_div`} className={css.yayCss}>
+              {/* <label
+                key={`${i}_panel_options_label`}
                 htmlFor={`${input.label}-input`} 
                 aria-label={`${input.label}-input`}
                 value = {`${input.label}`}
-              />
-                <div className={css.vectorOptions}>
+              /> */}
+                <div key={`${i}_panel_options`} className={css.vectorOptions}>
                   {
                     input.dataType.includes('v')  ?
                     vectorOptions.inputs.map(input =>
                       <>
-                        <label 
+                        <label
+                          key={`${i}_panel_label`}
                           htmlFor={`${input.label}-vector-options`}
                           aria-label={`${input.label}-vector`}
                         >
                           {input.label}
-                        <input
-                            name='vectorInput' 
-                            value={input.label}
-                            type={input.type} 
-                            onChange={(e) => console.log(e.target.value)}
+                          <input
                             id={`${input.label}-vector-options`}
+                            key={`${i}_panel_vec_input`}
+                            name='vectorInput'
+                            value={input.label}
+                            type={input.type}
+                            onChange={(e) => console.log(e.target.value)}
                           />
                         </label>
                       </> 
@@ -117,6 +122,7 @@ function ControlPanel() {
                   }
                 </div>
                 <input
+                  key={`${i}_panel_range`}
                   id={input.value} 
                   type={input.type} 
                   className={darkMode ? css.controlDark : css.control} 

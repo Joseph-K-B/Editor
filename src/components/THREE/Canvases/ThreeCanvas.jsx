@@ -1,6 +1,6 @@
 import { useLocation } from 'react-router-dom';
 import { Canvas } from '@react-three/fiber';
-import { Stats } from '@react-three/drei';
+import { OrbitControls, Stats } from '@react-three/drei';
 
 import { useStore } from '../../../hooks/useStand';
 
@@ -16,6 +16,7 @@ function ThreeCanvas() {
   return (
     <>
       <Canvas className={darkMode ? css.CanvasDark : css.Canvas}>
+        <OrbitControls />
         <Stats />
           { location.pathname === '/editor' ? <Editor /> : <Landing /> }
       </Canvas>
