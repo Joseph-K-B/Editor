@@ -1,5 +1,6 @@
 import { Stats } from '@react-three/drei';
 import { Canvas } from '@react-three/fiber';
+import { Suspense } from 'react';
 import { useStore } from '../../../hooks/useStand';
 import AudioScene from '../Scenes/AudioScene';
 
@@ -11,8 +12,9 @@ function AudioCanvas() {
   return (
     <>
       <Canvas className={darkMode ? css.CanvasDark : css.Canvas}>
-        {/* <Stats /> */}
-        <AudioScene toggle />
+        <Suspense fallback={null}>
+          <AudioScene toggle />
+        </Suspense>
       </Canvas>
     </>
   );

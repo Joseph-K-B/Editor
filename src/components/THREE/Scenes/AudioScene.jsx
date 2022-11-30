@@ -5,7 +5,7 @@ function AudioScene () {
 
   return(
     <>
-      <Track url='song.mp3'/>
+      <Track url='./Sonata_G_Major.mp3'/>
     </>
   );
 };

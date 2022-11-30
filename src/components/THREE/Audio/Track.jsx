@@ -1,9 +1,9 @@
 import * as THREE from 'three';
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
+import { useFrame } from '@react-three/fiber';
 import { suspend } from 'suspend-react';
 
 import createAudio from '../../../utils/createAudio';
-import { useRef } from 'react';
 
 function Track({ url, y = 2500, space = 1.8, width = 0.01, height = 0.05, obj = new THREE.Object3D(), ...props}) {
   const ref = useRef();
@@ -12,7 +12,7 @@ function Track({ url, y = 2500, space = 1.8, width = 0.01, height = 0.05, obj = 
   useEffect(() => {
     gain.connect(ctx.destination)
     return () => gain.disconnect()
-  }, [gain, context]);
+  }, [gain, ctx]);
 
   useFrame(() => {
     let avg = update()
