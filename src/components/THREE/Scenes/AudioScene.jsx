@@ -1,11 +1,16 @@
+import { Suspense } from "react";
 import Track from "../Audio/Track";
+import AudioZoom from "../Cameras/AudioZoom";
 
 
 function AudioScene () {
 
   return(
     <>
-      <Track url='./Sonata_G_Major.mp3'/>
+    <Suspense fallback={null}>
+      <Track url='./Sonata_G_Major.mp3' />
+      {/* <AudioZoom url='./Sonata_G_Major.mp3' /> */}
+    </Suspense>
     </>
   );
 };

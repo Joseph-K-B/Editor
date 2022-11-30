@@ -27,9 +27,12 @@ function Track({ url, y = 2500, space = 1.8, width = 0.01, height = 0.05, obj = 
   });
 
   return (
-    <instancedMesh castShadow ref = {ref} args={[null, null, data.length]} {...props}>
-      <planeGeometry args={[width, height]} />
-      <meshBasicMaterial toneMapped={false} />
+    <instancedMesh castShadow ref={ref} args={[null, null, data.length]} {...props}>
+      <boxGeometry args={[width, height]} />
+      <meshBasicMaterial 
+        // toneMapped={false}
+        // color={[255, 0, 255]}
+      />
     </instancedMesh>
   )
 };

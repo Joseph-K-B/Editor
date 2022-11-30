@@ -1,7 +1,10 @@
-import { Stats } from '@react-three/drei';
-import { Canvas } from '@react-three/fiber';
+//Dependencies
 import { Suspense } from 'react';
+import { Canvas } from '@react-three/fiber';
+import { OrbitControls } from '@react-three/drei';
+//Context
 import { useStore } from '../../../hooks/useStand';
+//Children
 import AudioScene from '../Scenes/AudioScene';
 
 import css from './canvas.css';
@@ -12,9 +15,8 @@ function AudioCanvas() {
   return (
     <>
       <Canvas className={darkMode ? css.CanvasDark : css.Canvas}>
-        <Suspense fallback={null}>
+          <OrbitControls />
           <AudioScene toggle />
-        </Suspense>
       </Canvas>
     </>
   );
