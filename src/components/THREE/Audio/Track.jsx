@@ -1,12 +1,13 @@
-import { useEffect } from 'react';
 import * as THREE from 'three';
+import { useEffect } from 'react';
 import { suspend } from 'suspend-react';
 
 import createAudio from '../../../utils/createAudio';
+import { useRef } from 'react';
 
 function Track({ url, y = 2500, space = 1.8, width = 0.01, height = 0.05, obj = new THREE.Object3D(), ...props}) {
   const ref = useRef();
-  const { gain, ctx, update, data } = suspend(() => createAudio(url), [url])
+  const { gain, ctx, update, data } = suspend(() => createAudio(url), [url]);
 
   useEffect(() => {
     gain.connect(ctx.destination)

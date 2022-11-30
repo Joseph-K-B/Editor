@@ -2,7 +2,7 @@
 async function createAudio(url) {
   const res = await fetch(url);
   const buffer = await res.arrayBuffer();
-  const ctx = new (window.AudioContext)();
+  const ctx = new (window.AudioContext || window.webkitAudioContext)();
   const src = ctx.createBufferSource();
   src.buffer = await new Promise((res) => ctx.decodeAudioData(buffer, res));
   src.loop = true;
