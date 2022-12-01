@@ -2,7 +2,7 @@
 async function createAudio(url) {
   const res = await fetch(url);
   const buffer = await res.arrayBuffer();
-  const ctx = new (window.AudioContext || window.webkitAudioContext)();
+  const ctx = new (window.AudioContext)();
   const src = ctx.createBufferSource();
   src.buffer = await new Promise((res) => ctx.decodeAudioData(buffer, res));
   src.loop = true;
@@ -18,16 +18,17 @@ async function createAudio(url) {
 
   const data = new Uint8Array(analyser.frequencyBinCount)
 
+  const update = () => {
+    analyser.getByteFrequencyData(data)
+    return (data.average = data.reduce((prev, curr) => prev + curr / data.length, 0))
+  }
+
   return {
     ctx,
     src,
     gain,
     data,
-
-    update: () => {
-      analyser.getByteFrequencyData(data)
-      return (data.avg = data.reduce((prev, curr) => prev + curr / data.length, 0))
-    },
+    update,
   };
 };
 

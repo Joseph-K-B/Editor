@@ -11,9 +11,9 @@ function Track({ url, y = 2500, space = 1.8, width = 0.01, height = 0.05, obj = 
 
   useEffect(() => {
     gain.connect(ctx.destination)
+    console.log(data.length)
     return () => gain.disconnect()
   }, [gain, ctx]);
-
   useFrame(() => {
     let avg = update()
 
@@ -23,15 +23,16 @@ function Track({ url, y = 2500, space = 1.8, width = 0.01, height = 0.05, obj = 
       ref.current.setMatrixAt(i, obj.matrix)
     }
     ref.current.material.color.setHSL(avg / 500, 0.75, 0.75)
+    // ref.current.material.color.set(data.length / avg, 0, 255)
     ref.current.instanceMatrix.needsUpdate = true
   });
 
   return (
     <instancedMesh castShadow ref={ref} args={[null, null, data.length]} {...props}>
-      <boxGeometry args={[width, height]} />
+      <planeGeometry args={[width, height]} />
       <meshBasicMaterial 
         // toneMapped={false}
-        // color={[255, 0, 255]}
+        // color={'red'}
       />
     </instancedMesh>
   )
