@@ -11,24 +11,23 @@ async function createAudio(url) {
 
   const gain = ctx.createGain();
   const analyser = ctx.createAnalyser();
-
   analyser.fftSize = 64;
+
   src.connect(analyser);
   analyser.connect(gain);
 
-  const data = new Uint8Array(analyser.frequencyBinCount)
-
-  const update = () => {
-    analyser.getByteFrequencyData(data)
-    return (data.average = data.reduce((prev, curr) => prev + curr / data.length, 0))
-  }
+  const data = new Uint8Array(analyser.frequencyBinCount);
 
   return {
     ctx,
     src,
     gain,
     data,
-    update,
+
+    update: () => {
+      analyser.getByteFrequencyData(data)
+      return (data.avg = data.reduce((prev, curr) => prev + curr / data.length, 0))
+    },
   };
 };
 

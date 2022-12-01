@@ -22,8 +22,8 @@ function Track({ url, y = 2500, space = 1.8, width = 0.01, height = 0.05, obj = 
       obj.updateMatrix()
       ref.current.setMatrixAt(i, obj.matrix)
     }
-    ref.current.material.color.setHSL(avg / 500, 0.75, 0.75)
-    // ref.current.material.color.set(data.length / avg, 0, 255)
+    ref.current.material.color.setHSL(avg * 10, 0.75, 0.75)
+    // console.log(avg)
     ref.current.instanceMatrix.needsUpdate = true
   });
 
